@@ -1,0 +1,98 @@
+import { items } from "@prisma/client";
+import { create } from "zustand";
+
+export type cartItem = {
+    name: string,
+    price: number,
+    quantity: number,
+    width?: string,
+    movement?: string,
+    angle?: string,
+    description?: string
+}
+
+type MainStoreType = {
+    searchQueryInput: FormDataEntryValue | null,
+    setSearchQueryInput: (inputValue: FormDataEntryValue | null) => void,
+    cart: cartItem[],
+    currentlySelectedItem: { name: string, price: number } | null,
+    setCurrentlySelectedItem: (name: string, price: number) => void,
+    addToCart: (item: cartItem) => void,
+    removeFromCart: (item: cartItem) => void,
+    currentlySelectedQuery: string | null,
+    setCurrentlySelectedQuery: (query: string | null) => void,
+    displayedItems: items[] | null,
+    setDisplayedItems: (items: items[]) => void,
+    setupQuery: (fallbackData: any) => void
+}
+
+export const useMainStore = create<MainStoreType>((set, get) => ({
+    searchQueryInput: null,
+    setSearchQueryInput: (inputValue: FormDataEntryValue | null) => {
+        set({
+            searchQueryInput: inputValue
+        })
+    },
+    cart: [],
+    addToCart: (item: cartItem) => {
+        const findItem = get().cart.filter((cartItem) => {
+            return cartItem.name === item.name
+        })[0]
+        console.log(findItem)
+        if (findItem) {
+            const temp = get().cart
+            temp.splice(temp.indexOf(findItem), 1)
+            set({
+                cart: [...temp, item]
+            })
+        } else if (!findItem) {
+            set({
+                cart: [...get().cart, item]
+            })
+        }
+    },
+    removeFromCart: (item: cartItem) => {
+        const temp = get().cart
+        temp.splice(temp.indexOf(item), 1)
+        set({
+            cart: [...temp]
+        })
+    },
+    currentlySelectedItem: null,
+    setCurrentlySelectedItem: (name: string, price: number) => {
+        set({
+            currentlySelectedItem: { name, price }
+        })
+    },
+    currentlySelectedQuery: null,
+    setCurrentlySelectedQuery(query) {
+        set({
+            currentlySelectedQuery: query
+        })
+    },
+    displayedItems: null,
+    setDisplayedItems(items: items[]) {
+        set({
+            displayedItems: [...items]
+        })
+    },
+    setupQuery(fallbackData) {
+        console.log(fallbackData)
+        console.log(get().currentlySelectedQuery)
+        if (get().currentlySelectedQuery && !get().searchQueryInput) {
+            get().setDisplayedItems(fallbackData.map((item: items) => {
+                if (item.categories.includes(get().currentlySelectedQuery!)) {
+                    return item
+                }
+            }))
+        } else if (!get().currentlySelectedQuery && get().searchQueryInput) {
+            get().setDisplayedItems(fallbackData.map((item: items) => {
+                if (item.name.includes(get().searchQueryInput!.toString())) {
+                    return item
+                }
+            }))
+        } else {
+            get().setDisplayedItems([...fallbackData])
+        }
+    }
+}))
