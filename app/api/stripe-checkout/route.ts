@@ -21,8 +21,8 @@ export const POST = async (req: Request) => {
         const stripeSession = await stripe.checkout.sessions.create({
             line_items: [...lineItems],
             mode: 'payment',
-            success_url: "http://localhost:3000",
-            cancel_url: "http://localhost:3000/shop"
+            success_url: "https://jtsilversmiths-t5l8.vercel.app/",
+            cancel_url: "https://jtsilversmiths-t5l8.vercel.app/shop"
         })
         console.log(stripeSession)
         return NextResponse.json({ details: stripeSession }, { status: 200 })
