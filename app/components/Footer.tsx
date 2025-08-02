@@ -10,7 +10,7 @@ const Footer = () => {
                 <p className="font-bold">
                     JT Silversmiths
                     <br />
-                    Providing quality since DATE
+                    Providing quality since 2006
                 </p>
                 <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
             </aside>
