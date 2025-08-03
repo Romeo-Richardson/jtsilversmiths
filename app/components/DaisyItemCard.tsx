@@ -7,9 +7,9 @@ const DaisyItemCard = ({ image, title, price }: { image: string, title: string, 
 
     const details = "A card component has a figure, a body part, and inside body there are title and actions parts. A card component has a figure, a body part, and inside body there are title and actions parts. A card component has a figure, a body part, and inside body there are title and actions parts."
     return (
-        <div className="card text-primary-content bg-base-100 w-96 shadow-sm">
+        <div className="card text-primary-content bg-base-100 w-96 max-[380px]:w-72 max-[320px]:w-64  shadow-sm">
             <figure>
-                <img className='w-full h-[300px] flex items-center justify-center' style={{ maxInlineSize: "100%" }} src={image} alt='example image'></img>
+                <img className='w-full h-[300px] flex items-center justify-center' src={image} alt='example image'></img>
             </figure>
             <div className="card-body">
                 <h2 className="card-title">
