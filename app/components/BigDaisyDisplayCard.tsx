@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const BigDaisyDisplayCard = (): React.ReactNode => {
@@ -13,7 +14,9 @@ const BigDaisyDisplayCard = (): React.ReactNode => {
                 <h2 className="card-title">Welcome to our new website!</h2>
                 <p className=' max-[465px]:w-auto w-full'>Our website is currently under construction, this version is purely for viewing purposes. The finished product is coming soon, until then purchasing will be disabled and you can inquire about purchasing items by calling us at <strong>{"(209)-492-0114"}.</strong> </p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Listen</button>
+                    <button className="btn btn-primary">
+                        <Link href={"/contact"}>Contact Us</Link>
+                    </button>
                 </div>
             </div>
         </div>
