@@ -81,13 +81,13 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
         console.log(get().currentlySelectedQuery)
         if (get().currentlySelectedQuery && !get().searchQueryInput) {
             get().setDisplayedItems(fallbackData.map((item: items) => {
-                if (item.categories.includes(get().currentlySelectedQuery!)) {
+                if (item.categories.map((category) => category.toLocaleUpperCase()).includes(get().currentlySelectedQuery!.toUpperCase())) {
                     return item
                 }
             }))
         } else if (!get().currentlySelectedQuery && get().searchQueryInput) {
             get().setDisplayedItems(fallbackData.map((item: items) => {
-                if (item.name.includes(get().searchQueryInput!.toString())) {
+                if (item.name.toUpperCase().includes(get().searchQueryInput!.toString().toUpperCase())) {
                     return item
                 }
             }))
