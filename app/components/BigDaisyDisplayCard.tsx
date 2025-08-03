@@ -5,12 +5,13 @@ const BigDaisyDisplayCard = (): React.ReactNode => {
         <div className="card text-primary-content lg:card-side bg-base-100 shadow-sm">
             <figure>
                 <img
-                    src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
+                    className='max-w-[1000px] max-h-[500px]'
+                    src="https://newlightdigital.com/wp-content/uploads/2024/01/new-website-in-2024.jpeg"
                     alt="Album" />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">New album is released!</h2>
-                <p>Click the button to listen on Spotiwhy app.</p>
+                <h2 className="card-title">Welcome to our new website!</h2>
+                <p className='w-[280px]'>Our website is currently under construction, this version is purely for viewing purposes. The finished product is coming soon, until then purchasing will be disabled and you can inquire about purchasing items by calling us at <strong>{"(209)-492-0114"}.</strong> </p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary">Listen</button>
                 </div>
