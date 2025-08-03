@@ -3,3 +3,13 @@
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark, emerald;
 }
+
+@theme {
+  --breakpoint-*: initial;
+}
+
+@custom-variant 2xl (@media (max-width: 1535px));
+@custom-variant xl (@media (max-width: 1279px));
+@custom-variant lg (@media (max-width: 1023px));
+@custom-variant md (@media (max-width: 767px));
+@custom-variant sm (@media (max-width: 639px));

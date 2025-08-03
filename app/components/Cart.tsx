@@ -45,7 +45,7 @@ const Cart = (): React.ReactNode => {
 
                 <span className="indicator-item badge badge-secondary text-xs p-[4px] mt-[7px] rounded-full mr-[7px]">{` ${cart.length !== 0 ? cart.length : 0}`}</span>
                 <label htmlFor="my-drawer-4" className="drawer-button btn btn-primary z-10">
-                    <Image src={cartImage} height={20} width={20} alt="Cart button"></Image>
+                    <Image src={cartImage} height={20} width={20} className='min-h-[20px] min-w-[20px]' alt="Cart button"></Image>
                 </label>
 
             </div>
