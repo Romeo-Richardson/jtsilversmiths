@@ -30,13 +30,13 @@ const Navbar = (): React.ReactNode => {
                 }
             </div>
             <div className='flex items-center gap-2'>
-                {
+                {/* {
                     isSignedIn ? <UserButton></UserButton> :
                         <button className='btn btn-primary' onClick={() => { push("/sign-in") }}>
                             <Image src={userImage} height={20} width={20} alt="Cart button"></Image>
                         </button>
 
-                }
+                } */}
                 <Cart></Cart>
             </div>
         </div>
