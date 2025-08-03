@@ -13,4 +13,5 @@ model items {
   price      Float
   image      String   @unique
   categories String[]
+  bestSeller Boolean?
 }
