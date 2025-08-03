@@ -55,7 +55,7 @@ const ShopDisplay = (): React.ReactNode => {
     return (
         <div className=' grow flex flex-col'>
             <div className='bg-neutral py-2 pl-4'>
-                <h1 className='text-3xl text-white'>Products</h1>
+                <h1 className='text-3xl text-white'>Products - {`${currentlySelectedQuery ? currentlySelectedQuery : ""}`}</h1>
             </div>
             <div className='flex flex-wrap gap-4 p-4 max-h-[1600px] overflow-auto mb-6 justify-center'>
                 {
