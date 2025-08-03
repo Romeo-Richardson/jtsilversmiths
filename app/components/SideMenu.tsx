@@ -152,7 +152,7 @@ const SideMenu = () => {
     const { setSearchQueryInput, setCurrentlySelectedQuery, setupQuery } = useMainStore()
 
     return (
-        <ul className="menu bg-base-200 rounded-b-2xl  min-w-80">
+        <ul className="menu bg-base-200 rounded-b-2xl max-[700px]:hidden  min-w-80">
             <NavInput></NavInput>
             {/* <li>
                 <details open={false}>

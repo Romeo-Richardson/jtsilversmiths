@@ -21,7 +21,7 @@ const Navbar = (): React.ReactNode => {
     const { push } = useRouter()
 
     return (
-        <div className='h-22 bg-primary text-primary-content  flex items-center justify-between px-12'>
+        <div className='h-22 bg-primary text-primary-content  flex items-center justify-between max-[700px]:px-2 px-12'>
             {/* <div className='flex items-center font-bold'>JTSilversmiths</div> */}
             <Image className='z-10 max-[700px]:hidden' src={jtlogo} height={75} width={185} alt=''></Image>
 

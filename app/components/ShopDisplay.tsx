@@ -12,6 +12,7 @@ import { useQuery } from '@tanstack/react-query'
 import { items } from '@prisma/client'
 import { useMainStore } from '../utils/global'
 import { getItems } from '../utils/apiCalls'
+import NavInput from './NavInput'
 
 const ShopDisplay = (): React.ReactNode => {
 
@@ -56,6 +57,9 @@ const ShopDisplay = (): React.ReactNode => {
         <div className=' grow flex flex-col'>
             <div className='bg-neutral py-2 pl-4'>
                 <h1 className='text-3xl text-white'>Products - {`${currentlySelectedQuery ? currentlySelectedQuery : ""}`}</h1>
+            </div>
+            <div className='min-[701px]:hidden bg-base-200 py-2 pl-4'>
+                <NavInput></NavInput>
             </div>
             <div className='flex flex-wrap gap-4 p-4 max-h-[1600px] overflow-auto mb-6 justify-center'>
                 {

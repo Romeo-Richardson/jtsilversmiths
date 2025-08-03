@@ -6,18 +6,18 @@ import setQuery from '../utils/setQuery'
 import { useQuery } from '@tanstack/react-query'
 import { getItems } from '../utils/apiCalls'
 
-const NavInput = (): React.ReactNode => {
+const NavInput = ({ full }: { full?: boolean }): React.ReactNode => {
     const { setSearchQueryInput, setCurrentlySelectedQuery, setupQuery } = useMainStore()
     const { data } = useQuery({ queryKey: ["items"], queryFn: getItems })
     return (
-        <form className='my-4' onSubmit={(e) => {
+        <form className={`my-4 ${full && "px-4"} max-[700px]:px-4`} onSubmit={(e) => {
             e.preventDefault()
             const formData = new FormData(e.currentTarget)
             setCurrentlySelectedQuery(null)
             setSearchQueryInput(formData.get("searchQuery"))
             setupQuery(data.data)
         }}>
-            <label className="input">
+            <label className={`input ${full && "w-full"} max-[700px]:w-full`}>
                 <button type="submit">
                     <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g
