@@ -16,11 +16,11 @@ const DaisyItemCard = ({ image, title, price }: { image: string, title: string, 
                     {title}
                 </h2>
                 <p className='text-secondary text-sm'>{`$${price}.00`}</p>
-                <div className="card-actions ">
+                {/* <div className="card-actions ">
                     <div className="badge badge-neutral">Style 1</div>
                     <div className="badge badge-outline">Style 2</div>
                     <div className="badge badge-outline">Style 3</div>
-                </div>
+                </div> */}
                 <p>{details}</p>
                 <div className='flex items-center justify-end'>
                     <AddToCart name={title} price={price} ></AddToCart>
