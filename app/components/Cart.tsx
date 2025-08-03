@@ -73,7 +73,7 @@ const Cart = (): React.ReactNode => {
                         })
                     }
                     <p className='mt-4'>{`Total($${total}.00)`}</p>
-                    <button className='btn btn-primary mt-6' onClick={getCheckoutPage}>Checkout</button>
+                    <button className='btn btn-primary mt-6' disabled onClick={getCheckoutPage}>Checkout</button>
                 </ul>
             </div>
         </div>
