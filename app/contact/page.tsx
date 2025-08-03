@@ -7,10 +7,10 @@ const page = (): React.ReactNode => {
             <div className='bg-neutral py-2 pl-4'>
                 <h1 className='text-3xl text-white'>Contact us</h1>
             </div>
-            <MainHeader name='Contact' subtext='888-888-8888 | example@example.com'></MainHeader>
+            <MainHeader name='Contact' subtext='(209)-492-0114 | example@example.com'></MainHeader>
             <div className='flex items-center justify-center'>
-                <div className='w-[40vw] flex flex-col gap-6'>
-                    <div className='flex items-center justify-center gap-4'>
+                <div className='w-[40vw] max-[700]:w-3/4 flex flex-col gap-6'>
+                    <div className='flex items-center justify-center max-[500px]:flex-col max-[500px]:w-full gap-4'>
                         <input className='input input-neutral' type="text" placeholder='First Name' />
                         <input className='input input-neutral' type="text" placeholder='Last Name' />
                     </div>
