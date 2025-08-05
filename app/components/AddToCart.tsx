@@ -20,6 +20,13 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
 
     const [itemAngle, setItemAngle] = useState<string>("Solid (Welded)")
 
+    const [itemCopperOnSpoon, setItemCopperOnSpoon] = useState<string>("No copper on spade")
+
+    const [itemPositionOfBraces, setItemPositionOfBraces] = useState<string>("Position A")
+
+    const [itemHeight, setItemHeight] = useState<string>("3")
+
+
 
 
     const mpMenuOptions = {
@@ -125,6 +132,40 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
                             </span>
                         </>
                     }
+                    {
+                        !currentlySelectedItem?.categories?.includes("nonSpade") && <>
+                            <span>
+                                <p className='pb-1'>Copper on spoon</p>
+                                <select defaultValue="Select width" onChange={(e) => { setItemCopperOnSpoon(e.currentTarget.value) }} className="select mb-6">
+                                    {
+                                        spadeMenuOptions.copperOnSpoon.map((item, key) => {
+                                            return <option key={key}>{item}</option>
+                                        })
+                                    }
+                                </select>
+                            </span>
+                            <span>
+                                <p className='pb-1'>Select bit movement</p>
+                                <select defaultValue="Select bit movement" onChange={(e) => { setItemPositionOfBraces(e.currentTarget.value) }} className="select mb-6">
+                                    {
+                                        spadeMenuOptions.positionOfBraces.map((item, key) => {
+                                            return <option key={key}>{item}</option>
+                                        })
+                                    }
+                                </select>
+                            </span>
+                            <span>
+                                <p className='pb-1'>Select angle</p>
+                                <select defaultValue="Select Angle" onChange={(e) => { setItemHeight(e.currentTarget.value) }} className="select mb-6">
+                                    {
+                                        spadeMenuOptions.mpHeight.map((item, key) => {
+                                            return <option key={key}>{item}</option>
+                                        })
+                                    }
+                                </select>
+                            </span>
+                        </>
+                    }
                     <p>Select quantity</p>
                     <input className='input' onChange={(e) => { setQuantity(Number(e.currentTarget.value)) }} type="number" min={0} max={100} defaultValue={0} />
                     <div className="modal-action">
@@ -133,10 +174,13 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
                             <button className="btn mr-4">Close</button>
                             <button className='btn btn-primary' disabled={disabled} onClick={() => {
                                 console.log(name)
-                                quantity && addToCart({ name: currentlySelectedItem?.name!, price: currentlySelectedItem?.price!, quantity, width: itemWidth, movement: itemMovement, angle: itemAngle, description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}` : "" })
+                                quantity && addToCart({ name: currentlySelectedItem?.name!, price: currentlySelectedItem?.price!, quantity, width: itemWidth, movement: itemMovement, angle: itemAngle, copper: itemCopperOnSpoon, bracePosition: itemPositionOfBraces, height: itemHeight, description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Positin of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}` : "" })
                                 setItemWidth(`4-3/4" (Arabian)`)
                                 setItemMovement("Loose jaw")
                                 setItemAngle("Solid (Welded)")
+                                setItemCopperOnSpoon("No copper on spade")
+                                setItemHeight("3")
+                                setItemPositionOfBraces("Position A")
                                 if (quantitySelector.current) {
                                     quantitySelector.current.value = ""
                                 }

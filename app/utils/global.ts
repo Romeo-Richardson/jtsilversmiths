@@ -8,6 +8,9 @@ export type cartItem = {
     width?: string,
     movement?: string,
     angle?: string,
+    copper?: string,
+    bracePosition?: string,
+    height?: string,
     description?: string
 }
 
@@ -15,7 +18,7 @@ type MainStoreType = {
     searchQueryInput: FormDataEntryValue | null,
     setSearchQueryInput: (inputValue: FormDataEntryValue | null) => void,
     cart: cartItem[],
-    currentlySelectedItem: { name: string, price: number } | null,
+    currentlySelectedItem: { name: string, price: number, categories?: string[] } | null,
     setCurrentlySelectedItem: (name: string, price: number) => void,
     addToCart: (item: cartItem) => void,
     removeFromCart: (item: cartItem) => void,

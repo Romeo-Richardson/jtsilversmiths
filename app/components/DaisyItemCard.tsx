@@ -3,7 +3,7 @@ import Image, { StaticImageData } from 'next/image'
 import AddToCart from './AddToCart'
 
 
-const DaisyItemCard = ({ image, title, price }: { image: string, title: string, price: number }): React.ReactNode => {
+const DaisyItemCard = ({ image, title, price, description }: { image: string, title: string, price: number, description?: string }): React.ReactNode => {
 
     const details = "A card component has a figure, a body part, and inside body there are title and actions parts. A card component has a figure, a body part, and inside body there are title and actions parts. A card component has a figure, a body part, and inside body there are title and actions parts."
     return (
@@ -21,7 +21,7 @@ const DaisyItemCard = ({ image, title, price }: { image: string, title: string, 
                     <div className="badge badge-outline">Style 2</div>
                     <div className="badge badge-outline">Style 3</div>
                 </div> */}
-                <p>{details}</p>
+                <p>{description || details}</p>
                 <div className='flex items-center justify-end'>
                     <AddToCart name={title} price={price} ></AddToCart>
                 </div>

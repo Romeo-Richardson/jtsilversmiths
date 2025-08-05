@@ -40,10 +40,56 @@ const SideMenu = () => {
                 {
                     name: "Western Silver Show Bits by MOUTHPIECE",
                     link: "/",
-                    subItems: [{
-                        name: "Layer 3",
-                        link: "/"
-                    }]
+                    subItems: [
+                        {
+                            name: `Low Port`,
+                            link: "/",
+                        },
+                        {
+                            name: `Medium Port`,
+                            link: "/",
+                        },
+                        {
+                            name: `High Port`,
+                            link: "/",
+                        },
+                        {
+                            name: `Chileno Ring Bit Mouthpiece`,
+                            link: "/",
+                        },
+                        {
+                            name: `Frog`,
+                            link: "/",
+                        },
+                        {
+                            name: `Half Breed`,
+                            link: "/",
+                        },
+                        {
+                            name: `Mona Lisa`,
+                            link: "/",
+                        },
+                        {
+                            name: `Polo`,
+                            link: "/",
+                        },
+                        {
+                            name: `Ported Snaffle`,
+                            link: "/",
+                        },
+                        {
+                            name: `Salinas`,
+                            link: "/",
+                        },
+                        {
+                            name: `Spade`,
+                            link: "/",
+                        },
+                        {
+                            name: `Other`,
+                            link: "/",
+                        },
+                    ]
                 },
                 {
                     name: "Western Silver Show Bits by THEME",
@@ -191,7 +237,13 @@ const SideMenu = () => {
                                             <details open={false}>
                                                 <summary>{subMenuItem.name}</summary>
                                                 {
-                                                    subMenuItem.subItems?.map((item, key) => <ul key={key}><li ><a>{item.name}</a></li></ul>)
+                                                    subMenuItem.subItems?.map((item, key) => <ul key={key}><li onClick={(e) => {
+                                                        e.preventDefault()
+                                                        setSearchQueryInput(null)
+                                                        setCurrentlySelectedQuery(item.name)
+                                                        console.log(data.data)
+                                                        setupQuery(data.data)
+                                                    }}><a>{item.name}</a></li></ul>)
                                                 }
                                             </details>
                                         </li>
