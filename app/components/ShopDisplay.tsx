@@ -68,9 +68,11 @@ const ShopDisplay = (): React.ReactNode => {
                     // }) : data?.data.map((item: items, key: number) => {
                     //     return <DaisyItemCard key={key} {...item} title={item.name}></DaisyItemCard>
                     // })
-                    displayedItems ? displayedItems.map((item, key) => {
+                    displayedItems?.length! > 0 ? displayedItems?.map((item, key) => {
                         return item && <DaisyItemCard key={key} price={item.price} image={item.image} title={item.name}></DaisyItemCard>
-                    }) : <p>No results</p>
+                    }) : data?.data.map((item: items, key: number) => {
+                        return <DaisyItemCard key={key} price={item.price} image={item.image} title={item.name}></DaisyItemCard>
+                    })
                 }
                 {/* <DaisyItemCard image={item1}></DaisyItemCard>
                 <DaisyItemCard image={item3}></DaisyItemCard>

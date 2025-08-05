@@ -9,7 +9,7 @@ import axios from 'axios'
 const BestSellers = (): React.ReactNode => {
 
     const getItems = async () => {
-        const { data } = await axios.get("https://jtsilversmiths.com/api/get-items")
+        const { data } = await axios.get("https://www.jtsilversmiths.com/api/get-items")
         return data
     }
 
