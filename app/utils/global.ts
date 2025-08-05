@@ -1,4 +1,5 @@
 import { items } from "@prisma/client";
+import toast from "react-hot-toast";
 import { create } from "zustand";
 
 export type cartItem = {
@@ -112,6 +113,7 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
         })[0]) {
             get().setDisplayedItems([...fallbackData])
             get().setCurrentlySelectedQuery(null)
+            toast.error("Failed to find item")
         }
     }
 }))
