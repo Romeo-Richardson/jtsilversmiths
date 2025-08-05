@@ -53,10 +53,16 @@ const ShopDisplay = (): React.ReactNode => {
     //     height: "350px",
     //     width: "200px"
     // }
+
+    useEffect(() => {
+        console.log(displayedItems)
+    }, [displayedItems])
+
+
     return (
         <div className=' grow flex flex-col'>
             <div className='bg-neutral py-2 pl-4'>
-                <h1 className='text-3xl text-white'>Products - {`${currentlySelectedQuery ? currentlySelectedQuery : ""}`}</h1>
+                <h1 className='text-3xl text-white'>Products - {`${currentlySelectedQuery ? currentlySelectedQuery : "All Items"}`}</h1>
             </div>
             <div className='min-[701px]:hidden bg-base-200 py-2 pl-4'>
                 <NavInput></NavInput>
@@ -68,7 +74,7 @@ const ShopDisplay = (): React.ReactNode => {
                     // }) : data?.data.map((item: items, key: number) => {
                     //     return <DaisyItemCard key={key} {...item} title={item.name}></DaisyItemCard>
                     // })
-                    displayedItems?.length! > 0 ? displayedItems?.map((item, key) => {
+                    displayedItems?.length! !== 0 ? displayedItems?.map((item, key) => {
                         return item && <DaisyItemCard key={key} price={item.price} image={item.image} title={item.name}></DaisyItemCard>
                     }) : data?.data.map((item: items, key: number) => {
                         return <DaisyItemCard key={key} price={item.price} image={item.image} title={item.name}></DaisyItemCard>

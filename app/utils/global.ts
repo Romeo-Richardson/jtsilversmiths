@@ -24,7 +24,7 @@ type MainStoreType = {
     removeFromCart: (item: cartItem) => void,
     currentlySelectedQuery: string | null,
     setCurrentlySelectedQuery: (query: string | null) => void,
-    displayedItems: items[] | null,
+    displayedItems: items[],
     setDisplayedItems: (items: items[]) => void,
     setupQuery: (fallbackData: any) => void
 }
@@ -73,7 +73,7 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             currentlySelectedQuery: query
         })
     },
-    displayedItems: null,
+    displayedItems: [],
     setDisplayedItems(items: items[]) {
         set({
             displayedItems: [...items]
@@ -87,15 +87,31 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
                 if (item.categories.map((category) => category.toLocaleUpperCase()).includes(get().currentlySelectedQuery!.toUpperCase())) {
                     return item
                 }
+            }).map((x: any) => {
+                if (x !== undefined) {
+                    return x
+                }
             }))
         } else if (!get().currentlySelectedQuery && get().searchQueryInput) {
             get().setDisplayedItems(fallbackData.map((item: items) => {
                 if (item.name.toUpperCase().includes(get().searchQueryInput!.toString().toUpperCase())) {
                     return item
                 }
+            }).map((x: any) => {
+                if (x !== undefined) {
+                    return x
+                }
             }))
+            console.log(get().displayedItems?.length)
         } else {
             get().setDisplayedItems([...fallbackData])
+        }
+
+        if (!get().displayedItems.filter((item) => {
+            return item !== undefined
+        })[0]) {
+            get().setDisplayedItems([...fallbackData])
+            get().setCurrentlySelectedQuery(null)
         }
     }
 }))
