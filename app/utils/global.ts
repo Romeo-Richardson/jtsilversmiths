@@ -10,6 +10,7 @@ export type cartItem = {
     movement?: string,
     angle?: string,
     copper?: string,
+    finish?: string,
     bracePosition?: string,
     height?: string,
     description?: string
