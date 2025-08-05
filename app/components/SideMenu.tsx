@@ -29,14 +29,14 @@ const SideMenu = () => {
             name: "Bits",
             link: "/",
             items: [
-                {
-                    name: "Western Silver Show Bits by STYLE",
-                    link: "/",
-                    subItems: [{
-                        name: "Layer 3",
-                        link: "/"
-                    }]
-                },
+                // {
+                //     name: "Western Silver Show Bits by STYLE",
+                //     link: "/",
+                //     subItems: [{
+                //         name: "Layer 3",
+                //         link: "/"
+                //     }]
+                // },
                 {
                     name: "Western Silver Show Bits by MOUTHPIECE",
                     link: "/",
@@ -91,30 +91,30 @@ const SideMenu = () => {
                         },
                     ]
                 },
-                {
-                    name: "Western Silver Show Bits by THEME",
-                    link: "/",
-                    subItems: [{
-                        name: "Layer 3",
-                        link: "/"
-                    }]
-                },
-                {
-                    name: "Western Silver Show Bits by BRAND",
-                    link: "/",
-                    subItems: [{
-                        name: "Layer 3",
-                        link: "/"
-                    }]
-                },
-                {
-                    name: "Horse bits without silver",
-                    link: "/",
-                    subItems: [{
-                        name: "Layer 3",
-                        link: "/"
-                    }]
-                }
+                // {
+                //     name: "Western Silver Show Bits by THEME",
+                //     link: "/",
+                //     subItems: [{
+                //         name: "Layer 3",
+                //         link: "/"
+                //     }]
+                // },
+                // {
+                //     name: "Western Silver Show Bits by BRAND",
+                //     link: "/",
+                //     subItems: [{
+                //         name: "Layer 3",
+                //         link: "/"
+                //     }]
+                // },
+                // {
+                //     name: "Horse bits without silver",
+                //     link: "/",
+                //     subItems: [{
+                //         name: "Layer 3",
+                //         link: "/"
+                //     }]
+                // }
             ]
         },
         {
