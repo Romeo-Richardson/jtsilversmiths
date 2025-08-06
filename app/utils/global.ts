@@ -13,7 +13,8 @@ export type cartItem = {
     finish?: string,
     bracePosition?: string,
     height?: string,
-    description?: string
+    description?: string,
+    style?: string
 }
 
 type MainStoreType = {

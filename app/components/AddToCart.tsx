@@ -28,6 +28,8 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
 
     const [itemFinish, setItemFinish] = useState<string>("Stainless Steel with .925 Silver Overlay (SOS)")
 
+    const [itemStyle, setItemStyle] = useState("MP-01")
+
 
 
 
@@ -79,6 +81,8 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
         ],
     }
 
+    const range = new Array(66).fill(null)
+
     useEffect(() => {
         if (typeof document !== null) {
             setStoreDocument(document)
@@ -110,6 +114,16 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
                     {
                         currentlySelectedItem?.name.includes("MP") &&
                         <>
+                            <span>
+                                <p className='pb-1'>Select mouthpiece style</p>
+                                <select defaultValue="Select width" onChange={(e) => { setItemStyle(e.currentTarget.value) }} className="select mb-6">
+                                    {
+                                        range.map((_, key) => {
+                                            return <option key={key}>{`MP-${(key + 1).toString()}`}</option>
+                                        })
+                                    }
+                                </select>
+                            </span>
                             <span>
                                 <p className='pb-1'>Select width</p>
                                 <select defaultValue="Select width" onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
@@ -194,7 +208,7 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
                             <button className="btn mr-4">Close</button>
                             <button className='btn btn-primary' disabled={disabled} onClick={() => {
                                 console.log(name)
-                                quantity && addToCart({ name: currentlySelectedItem?.name!, finish: itemFinish, price: currentlySelectedItem?.price!, quantity, width: itemWidth, movement: itemMovement, angle: itemAngle, copper: itemCopperOnSpoon, bracePosition: itemPositionOfBraces, height: itemHeight, description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Positin of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}` : "" })
+                                quantity && addToCart({ name: currentlySelectedItem?.name!, finish: itemFinish, style: itemStyle, price: currentlySelectedItem?.price!, quantity, width: itemWidth, movement: itemMovement, angle: itemAngle, copper: itemCopperOnSpoon, bracePosition: itemPositionOfBraces, height: itemHeight, description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Positin of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}` : "" })
                                 setItemWidth(`4-3/4" (Arabian)`)
                                 setItemMovement("Loose jaw")
                                 setItemAngle("Solid (Welded)")
