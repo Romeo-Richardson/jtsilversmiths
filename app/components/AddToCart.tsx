@@ -155,7 +155,7 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
                                 </select>
                             </span>
                             <span>
-                                <p className='pb-1'>Select bit movement</p>
+                                <p className='pb-1'>Position of braces</p>
                                 <select defaultValue="Select bit movement" onChange={(e) => { setItemPositionOfBraces(e.currentTarget.value) }} className="select mb-6">
                                     {
                                         spadeMenuOptions.positionOfBraces.map((item, key) => {
@@ -165,7 +165,7 @@ const AddToCart = ({ name, price }: { name: string, price: number }) => {
                                 </select>
                             </span>
                             <span>
-                                <p className='pb-1'>Select angle</p>
+                                <p className='pb-1'>Select Height</p>
                                 <select defaultValue="Select Angle" onChange={(e) => { setItemHeight(e.currentTarget.value) }} className="select mb-6">
                                     {
                                         spadeMenuOptions.mpHeight.map((item, key) => {
