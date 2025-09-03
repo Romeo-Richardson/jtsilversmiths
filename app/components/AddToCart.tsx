@@ -215,9 +215,9 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                                     })
                                                 }
                                             </select>
-                                            <Image className='mb-6 hover:cursor-pointer' onClick={() => {
+                                            {/* <Image className='mb-6 hover:cursor-pointer' onClick={() => {
                                                 storeDocument.getElementById('my_modal_5')?.showModal()
-                                            }} src={preview} height={24} width={24} alt=''></Image>
+                                            }} src={preview} height={24} width={24} alt=''></Image> */}
                                         </span>
 
                                     </span>
@@ -262,9 +262,9 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                             })
                                         }
                                     </select>
-                                    <Image className='mb-6 hover:cursor-pointer' onClick={() => {
+                                    {/* <Image className='mb-6 hover:cursor-pointer' onClick={() => {
                                         storeDocument.getElementById('my_modal_5')?.showModal()
-                                    }} src={preview} height={24} width={24} alt=''></Image>
+                                    }} src={preview} height={24} width={24} alt=''></Image> */}
                                 </span>
 
                             </span>
