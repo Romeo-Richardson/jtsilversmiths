@@ -78,6 +78,10 @@ const SideMenu = () => {
                             link: "/",
                         },
                         {
+                            name: "Snaffle",
+                            link: "/"
+                        },
+                        {
                             name: `Salinas`,
                             link: "/",
                         },
@@ -86,7 +90,7 @@ const SideMenu = () => {
                             link: "/",
                         },
                         {
-                            name: `Other`,
+                            name: `Other (All)`,
                             link: "/",
                         },
                     ]
@@ -158,6 +162,10 @@ const SideMenu = () => {
                     link: "/",
                 },
                 {
+                    name: "Snaffle",
+                    link: "/"
+                },
+                {
                     name: `Salinas`,
                     link: "/",
                 },
@@ -166,33 +174,33 @@ const SideMenu = () => {
                     link: "/",
                 },
                 {
-                    name: `Other`,
+                    name: `Other (All)`,
                     link: "/",
                 },
             ]
         },
-        {
-            name: "Snaffles",
-            link: "/",
-            items: [
-                {
-                    name: "Loose Ring - One Ring",
-                    link: "/",
-                },
-                {
-                    name: "Loose Ring - Two Ring",
-                    link: "/",
-                },
-                {
-                    name: "Dee Ring - One Ring",
-                    link: "/",
-                },
-                {
-                    name: "Dee Ring - Two Ring",
-                    link: "/",
-                }
-            ]
-        }
+        // {
+        //     name: "Snaffles",
+        //     link: "/",
+        //     items: [
+        //         {
+        //             name: "Loose Ring - One Ring",
+        //             link: "/",
+        //         },
+        //         {
+        //             name: "Loose Ring - Two Ring",
+        //             link: "/",
+        //         },
+        //         {
+        //             name: "Dee Ring - One Ring",
+        //             link: "/",
+        //         },
+        //         {
+        //             name: "Dee Ring - Two Ring",
+        //             link: "/",
+        //         }
+        //     ]
+        // }
     ]
 
     const { setSearchQueryInput, setCurrentlySelectedQuery, setupQuery } = useMainStore()

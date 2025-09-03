@@ -8,11 +8,31 @@ datasource db {
 }
 
 model items {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String   @unique
-  price       Float
-  image       String   @unique
-  description String?
-  categories  String[]
-  bestSeller  Boolean?
+  id                           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name                         String   @unique
+  price                        Float
+  image                        String
+  description                  String?
+  categories                   String[]
+  bestSeller                   Boolean?
+  asIsSizeCheek                String?
+  asIsFinish                   String?
+  asIsMouthpieceStyle          String?
+  asIsBitMovement              String?
+  asIsBitEnds                  String?
+  asIsTongueRelief             String?
+  asIsTheme                    String?
+  asIsHeight                   String?
+  asIsWithCopperHoodAndCricket String?
+  asIsStyle                    String?
+  asIsMouthpieceAngle          String?
+}
+
+model inquiry {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String
+  lastName  String
+  email     String
+  subject   String
+  message   String
 }

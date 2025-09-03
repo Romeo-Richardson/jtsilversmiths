@@ -15,21 +15,26 @@ export type cartItem = {
     height?: string,
     description?: string,
     style?: string
+    purchaseOption?: string,
 }
 
 type MainStoreType = {
     searchQueryInput: FormDataEntryValue | null,
     setSearchQueryInput: (inputValue: FormDataEntryValue | null) => void,
     cart: cartItem[],
+    cartQuantity: number,
+    setCartQuantity: (quantity: number) => void,
     currentlySelectedItem: { name: string, price: number, categories?: string[] } | null,
-    setCurrentlySelectedItem: (name: string, price: number) => void,
+    setCurrentlySelectedItem: (name: string, price: number, categories: string[]) => void,
     addToCart: (item: cartItem) => void,
     removeFromCart: (item: cartItem) => void,
     currentlySelectedQuery: string | null,
     setCurrentlySelectedQuery: (query: string | null) => void,
     displayedItems: items[],
     setDisplayedItems: (items: items[]) => void,
-    setupQuery: (fallbackData: any) => void
+    setupQuery: (fallbackData: any) => void,
+    isExpressShipping: boolean,
+    setIsExpressShipping: () => void,
 }
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -38,6 +43,16 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
         set({
             searchQueryInput: inputValue
         })
+    },
+    isExpressShipping: false,
+    setIsExpressShipping: () => {
+        set({
+            isExpressShipping: get().isExpressShipping ? false : true
+        })
+    },
+    cartQuantity: 0,
+    setCartQuantity: (quantity) => {
+        set({ cartQuantity: quantity })
     },
     cart: [],
     addToCart: (item: cartItem) => {
@@ -61,13 +76,14 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
         const temp = get().cart
         temp.splice(temp.indexOf(item), 1)
         set({
-            cart: [...temp]
+            cart: [...temp],
+            cartQuantity: get().cartQuantity - item.quantity
         })
     },
     currentlySelectedItem: null,
-    setCurrentlySelectedItem: (name: string, price: number) => {
+    setCurrentlySelectedItem: (name: string, price: number, categories: string[]) => {
         set({
-            currentlySelectedItem: { name, price }
+            currentlySelectedItem: { name, price, categories }
         })
     },
     currentlySelectedQuery: null,

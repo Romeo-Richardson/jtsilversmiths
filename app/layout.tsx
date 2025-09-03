@@ -22,8 +22,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JTSilversmiths",
-  description: "Horse bits, mouthpieces, snaffles and more",
+  title: "JTSilversmiths | B-C Silversmiths | JTS",
+  description: "Vintage Western Silver Show Horse bits, mouthpieces, snaffles and more",
 };
 
 export default function RootLayout({

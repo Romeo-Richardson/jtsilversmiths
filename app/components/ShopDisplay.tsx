@@ -75,9 +75,9 @@ const ShopDisplay = (): React.ReactNode => {
                     //     return <DaisyItemCard key={key} {...item} title={item.name}></DaisyItemCard>
                     // })
                     displayedItems?.length! !== 0 ? displayedItems?.map((item, key) => {
-                        return item && <DaisyItemCard key={key} price={item.price} image={item.image} title={item.name}></DaisyItemCard>
+                        return item && <DaisyItemCard key={key} categories={item.categories} price={Math.round(item.price + (item.price * .10)) - .01} asIsStyle={item.asIsStyle!} asIsMouthpieceAngle={item.asIsMouthpieceAngle!} asIsCopperHoodAndCricket={item.asIsWithCopperHoodAndCricket!} asIsHeight={item.asIsHeight!} asIsTheme={item.asIsTheme!} image={item.image} title={item.name} asIsBitEnds={item.asIsBitEnds!} asIsBitMovement={item.asIsBitMovement!} asIsFinish={item.asIsFinish!} asIsMouthpieceStyle={item.asIsMouthpieceStyle!} asIsSizeCheek={item.asIsSizeCheek!} asIsTongueRelief={item.asIsTongueRelief!}></DaisyItemCard>
                     }) : data?.data.map((item: items, key: number) => {
-                        return <DaisyItemCard key={key} price={item.price} image={item.image} title={item.name}></DaisyItemCard>
+                        return <DaisyItemCard key={key} categories={item.categories} price={Math.round(item.price + (item.price * .10)) - .01} asIsStyle={item.asIsStyle!} asIsMouthpieceAngle={item.asIsMouthpieceAngle!} image={item.image} asIsCopperHoodAndCricket={item.asIsWithCopperHoodAndCricket!} asIsHeight={item.asIsHeight!} asIsTheme={item.asIsTheme!} asIsBitEnds={item.asIsBitEnds!} asIsBitMovement={item.asIsBitMovement!} asIsFinish={item.asIsFinish!} asIsMouthpieceStyle={item.asIsMouthpieceStyle!} asIsSizeCheek={item.asIsSizeCheek!} asIsTongueRelief={item.asIsTongueRelief!} title={item.name}></DaisyItemCard>
                     })
                 }
                 {/* <DaisyItemCard image={item1}></DaisyItemCard>

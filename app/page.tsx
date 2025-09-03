@@ -9,7 +9,7 @@ import WhatsNew from "./components/WhatsNew";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      <MainHeader name="Best Sellers"></MainHeader>
+      <MainHeader name="Featured Items"></MainHeader>
       <BestSellers></BestSellers>
       <MainHeader name="What's New"></MainHeader>
       <WhatsNew></WhatsNew>
