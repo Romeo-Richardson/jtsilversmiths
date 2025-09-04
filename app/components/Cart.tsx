@@ -15,7 +15,7 @@ const Cart = (): React.ReactNode => {
     const [total, setTotal] = useState<number>(0)
 
     const getCheckoutPage = async () => {
-        const { data } = await axios.post("http://localhost:3000/api/stripe-checkout", { items: cart, total, isExpressShipping })
+        const { data } = await axios.post("https://www.jtsilversmiths.com/api/stripe-checkout", { items: cart, total, isExpressShipping })
         if (data) {
             console.log(data.details.url)
             redirect(data.details.url)
