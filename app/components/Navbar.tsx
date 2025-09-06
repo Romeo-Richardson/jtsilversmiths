@@ -18,19 +18,9 @@ const Navbar = (): React.ReactNode => {
 
     const { isSignedIn } = useUser()
 
-    const [storeDocument, setStoreDocument] = useState(document)
 
     const { push } = useRouter()
 
-    const [toggleDrawer, setToggleDrawer] = useState<boolean>(false)
-
-    useEffect(() => {
-        if (typeof document !== null) {
-            setStoreDocument(document)
-        }
-        console.log(name)
-
-    }, [])
 
     const toggleRef = useRef<HTMLInputElement | null>(null)
 
