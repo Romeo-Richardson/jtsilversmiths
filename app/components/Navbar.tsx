@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import cartImage from "../assets/cart-filled.png"
 import userImage from "../assets/user.png"
 
@@ -18,7 +18,21 @@ const Navbar = (): React.ReactNode => {
 
     const { isSignedIn } = useUser()
 
+    const [storeDocument, setStoreDocument] = useState(document)
+
     const { push } = useRouter()
+
+    const [toggleDrawer, setToggleDrawer] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (typeof document !== null) {
+            setStoreDocument(document)
+        }
+        console.log(name)
+
+    }, [])
+
+    const toggleRef = useRef<HTMLInputElement | null>(null)
 
 
     return (
@@ -31,8 +45,8 @@ const Navbar = (): React.ReactNode => {
                     navOptions.map((item, key) => <Link href={item.link} key={key}><button className='btn btn-primary'>{item.name}</button></Link>)
                 }
             </div>
-            <div className="drawer min-[701px]:hidden">
-                <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+            <div className={`drawer min-[701px]:hidden`}>
+                <input ref={toggleRef} id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
                     {/* Navbar */}
                     <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
@@ -56,7 +70,11 @@ const Navbar = (): React.ReactNode => {
                     <ul className="menu bg-base-200 min-h-full w-80 p-4">
                         {/* Sidebar content here */}
                         {
-                            navOptions.map((item, key) => <li key={key}><Link href={item.link}>{item.name}</Link></li>)
+                            navOptions.map((item, key) => <li key={key}><Link href={item.link} onClick={() => {
+                                if (toggleRef.current) {
+                                    toggleRef.current.checked = false
+                                }
+                            }}>{item.name}</Link></li>)
                         }
                     </ul>
                 </div>

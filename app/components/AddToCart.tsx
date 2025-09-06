@@ -70,7 +70,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
         "Black with .999 Silver Inlay"
     ]
 
-    const bitEnds: string[] = ["w/ Slobber Bar", "w/ Reign Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
+    const bitEnds: string[] = ["w/ Slobber Bar", "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
 
     const spadeMenuOptions = {
         copperOnSpoon: [
@@ -100,13 +100,18 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
     const range = new Array(66).fill(null)
 
     const spadeExclusionList: string[] = ["B-1053", "B-1569", "B-1587", "B-1588", "B-1589", "B-1590", "B-1593", "B-1596", "B-1597", "B-1598", "B-1622", "B-1625", "B-1631", "B-1641"]
-
+    const spadeList: number[] = [13, 14, 17, 30, 59, 63, 66, 67, 71, 72, 73, 74, 75, 76, 77, 78, 80, 84, 85, 101]
     useEffect(() => {
         if (typeof document !== null) {
             setStoreDocument(document)
         }
         console.log(name)
+
     }, [])
+
+    useEffect(() => {
+        console.log(Number(`${itemStyle.split("")[3]}${itemStyle.split("")[4]}`))
+    }, [itemStyle])
 
     useEffect(() => {
         if (quantity === undefined || quantity <= 0) {
@@ -239,7 +244,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                         </>
                     }
                     {
-                        currentlySelectedItem?.categories?.includes("Spade") || !currentlySelectedItem?.categories?.includes("nonSpade") ? <>
+                        (currentlySelectedItem?.categories?.includes("Spade") || !currentlySelectedItem?.categories?.includes("nonSpade")) && spadeList.includes(Number(`${itemStyle.split("")[3]}${itemStyle.split("")[4]}`)) ? <>
                             <span>
                                 <p className='pb-1'>Copper on spoon</p>
                                 <span className='flex items-center gap-4' >
