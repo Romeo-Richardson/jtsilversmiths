@@ -56,9 +56,9 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
             "Solid (Welded)"
         ],
         mpAngle: [
-            "Normal",
-            "Slight drop",
-            "Straight (Drop towards back)"
+            "1. Normal",
+            "2. Slight drop",
+            "3. Straight (Drop towards back)"
         ],
     }
 
