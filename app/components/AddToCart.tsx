@@ -70,7 +70,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
         "Black with .999 Silver Inlay"
     ]
 
-    const bitEnds: string[] = ["Leave as is", "w/ Slobber Bar", "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
+    const bitEnds: string[] = ["Leave as is", "w/ Slobber Bar", "w/ Replacement Slobber Bar (+$60)", "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
 
     const spadeMenuOptions = {
         copperOnSpoon: [
@@ -317,7 +317,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             {/* if there is a button in form, it will close the modal */}
                             <button className="btn mr-4">Close</button>
                             <button className='btn btn-primary' disabled={disabled} onClick={() => {
-                                let modPrice = price
+                                let modPrice = currentlySelectedItem?.price!
                                 if (purchaseOption === standAloneMoutpieceOptions[1]) {
                                     modPrice = modPrice + 100
                                 }
@@ -334,8 +334,12 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                         modPrice = modPrice + 35
                                     }
                                 }
+
+                                if (itemBitEndsWith.includes("+")) {
+                                    modPrice = modPrice + 60
+                                }
                                 console.log(name)
-                                quantity && addToCart({ name: currentlySelectedItem?.name!, purchaseOption: purchaseOption, finish: itemFinish, style: itemStyle, price: purchaseOption === standAloneMoutpieceOptions[1] ? currentlySelectedItem?.price! + 100 : currentlySelectedItem?.price!, quantity, width: itemWidth, movement: itemMovement, angle: itemAngle, copper: itemCopperOnSpoon, bracePosition: itemPositionOfBraces, height: itemHeight, description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Position of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}` : "" })
+                                quantity && addToCart({ name: currentlySelectedItem?.name!, purchaseOption: purchaseOption, finish: itemFinish, style: itemStyle, price: modPrice, quantity, width: itemWidth, movement: itemMovement, angle: itemAngle, copper: itemCopperOnSpoon, bracePosition: itemPositionOfBraces, height: itemHeight, description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Position of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}` : "" })
                                 setItemWidth(`4-3/4" (Arabian)`)
                                 setItemStyle("MP-1")
                                 setItemMovement("Loose jaw")
