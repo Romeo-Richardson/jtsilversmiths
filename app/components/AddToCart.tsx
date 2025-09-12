@@ -31,7 +31,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
 
     const [itemFinish, setItemFinish] = useState<string>("Stainless Steel with .925 Silver Overlay (SOS)")
 
-    const [itemBitEndsWith, setItemBitEndsWIth] = useState("w/ Slobber Bar")
+    const [itemBitEndsWith, setItemBitEndsWIth] = useState("Leave as is")
 
     const [itemStyle, setItemStyle] = useState("MP-01")
 
@@ -342,7 +342,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 setItemAngle("Solid (Welded)")
                                 setItemCopperOnSpoon("No copper on spade")
                                 setItemHeight("3")
-                                setItemBitEndsWIth("w/ Slobber Bar")
+                                setItemBitEndsWIth("Leave as is")
                                 setItemPositionOfBraces("Position A (Center of Cheek)")
                                 setItemFinish("Stainless Steel with .925 Silver Overlay (SOS)")
                                 setPurchaseOption("Purchase seperately")
