@@ -252,7 +252,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                         </>
                     }
                     {
-                        (currentlySelectedItem?.categories?.includes("Spade") || !currentlySelectedItem?.categories?.includes("nonSpade")) && spadeList.includes(Number(`${itemStyle.split("")[3]}${itemStyle.split("")[4]}`)) ? <>
+                        (currentlySelectedItem?.categories?.includes("Spade") || !currentlySelectedItem?.categories?.includes("nonSpade")) && purchaseOption === standAloneMoutpieceOptions[1] ? <>
                             <span>
                                 <p className='pb-1'>Copper on spoon</p>
                                 <span className='flex items-center gap-4' >
