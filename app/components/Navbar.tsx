@@ -24,6 +24,12 @@ const Navbar = (): React.ReactNode => {
 
     const toggleRef = useRef<HTMLInputElement | null>(null)
 
+    useEffect(() => {
+        if (window.location.href === "https://www.jtsilversmiths.com/half_breed_41_ctg.htm?disableMobileView=1") {
+            push("/")
+        }
+    }, [])
+
 
     return (
         <div className='h-22 bg-primary text-primary-content  flex items-center justify-between max-[700px]:px-2 px-12'>
