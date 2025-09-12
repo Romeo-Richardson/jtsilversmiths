@@ -70,7 +70,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
         "Black with .999 Silver Inlay"
     ]
 
-    const bitEnds: string[] = ["w/ Slobber Bar", "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
+    const bitEnds: string[] = ["Leave as is", "w/ Slobber Bar", "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
 
     const spadeMenuOptions = {
         copperOnSpoon: [
