@@ -154,24 +154,26 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                     <h3 className="font-bold text-lg mb-4">{`${currentlySelectedItem?.name} ($${currentlySelectedItem?.price})`}</h3>
 
                     {
-                        !currentlySelectedItem?.name.includes("B-") && <span>
-                            <p className='pb-1'>{"Purchase mouthpiece seperately"}</p>
-                            <p className='pb-1'>{"or repair (replace mouthpiece)"}</p>
-                            <span className='flex items-center gap-4' >
-                                <select defaultValue="Select width" onChange={(e) => { setPurchaseOption(e.currentTarget.value) }} className="select mb-6">
-                                    {
-                                        standAloneMoutpieceOptions.map((item, key) => {
-                                            return <option key={key}>{item}</option>
-                                        })
-                                    }
-                                </select>
+                        !currentlySelectedItem?.name.includes("B-") && <>
+                            <span>
+                                <p className='pb-1'>{"Purchase mouthpiece seperately"}</p>
+                                <p className='pb-1'>{"or repair (replace mouthpiece)"}</p>
+                                <span className='flex items-center gap-4' >
+                                    <select defaultValue="Select width" onChange={(e) => { setPurchaseOption(e.currentTarget.value) }} className="select mb-6">
+                                        {
+                                            standAloneMoutpieceOptions.map((item, key) => {
+                                                return <option key={key}>{item}</option>
+                                            })
+                                        }
+                                    </select>
+                                </span>
                             </span>
-                        </span>
-                    }
 
+                        </>
+                    }
                     {
-                        currentlySelectedItem?.name.includes("MP") &&
-                        <>
+                        currentlySelectedItem?.name.includes("B-") && !currentlySelectedItem?.name.includes("25R") && !currentlySelectedItem?.name.includes("26R") ? <>
+
                             <span>
                                 <p className='pb-1'>Select mouthpiece style</p>
                                 <span className='flex items-center gap-4' >
@@ -189,6 +191,12 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 </span>
 
                             </span>
+                        </> : <></>
+                    }
+
+                    {
+                        currentlySelectedItem?.name.includes("MP") &&
+                        <>
                             <span>
                                 <p className='pb-1'>Select width</p>
                                 <select defaultValue="Select width" onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
@@ -287,16 +295,19 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                     }
 
                     {
-                        currentlySelectedItem?.name.includes("B-") ? <span>
-                            <p className='pb-1'>Finish</p>
-                            <select defaultValue="Select Angle" onChange={(e) => { setItemFinish(e.currentTarget.value) }} className="select mb-6">
-                                {
-                                    itemFinishes.map((item, key) => {
-                                        return <option key={key}>{item}</option>
-                                    })
-                                }
-                            </select>
-                        </span> : <></>
+                        currentlySelectedItem?.name.includes("B-") ? <>
+                            <span>
+                                <p className='pb-1'>Finish</p>
+                                <select defaultValue="Select Angle" onChange={(e) => { setItemFinish(e.currentTarget.value) }} className="select mb-6">
+                                    {
+                                        itemFinishes.map((item, key) => {
+                                            return <option key={key}>{item}</option>
+                                        })
+                                    }
+                                </select>
+                            </span>
+
+                        </> : <></>
                     }
 
                     <p>Select quantity</p>
