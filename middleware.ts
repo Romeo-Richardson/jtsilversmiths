@@ -1,6 +1,11 @@
 import { clerkMiddleware } from '@clerk/nextjs/server';
+import { NextRequest } from 'next/server';
+import multer from 'multer'
+import Stream from 'node:stream';
 
-export default clerkMiddleware();
+
+
+export default clerkMiddleware()
 
 export const config = {
     matcher: [
