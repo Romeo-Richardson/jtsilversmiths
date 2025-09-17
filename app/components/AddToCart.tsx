@@ -69,8 +69,11 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
         "Copper (Brown with a Shine)  with .999 Silver Inlay",
         "Black with .999 Silver Inlay"
     ]
-
-    const bitEnds: string[] = ["Leave as is", "w/ Slobber Bar", "w/ Replacement Slobber Bar (+$60)", "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
+    const standAloneMoutpieceOptions = [
+        "Purchase Seperately",
+        "Replace Mouthpiece(+$100)"
+    ]
+    const bitEnds: string[] = ["Leave as is", "w/ Slobber Bar", `${(purchaseOption === standAloneMoutpieceOptions[1]) ? "w/ Replacement Slobber Bar (+$60)" : "w/ Replacement Slobber Bar"} `, "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
 
     const spadeMenuOptions = {
         copperOnSpoon: [
@@ -91,10 +94,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
         ],
     }
 
-    const standAloneMoutpieceOptions = [
-        "Purchase Seperately",
-        "Replace Mouthpiece(+$100)"
-    ]
+
 
 
     const range = new Array(66).fill(null)
@@ -315,7 +315,10 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                     <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
-                            <button className="btn mr-4">Close</button>
+                            <button className="btn mr-4" onClick={() => {
+                                setPurchaseOption("Purchase seperately")
+
+                            }}>Close</button>
                             <button className='btn btn-primary' disabled={disabled} onClick={() => {
                                 let modPrice = currentlySelectedItem?.price!
                                 if (purchaseOption === standAloneMoutpieceOptions[1]) {
