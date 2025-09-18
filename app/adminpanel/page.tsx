@@ -11,6 +11,7 @@ const page = () => {
 
     const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
+    const [itemDetails, setItemDetails] = useState({})
     const [applicableCategories, setApplicableCategories] = useState<{ name: string, status: boolean }[]>([{ name: "Bit", status: false }, { name: "Mouthpiece", status: false }, { name: "Snaffle", status: false }, { name: "Low Port", status: false }, { name: "Medium Port", status: false }, { name: "High Port", status: false }, { name: "Chileno Ring Bit Mouthpiece", status: false }, { name: "Frog", status: false }, { name: "Half Breed", status: false }, { name: "Mona Lisa", status: false }, { name: "Polo", status: false }, { name: "Ported Snaffle", status: false }, { name: "Salinas", status: false }, { name: "Spade", status: false }, { name: "Santa Barbara", status: false }])
 
     const [inputOptions, setInputOptions] = useState<{ inputLabel: string, inputName: string, value: string }[]>([{
@@ -57,17 +58,45 @@ const page = () => {
         value: ''
     }])
 
-    const submit = async (formData: FormData) => {
-        console.log(formData.get('image'))
-        console.log(applicableCategories)
-        const { data } = await axios.post("/api/upload-image", formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+    useEffect(() => {
+        console.log(itemDetails)
+    }, [itemDetails])
+
+    const submit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        // console.log(formData.get('image'))
+        // console.log(applicableCategories)
+        // const { data } = await axios.post("/api/upload-image", formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        // console.log(data)
+
+        // inputOptions.forEach((item) => {
+        //     formData.append(item.inputName, item.value)
+        // })
+
+        inputOptions.forEach((item) => {
+            setItemDetails(prev => prev = { ...prev, [item.inputName]: item.value })
+        })
+    }
+
+    const postImage = async (itemDetails: any) => {
+        const formData = new FormData()
+        const { data } = await axios.post("/api/upload-image", { filename: file.name, contentType: file.type, itemDetails })
         console.log(data)
+        Object.entries(data.fields).forEach(([key, value]) => {
+            formData.append(key, value as string)
+        })
+        formData.append('file', file)
+        const { data: imageData } = await axios.post(data.url, formData)
+        console.log(imageData)
         if (data.success) {
             const { data: catData } = await axios.post("/api/update-categories", { categories: selectedCategories, name: inputOptions[0].value })
             console.log(catData)
         }
     }
 
+    useEffect(() => {
+        postImage(itemDetails)
+    }, [itemDetails])
 
     useEffect(() => {
         console.log(inputOptions)
@@ -77,16 +106,17 @@ const page = () => {
         <div className='flex flex-col items-center justify-center'>
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border my-4 p-4">
                 <legend className="fieldset-legend">Upload new item</legend>
-                <form className='flex flex-col gap-4 mb-6' encType='multipart/form-data' onSubmit={(e) => {
-                    e.preventDefault()
-                    const formData = new FormData()
-                    formData.append("image", file)
-                    inputOptions.forEach((item) => {
-                        formData.append(item.inputName, item.value)
-                    })
+                <form className='flex flex-col gap-4 mb-6' onSubmit={(e) => {
+                    // e.preventDefault()
+                    // const formData = new FormData()
+                    // formData.append("image", file)
+                    // inputOptions.forEach((item) => {
+                    //     formData.append(item.inputName, item.value)
+                    // })
 
-                    console.log(formData.get("itemPrice"))
-                    submit(formData)
+                    // console.log(formData.get("itemPrice"))
+                    // submit(formData)
+                    submit(e)
                 }}>
                     {
                         inputOptions.map((item, key) => {
