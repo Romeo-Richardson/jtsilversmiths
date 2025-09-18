@@ -12,7 +12,7 @@ const page = (): React.ReactNode => {
     return (
         <form className='flex flex-col items-center justify-center min-h-screen gap-3' onSubmit={(e) => {
             e.preventDefault()
-            const formData = new FormData()
+            const formData = new FormData(e.currentTarget)
             const item = formData.get("item")
             deleteItem(item)
         }}>
