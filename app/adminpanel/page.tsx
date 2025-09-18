@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 
 const page = () => {
 
-    const [file, setFile] = useState<any>()
+    const [file, setFile] = useState<File | null>(null)
 
     const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
@@ -80,12 +80,14 @@ const page = () => {
 
     const postImage = async (itemDetails: any) => {
         const formData = new FormData()
-        const { data } = await axios.post("/api/upload-image", { filename: file.name, contentType: file.type, itemDetails })
+        const { data } = await axios.post("/api/upload-image", { filename: file?.name, contentType: file?.type, itemDetails })
         console.log(data)
         Object.entries(data.fields).forEach(([key, value]) => {
             formData.append(key, value as string)
         })
-        formData.append('file', file)
+        if (file) {
+            formData.append('file', file)
+        }
         const { data: imageData } = await axios.post(data.url, formData)
         console.log(imageData)
         if (data.success) {
@@ -95,7 +97,9 @@ const page = () => {
     }
 
     useEffect(() => {
-        postImage(itemDetails)
+        if (file) {
+            postImage(itemDetails)
+        }
     }, [itemDetails])
 
     useEffect(() => {
