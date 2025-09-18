@@ -80,7 +80,7 @@ const page = () => {
 
     const postImage = async (itemDetails: any) => {
         const formData = new FormData()
-        const { data } = await axios.post("/api/upload-image", { filename: file?.name, contentType: file?.type, itemDetails })
+        const { data } = await axios.post("/api/upload-image", { filename: file?.name, contentType: file?.type, itemDetails }, { headers: { 'Access-Control-Allow-Origin': '*' } })
         console.log(data)
         Object.entries(data.fields).forEach(([key, value]) => {
             formData.append(key, value as string)
