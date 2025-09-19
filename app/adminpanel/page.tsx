@@ -88,12 +88,12 @@ const page = () => {
         if (file) {
             formData.append('file', file)
         }
-        const { data: imageData } = await axios.post(data.url, formData)
+        console.log(data.url)
+        const { data: imageData } = await axios.post("https://jtsilversmiths.s3.us-east-2.amazonaws.com/", formData)
         console.log(imageData)
-        if (data.success) {
-            const { data: catData } = await axios.post("/api/update-categories", { categories: selectedCategories, name: inputOptions[0].value })
-            console.log(catData)
-        }
+        const { data: catData } = await axios.post("/api/update-categories", { categories: selectedCategories, name: inputOptions[0].value })
+        console.log(catData)
+
     }
 
     useEffect(() => {
