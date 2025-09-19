@@ -89,7 +89,7 @@ const page = () => {
             formData.append('file', file)
         }
         console.log(data.url)
-        const { data: imageData } = await axios.post("https://jtsilversmiths.s3.us-east-2.amazonaws.com/", formData)
+        const { data: imageData } = await axios.post(data.url, formData)
         console.log(imageData)
         const { data: catData } = await axios.post("/api/update-categories", { categories: selectedCategories, name: inputOptions[0].value })
         console.log(catData)
