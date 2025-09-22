@@ -56,7 +56,11 @@ const page = () => {
     }, {
         inputLabel: "Bit Ends", inputName: "bitEnds",
         value: ''
-    }])
+    },
+    {
+        inputLabel: "Item Height", inputName: "height", value: ''
+    }
+    ])
 
     useEffect(() => {
         console.log(itemDetails)
