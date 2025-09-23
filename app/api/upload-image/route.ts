@@ -70,7 +70,7 @@ export const POST = async (req: any) => {
 
         const cloudfrontString = `https://d28uq625kfun5r.cloudfront.net/${filename}?Signature=2f1efadace45e6ee52819958515f7103ec104a94aa5bcfa617971dbd6f80338`
         await prisma.$connect()
-        const newItem = await prisma.items.create({ data: { image: cloudfrontString, name: itemDetails.itemName, price: Number(itemDetails.itemPrice), asIsBitEnds: itemDetails.bitEnds, asIsBitMovement: itemDetails.bitMovement, asIsFinish: itemDetails.finish, asIsHeight: itemDetails.height, asIsMouthpieceAngle: itemDetails.mouthpieceAngle, asIsMouthpieceStyle: itemDetails.mouthpieceStyle, asIsSizeCheek: itemDetails.sizeCheek, asIsStyle: itemDetails.style, asIsTheme: itemDetails.theme, asIsTongueRelief: itemDetails.tongueRelief, asIsWithCopperHoodAndCricket: itemDetails.chc } })
+        const newItem = await prisma.items.create({ data: { image: cloudfrontString, name: itemDetails.itemName, price: Number(itemDetails.itemPrice), asIsBitEnds: itemDetails.bitEnds, asIsBitMovement: itemDetails.bitMovement, asIsFinish: itemDetails.finish, asIsHeight: itemDetails.mouthpieceHeight, asIsMouthpieceAngle: itemDetails.mouthpieceAngle, asIsMouthpieceStyle: itemDetails.mouthpieceStyle, asIsSizeCheek: itemDetails.sizeCheek, asIsStyle: itemDetails.style, asIsTheme: itemDetails.theme, asIsTongueRelief: itemDetails.tongueRelief, asIsWithCopperHoodAndCricket: itemDetails.chc } })
         if (!newItem) {
             return NextResponse.json({ error: "Failed to create new item" }, { status: 500 })
         }
