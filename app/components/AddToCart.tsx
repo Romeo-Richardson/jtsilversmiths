@@ -73,7 +73,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
         "Purchase Seperately",
         "Replace Mouthpiece(+$100)"
     ]
-    const bitEnds: string[] = ["Leave as is", "w/ Slobber Bar", `${(purchaseOption === standAloneMoutpieceOptions[1]) ? "w/ Replacement Slobber Bar (+$60)" : "w/ Replacement Slobber Bar"} `, "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
+    const bitEnds: string[] = ["Leave as is", "w/ Slobber Bar", `${(purchaseOption === standAloneMoutpieceOptions[1]) ? "w/ Replacement Slobber Bar (+$60)" : ""} `, "w/ Rein Hooks & Chains", "w/ O-Rings", "w/ Stirrups & Chains"]
 
     const spadeMenuOptions = {
         copperOnSpoon: [
@@ -208,7 +208,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 </select>
                             </span>
                             {
-                                purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-") ? <><span>
+                                (purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-")) ? <><span>
                                     <p className='pb-1'>Select bit movement</p>
                                     <select defaultValue="Select bit movement" onChange={(e) => { setItemMovement(e.currentTarget.value) }} className="select mb-6">
                                         {
@@ -240,7 +240,9 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                             <select defaultValue="Select Angle" onChange={(e) => { setItemBitEndsWIth(e.currentTarget.value) }} className="select mb-6">
                                                 {
                                                     bitEnds.map((item, key) => {
-                                                        return <option key={key}>{item}</option>
+                                                        if (item.length > 1) {
+                                                            return <option key={key}>{item}</option>
+                                                        }
                                                     })
                                                 }
                                             </select>
