@@ -195,7 +195,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                     }
 
                     {
-                        currentlySelectedItem?.name.includes("MP") &&
+                        currentlySelectedItem?.name.includes("B-") || purchaseOption === standAloneMoutpieceOptions[1] &&
                         <>
                             <span>
                                 <p className='pb-1'>Select width</p>
@@ -208,7 +208,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 </select>
                             </span>
                             {
-                                purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem.name.includes("B-") ? <><span>
+                                purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-") ? <><span>
                                     <p className='pb-1'>Select bit movement</p>
                                     <select defaultValue="Select bit movement" onChange={(e) => { setItemMovement(e.currentTarget.value) }} className="select mb-6">
                                         {
@@ -343,6 +343,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 }
                                 console.log(name)
                                 quantity && addToCart({ name: currentlySelectedItem?.name!, purchaseOption: purchaseOption, finish: itemFinish, style: itemStyle, price: modPrice, quantity, width: itemWidth, movement: itemMovement, angle: itemAngle, copper: itemCopperOnSpoon, bracePosition: itemPositionOfBraces, height: itemHeight, description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Position of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}` : "" })
+                                setPurchaseOption(standAloneMoutpieceOptions[0])
                                 setItemWidth(`4-3/4" (Arabian)`)
                                 setItemStyle("MP-1")
                                 setItemMovement("Loose jaw")
