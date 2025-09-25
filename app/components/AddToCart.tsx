@@ -126,6 +126,8 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
         console.log(currentlySelectedItem?.categories)
     }, [currentlySelectedItem])
 
+    const snaffleMpOptions = [25, 43, 44, 45, 46, 55, 56, 99]
+
     const quantitySelector = useRef<null | HTMLInputElement>(null)
 
     const upchargeList: (number | string)[] = [13, 14, 17, 18, "MP-25R (+$50)", "MP-26R (+$50)", 26, 28, 29, 30, 31, 52, 57, 59, 63, 65, 66, 67, 71, 72, 73, 74, 75, 76, 77, 78, 80, 84, 85, 91, 92, 101, 104]
@@ -154,7 +156,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                     <h3 className="font-bold text-lg mb-4">{`${currentlySelectedItem?.name} ($${currentlySelectedItem?.price})`}</h3>
 
                     {
-                        !currentlySelectedItem?.name.includes("B-") && <>
+                        currentlySelectedItem?.categories?.includes("Mouthpiece") && <>
                             <span>
                                 <p className='pb-1'>{"Purchase mouthpiece seperately"}</p>
                                 <p className='pb-1'>{"or repair (replace mouthpiece)"}</p>
@@ -172,15 +174,17 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                         </>
                     }
                     {
-                        currentlySelectedItem?.name.includes("B-") && !currentlySelectedItem?.name.includes("25R") && !currentlySelectedItem?.name.includes("26R") && !currentlySelectedItem.name.includes("MP-") ? <>
+                        currentlySelectedItem?.name.includes("B-") && !currentlySelectedItem?.name.includes("25R") && !currentlySelectedItem?.name.includes("26R") && !currentlySelectedItem.name.includes("MP-") || currentlySelectedItem?.categories?.includes("Snaffle") ? <>
 
                             <span>
                                 <p className='pb-1'>Select mouthpiece style</p>
                                 <span className='flex items-center gap-4' >
                                     <select defaultValue="Select width" onChange={(e) => { setItemStyle(e.currentTarget.value) }} className="select mb-6">
                                         {
-                                            [...range, "MP-25R (+$50)", "MP-26R (+$50)"].map((i, key) => {
+                                            !currentlySelectedItem?.categories?.includes("Snaffle") ? [...range, "MP-25R (+$50)", "MP-26R (+$50)"].map((i, key) => {
                                                 return <option key={key}>{typeof (i) !== "string" ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}` : `${i}`}</option>
+                                            }) : snaffleMpOptions.map((i, key) => {
+                                                return <option key={key}>{`MP-${i}`}</option>
                                             })
                                         }
                                     </select>
@@ -189,13 +193,12 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                         storeDocument.getElementById('my_modal_5')?.showModal()
                                     }} src={preview} height={24} width={24} alt=''></Image>
                                 </span>
-
                             </span>
                         </> : <></>
                     }
 
                     {
-                        (currentlySelectedItem?.name.includes("B-") || purchaseOption === standAloneMoutpieceOptions[1]) &&
+                        (currentlySelectedItem?.name.includes("B-") || purchaseOption === standAloneMoutpieceOptions[1]) || currentlySelectedItem?.categories?.includes("Snaffle") &&
                         <>
                             <span>
                                 <p className='pb-1'>Select width</p>
@@ -296,7 +299,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                     }
 
                     {
-                        currentlySelectedItem?.name.includes("B-") ? <>
+                        currentlySelectedItem?.name.includes("B-") || currentlySelectedItem?.categories?.includes("Snaffle") ? <>
                             <span>
                                 <p className='pb-1'>Finish</p>
                                 <select defaultValue="Select Angle" onChange={(e) => { setItemFinish(e.currentTarget.value) }} className="select mb-6">
