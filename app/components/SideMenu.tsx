@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import NavInput from './NavInput'
 import { useMainStore } from '../utils/global'
 import setQuery from '../utils/setQuery'
@@ -10,6 +10,7 @@ import { getItems } from '../utils/apiCalls'
 type MenuItemType = {
     name: string,
     link: "/",
+    status?: boolean
 }
 
 type ExtendedMenuItemType<T> = MenuItemType & {
@@ -24,10 +25,12 @@ type SubMenuType = MenuItemType & {
 const SideMenu = () => {
 
     const { data } = useQuery({ queryKey: ["items"], queryFn: getItems })
-    const exampleData: SubMenuType[] = [
+
+    const [exampleData, setExampleData] = useState<SubMenuType[]>([
         {
             name: "Bits",
             link: "/",
+            status: false,
             items: [
                 // {
                 //     name: "Western Silver Show Bits by STYLE",
@@ -124,6 +127,7 @@ const SideMenu = () => {
         {
             name: "Mouthpieces",
             link: "/",
+            status: false,
             items: [
                 {
                     name: `Low Port`,
@@ -201,9 +205,10 @@ const SideMenu = () => {
         //         }
         //     ]
         // }
-    ]
+    ])
 
-    const { setSearchQueryInput, setCurrentlySelectedQuery, setupQuery } = useMainStore()
+
+    const { setSearchQueryInput, setCurrentlySelectedQuery, setupQuery, setMainCategory } = useMainStore()
 
     return (
         <ul className="menu bg-base-200 rounded-b-2xl max-[700px]:hidden  min-w-80">
@@ -229,8 +234,24 @@ const SideMenu = () => {
 
             {
                 exampleData.map((menuItem, menuItemKey) => menuItem.items.length === 0 ? <li key={menuItemKey + 100}><a>{menuItem.name}</a></li> :
-                    <li key={menuItemKey}>
-                        <details open={false}>
+                    <li key={menuItemKey} onClick={() => {
+                        if (!menuItem.status) {
+                            console.log(menuItem.name)
+                            setMainCategory(menuItem.name)
+                            setExampleData(prev => {
+                                let copy = [...prev]
+                                copy.forEach((i) => {
+                                    if (i !== menuItem) {
+                                        i.status = false
+                                    } else {
+                                        i.status = true
+                                    }
+                                })
+                                return prev = [...copy]
+                            })
+                        }
+                    }}>
+                        <details open={menuItem.status}>
                             <summary>{menuItem.name}</summary>
                             <ul>
                                 {

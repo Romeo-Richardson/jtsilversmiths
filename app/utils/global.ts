@@ -35,6 +35,8 @@ type MainStoreType = {
     setupQuery: (fallbackData: any) => void,
     isExpressShipping: boolean,
     setIsExpressShipping: () => void,
+    mainCategory: string | null,
+    setMainCategory: (category: string) => void
 }
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -43,6 +45,13 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
         set({
             searchQueryInput: inputValue
         })
+    },
+    mainCategory: null,
+    setMainCategory: (category) => {
+        set({
+            mainCategory: category
+        })
+        console.log(get().mainCategory)
     },
     isExpressShipping: false,
     setIsExpressShipping: () => {
@@ -94,6 +103,28 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
     },
     displayedItems: [],
     setDisplayedItems(items: items[]) {
+        console.log(get().mainCategory)
+        const category = get().mainCategory?.split("")
+
+        category?.pop()
+        console.log(category?.join("")!)
+
+        console.log(items)
+
+
+        if (!get().searchQueryInput && get().mainCategory) {
+            items = items.map((item) => {
+                console.log(item)
+                if (item !== undefined && item.categories?.includes(category?.join("")!)) {
+                    return item
+                }
+            }).map((x: any) => {
+                if (x !== undefined) {
+                    return x
+                }
+            })
+        }
+
         set({
             displayedItems: [...items]
         })
