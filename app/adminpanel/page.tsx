@@ -12,7 +12,7 @@ const page = () => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
     const [itemDetails, setItemDetails] = useState({})
-    const [applicableCategories, setApplicableCategories] = useState<{ name: string, status: boolean }[]>([{ name: "Bit", status: false }, { name: "Mouthpiece", status: false }, { name: "Snaffle", status: false }, { name: "Low Port", status: false }, { name: "Medium Port", status: false }, { name: "High Port", status: false }, { name: "Chileno Ring Bit Mouthpiece", status: false }, { name: "Frog", status: false }, { name: "Half Breed", status: false }, { name: "Mona Lisa", status: false }, { name: "Polo", status: false }, { name: "Ported Snaffle", status: false }, { name: "Salinas", status: false }, { name: "Spade", status: false }, { name: "Santa Barbara", status: false }])
+    const [applicableCategories, setApplicableCategories] = useState<{ name: string, status: boolean }[]>([{ name: "Bit", status: false }, { name: "Mouthpiece", status: false }, { name: "Snaffle", status: false }, { name: "Loose Ring - One Ring", status: false }, { name: "Loose Ring - Two Ring", status: false }, { name: "Dee Ring - One Ring", status: false }, { name: "Dee Ring - Two Ring", status: false }, { name: "Low Port", status: false }, { name: "Medium Port", status: false }, { name: "High Port", status: false }, { name: "Chileno Ring Bit Mouthpiece", status: false }, { name: "Frog", status: false }, { name: "Half Breed", status: false }, { name: "Mona Lisa", status: false }, { name: "Polo", status: false }, { name: "Ported Snaffle", status: false }, { name: "Salinas", status: false }, { name: "Spade", status: false }, { name: "Santa Barbara", status: false }])
 
     const [inputOptions, setInputOptions] = useState<{ inputLabel: string, inputName: string, value: string }[]>([{
         inputLabel: "Item Name", inputName: "itemName",
@@ -97,7 +97,6 @@ const page = () => {
         console.log(imageData)
         const { data: catData } = await axios.post("/api/update-categories", { categories: selectedCategories, name: inputOptions[0].value })
         console.log(catData)
-
     }
 
     useEffect(() => {
