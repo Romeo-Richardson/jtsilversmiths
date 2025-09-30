@@ -178,7 +178,11 @@ const SideMenu = () => {
                     link: "/",
                 },
                 {
-                    name: `Other (All)`,
+                    name: `Other`,
+                    link: "/",
+                },
+                {
+                    name: `All`,
                     link: "/",
                 },
             ]
