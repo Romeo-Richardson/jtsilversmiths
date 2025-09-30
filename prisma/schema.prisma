@@ -26,7 +26,7 @@ model items {
   asIsWithCopperHoodAndCricket String?
   asIsStyle                    String?
   asIsMouthpieceAngle          String?
-  asIsAccessoryStyle           String?
+  asIsSize                     String?
   asIsColor                    String?
   asIsMaterial                 String?
 }

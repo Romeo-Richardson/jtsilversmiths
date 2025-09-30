@@ -3,7 +3,7 @@ import Image, { StaticImageData } from 'next/image'
 import AddToCart from './AddToCart'
 
 
-const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthpieceAngle, asIsCopperHoodAndCricket, asIsHeight, asIsTheme, asIsMouthpieceStyle, asIsBitEnds, asIsBitMovement, asIsTongueRelief, asIsSizeCheek, asIsStyle, asIsAccessoryStyle, asIsColor, asIsMaterial }: { image: string, categories: string[], asIsColor: string, asIsAccessoryStyle: string, asIsMaterial: string, title: string, price: number, asIsMouthpieceAngle?: string, asIsStyle?: string, description?: string, asIsSizeCheek?: string, asIsTongueRelief?: string, asIsBitEnds?: string, asIsBitMovement?: string, asIsMouthpieceStyle?: string, asIsFinish?: string, asIsTheme?: string, asIsCopperHoodAndCricket?: string, asIsHeight?: string }): React.ReactNode => {
+const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthpieceAngle, asIsCopperHoodAndCricket, asIsHeight, asIsTheme, asIsMouthpieceStyle, asIsBitEnds, asIsBitMovement, asIsTongueRelief, asIsSizeCheek, asIsStyle, asIsSize, asIsColor, asIsMaterial }: { image: string, categories: string[], asIsColor: string, asIsSize: string, asIsMaterial: string, title: string, price: number, asIsMouthpieceAngle?: string, asIsStyle?: string, description?: string, asIsSizeCheek?: string, asIsTongueRelief?: string, asIsBitEnds?: string, asIsBitMovement?: string, asIsMouthpieceStyle?: string, asIsFinish?: string, asIsTheme?: string, asIsCopperHoodAndCricket?: string, asIsHeight?: string }): React.ReactNode => {
 
     return (
         <div className="card text-primary-content bg-base-100 w-96 max-[420px]:w-72 max-[320px]:w-64  shadow-sm">
@@ -69,8 +69,8 @@ const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthp
                         {asIsMouthpieceAngle && <p>
                             <strong>Mouthpiece Angle:</strong> {asIsMouthpieceAngle}
                         </p>}
-                        {asIsAccessoryStyle && <p>
-                            <strong>Style:</strong> {asIsAccessoryStyle}
+                        {asIsSize && <p>
+                            <strong>Style:</strong> {asIsSize}
                         </p>}
                         {asIsColor && <p>
                             <strong>Color:</strong> {asIsColor}

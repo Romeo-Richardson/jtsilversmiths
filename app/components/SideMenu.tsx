@@ -214,7 +214,7 @@ const SideMenu = () => {
             link: "/",
             items: [
                 {
-                    name: "Barettes",
+                    name: "Barrettes",
                     link: "/",
                 },
                 {
