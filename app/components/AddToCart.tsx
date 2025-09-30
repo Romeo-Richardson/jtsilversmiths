@@ -198,65 +198,65 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                     }
 
                     {
-                        (currentlySelectedItem?.name.includes("B-") || purchaseOption === standAloneMoutpieceOptions[1]) || currentlySelectedItem?.categories?.includes("Snaffle") &&
-                        <>
-                            <span>
-                                <p className='pb-1'>Select width</p>
-                                <select defaultValue="Select width" onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
-                                    {
-                                        mpMenuOptions.mpWidth.map((item, key) => {
-                                            return <option key={key}>{item}</option>
-                                        })
-                                    }
-                                </select>
-                            </span>
-                            {
-                                (purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-")) ? <><span>
-                                    <p className='pb-1'>Select bit movement</p>
-                                    <select defaultValue="Select bit movement" onChange={(e) => { setItemMovement(e.currentTarget.value) }} className="select mb-6">
+                        (currentlySelectedItem?.name.includes("B-") || purchaseOption === standAloneMoutpieceOptions[1]) || currentlySelectedItem?.categories?.includes("Snaffle") || currentlySelectedItem?.categories?.includes("Bit") ?
+                            <>
+                                <span>
+                                    <p className='pb-1'>Select width</p>
+                                    <select defaultValue="Select width" onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
                                         {
-                                            mpMenuOptions.bitMovement.map((item, key) => {
+                                            mpMenuOptions.mpWidth.map((item, key) => {
                                                 return <option key={key}>{item}</option>
                                             })
                                         }
                                     </select>
                                 </span>
-                                    <span>
-                                        <p className='pb-1'>Select angle</p>
-                                        <span className='flex items-center gap-4' >
-                                            <select defaultValue="Select Angle" onChange={(e) => { setItemAngle(e.currentTarget.value) }} className="select mb-6">
-                                                {
-                                                    mpMenuOptions.mpAngle.map((item, key) => {
-                                                        return <option key={key}>{item}</option>
-                                                    })
-                                                }
-                                            </select>
-                                            {/* <Image className='mb-6 hover:cursor-pointer' onClick={() => {
+                                {
+                                    (purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-")) ? <><span>
+                                        <p className='pb-1'>Select bit movement</p>
+                                        <select defaultValue="Select bit movement" onChange={(e) => { setItemMovement(e.currentTarget.value) }} className="select mb-6">
+                                            {
+                                                mpMenuOptions.bitMovement.map((item, key) => {
+                                                    return <option key={key}>{item}</option>
+                                                })
+                                            }
+                                        </select>
+                                    </span>
+                                        <span>
+                                            <p className='pb-1'>Select angle</p>
+                                            <span className='flex items-center gap-4' >
+                                                <select defaultValue="Select Angle" onChange={(e) => { setItemAngle(e.currentTarget.value) }} className="select mb-6">
+                                                    {
+                                                        mpMenuOptions.mpAngle.map((item, key) => {
+                                                            return <option key={key}>{item}</option>
+                                                        })
+                                                    }
+                                                </select>
+                                                {/* <Image className='mb-6 hover:cursor-pointer' onClick={() => {
                                                 storeDocument.getElementById('my_modal_5')?.showModal()
                                             }} src={preview} height={24} width={24} alt=''></Image> */}
-                                        </span>
+                                            </span>
 
-                                    </span>
-                                    <span>
-                                        <p className='pb-1'>Bit Ends With</p>
-                                        <span className='flex items-center gap-4' >
-                                            <select defaultValue="Select Angle" onChange={(e) => { setItemBitEndsWIth(e.currentTarget.value) }} className="select mb-6">
-                                                {
-                                                    bitEnds.map((item, key) => {
-                                                        if (item.length > 1) {
-                                                            return <option key={key}>{item}</option>
-                                                        }
-                                                    })
-                                                }
-                                            </select>
                                         </span>
-                                    </span></> : <></>
-                            }
+                                        <span>
+                                            <p className='pb-1'>Bit Ends With</p>
+                                            <span className='flex items-center gap-4' >
+                                                <select defaultValue="Select Angle" onChange={(e) => { setItemBitEndsWIth(e.currentTarget.value) }} className="select mb-6">
+                                                    {
+                                                        bitEnds.map((item, key) => {
+                                                            if (item.length > 1) {
+                                                                return <option key={key}>{item}</option>
+                                                            }
+                                                        })
+                                                    }
+                                                </select>
+                                            </span>
+                                        </span></> : <></>
+                                }
 
-                        </>
+                            </> : <></>
                     }
                     {
-                        (currentlySelectedItem?.categories?.includes("Spade")) ? <>
+                        (currentlySelectedItem?.categories?.includes("Spade")) || itemStyle.includes("$") ? <>
                             <span>
                                 <p className='pb-1'>Copper on spoon</p>
                                 <span className='flex items-center gap-4' >
