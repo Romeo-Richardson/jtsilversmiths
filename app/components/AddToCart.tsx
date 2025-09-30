@@ -143,7 +143,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <h3 className="font-bold text-lg">Preview</h3>
-                    <Image src={previewImage} alt=''></Image>
+                    {/* <Image src={previewImage} alt=''></Image> */}
                 </div>
             </dialog>
             <button className="btn btn-primary" onClick={() => {
