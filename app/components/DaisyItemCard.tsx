@@ -69,7 +69,15 @@ const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthp
                         {asIsMouthpieceAngle && <p>
                             <strong>Mouthpiece Angle:</strong> {asIsMouthpieceAngle}
                         </p>}
-
+                        {asIsAccessoryStyle && <p>
+                            <strong>Style:</strong> {asIsAccessoryStyle}
+                        </p>}
+                        {asIsColor && <p>
+                            <strong>Color:</strong> {asIsColor}
+                        </p>}
+                        {asIsMaterial && <p>
+                            <strong>Material:</strong> {asIsMaterial}
+                        </p>}
                     </span>
 
 

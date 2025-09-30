@@ -196,7 +196,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             </span>
                         </> : <></>
                     }
-                    <span>
+                    {(currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? <span>
                         <p className='pb-1'>Select width</p>
                         <select defaultValue="Select width" onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
                             {
@@ -205,7 +205,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 })
                             }
                         </select>
-                    </span>
+                    </span> : <></>}
                     {
                         (currentlySelectedItem?.name.includes("B-") || purchaseOption === standAloneMoutpieceOptions[1]) || currentlySelectedItem?.categories?.includes("Snaffle") || currentlySelectedItem?.categories?.includes("Bit") ?
                             <>

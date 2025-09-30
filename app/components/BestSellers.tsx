@@ -20,7 +20,7 @@ const BestSellers = (): React.ReactNode => {
     return (
         <div className='px-8 max-[1035px]:h-auto bg-neutral flex items-center justify-center max-[1035px]:flex-col py-8 gap-12'>
             {
-                data?.data.map((item: any, key: number) => item.categories.includes("Featured Item") && <DaisyItemCard categories={item.categories} asIsStyle={item.asIsStyle!} asIsTheme={item.asIsTheme!} image={item.image} description={item.description || ""} price={Math.round(item.price + (item.price * .10)) - .01} title={item.name} asIsBitEnds={item.asIsBitEnds!} asIsBitMovement={item.asIsBitMovement!} asIsFinish={item.asIsFinish!} asIsMouthpieceStyle={item.asIsMouthpieceStyle!} asIsSizeCheek={item.asIsSizeCheek!} asIsTongueRelief={item.asIsTongueRelief!} key={key}></DaisyItemCard>)
+                data?.data.map((item: any, key: number) => item.categories.includes("Featured Item") && <DaisyItemCard categories={item.categories} asIsAccessoryStyle={item.asIsAccessoryStyle!} asIsColor={item.asIsColor!} asIsMaterial={item.asIsMaterial!} asIsStyle={item.asIsStyle!} asIsTheme={item.asIsTheme!} image={item.image} description={item.description || ""} price={Math.round(item.price + (item.price * .10)) - .01} title={item.name} asIsBitEnds={item.asIsBitEnds!} asIsBitMovement={item.asIsBitMovement!} asIsFinish={item.asIsFinish!} asIsMouthpieceStyle={item.asIsMouthpieceStyle!} asIsSizeCheek={item.asIsSizeCheek!} asIsTongueRelief={item.asIsTongueRelief!} key={key}></DaisyItemCard>)
             }
         </div>
     )
