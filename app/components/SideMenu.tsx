@@ -208,6 +208,28 @@ const SideMenu = () => {
                     link: "/",
                 }
             ]
+        },
+        {
+            name: "Hair Accessories",
+            link: "/",
+            items: [
+                {
+                    name: "Barettes",
+                    link: "/",
+                },
+                {
+                    name: "Hair Clips",
+                    link: "/",
+                },
+                {
+                    name: "Point Tail Holders",
+                    link: "/",
+                },
+                {
+                    name: "Combs",
+                    link: "/",
+                }
+            ]
         }
     ])
 
