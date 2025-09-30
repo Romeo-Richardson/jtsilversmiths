@@ -3,7 +3,7 @@ import Image, { StaticImageData } from 'next/image'
 import AddToCart from './AddToCart'
 
 
-const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthpieceAngle, asIsCopperHoodAndCricket, asIsHeight, asIsTheme, asIsMouthpieceStyle, asIsBitEnds, asIsBitMovement, asIsTongueRelief, asIsSizeCheek, asIsStyle }: { image: string, categories: string[], title: string, price: number, asIsMouthpieceAngle?: string, asIsStyle?: string, description?: string, asIsSizeCheek?: string, asIsTongueRelief?: string, asIsBitEnds?: string, asIsBitMovement?: string, asIsMouthpieceStyle?: string, asIsFinish?: string, asIsTheme?: string, asIsCopperHoodAndCricket?: string, asIsHeight?: string }): React.ReactNode => {
+const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthpieceAngle, asIsCopperHoodAndCricket, asIsHeight, asIsTheme, asIsMouthpieceStyle, asIsBitEnds, asIsBitMovement, asIsTongueRelief, asIsSizeCheek, asIsStyle, asIsAccessoryStyle, asIsColor, asIsMaterial }: { image: string, categories: string[], asIsColor: string, asIsAccessoryStyle: string, asIsMaterial: string, title: string, price: number, asIsMouthpieceAngle?: string, asIsStyle?: string, description?: string, asIsSizeCheek?: string, asIsTongueRelief?: string, asIsBitEnds?: string, asIsBitMovement?: string, asIsMouthpieceStyle?: string, asIsFinish?: string, asIsTheme?: string, asIsCopperHoodAndCricket?: string, asIsHeight?: string }): React.ReactNode => {
 
     return (
         <div className="card text-primary-content bg-base-100 w-96 max-[420px]:w-72 max-[320px]:w-64  shadow-sm">
@@ -27,71 +27,61 @@ const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthp
                             <p>
                                 <strong>Western Sterling Silver Show Horse Bit</strong>
                             </p>
-                            <p>
+                            {asIsSizeCheek && <p>
                                 <strong>Size cheek:</strong> {asIsSizeCheek}
-                            </p>
-                            <p>
+                            </p>}
+                            {asIsTheme && <p>
                                 <strong>Theme:</strong> {asIsTheme}
-                            </p>
-                            <p className='mb-3'>
+                            </p>}
+                            {asIsStyle && <p className='mb-3'>
                                 <strong>Style:</strong> {asIsStyle}
-                            </p>
+                            </p>}
                         </> : <></>
                     }
                     <span className={`flex gap-1 flex-col ${title.includes("B-") ? "" : "mt-[-5px]"}`}>
                         <p>
                             <strong>Pictured with</strong>
                         </p>
-                        <p>
+                        {asIsFinish && <p>
                             <strong>Finish:</strong> {asIsFinish}
 
-                        </p>
+                        </p>}
 
-                        <div>
+                        {asIsMouthpieceStyle && <div>
                             <strong>Mouthpiece style:</strong>
                             {
                                 asIsMouthpieceStyle && <><p className=' font-normal'><strong>{`${asIsMouthpieceStyle.split(" ")[0].split("").map((x, y) => { if (y < 6) { return x } }).join("")} `}</strong>{`${asIsMouthpieceStyle.split(" ").map((x, y) => { if (y !== 0) { return `${x} ` } }).join("")} (sweet iron)`}</p></>
                             }
-                        </div>
+                        </div>}
 
-
-
-                        <p>
+                        {asIsHeight && <p>
                             <strong>Mouthpiece height:</strong> {asIsHeight}
-                        </p>
+                        </p>}
 
-
-                        <p>
+                        {asIsCopperHoodAndCricket && <p>
                             <strong>Copper Hood & Cricket:</strong> {asIsCopperHoodAndCricket}
-                        </p>
+                        </p>}
 
-                        <p>
+                        {asIsTongueRelief && <p>
                             <strong>Tongue Relief:</strong> {asIsTongueRelief}
-                        </p>
+                        </p>}
 
-
-
-
-                        <p>
+                        {asIsMouthpieceAngle && <p>
                             <strong>Mouthpiece Angle:</strong> {asIsMouthpieceAngle}
-                        </p>
-
-
-
+                        </p>}
 
                     </span>
 
-                    {
-                        title.includes("B-") ? <>
-                            <p>
-                                <strong>Bit movement:</strong> {asIsBitMovement}
-                            </p>
-                            <p className='mb-3'>
-                                <strong>Bit ends:</strong> {asIsBitEnds}
-                            </p>
 
-                        </> : <></>
-                    }
+                    {asIsBitMovement && <p>
+                        <strong>Bit movement:</strong> {asIsBitMovement}
+                    </p>}
+
+                    {asIsBitEnds && <p className='mb-3'>
+                        <strong>Bit ends:</strong> {asIsBitEnds}
+                    </p>}
+
+
                     <p>
                         <strong>Purchase as pictured or customize in the drop menu</strong>
                     </p>
