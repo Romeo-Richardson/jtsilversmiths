@@ -196,20 +196,19 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             </span>
                         </> : <></>
                     }
-
+                    <span>
+                        <p className='pb-1'>Select width</p>
+                        <select defaultValue="Select width" onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
+                            {
+                                mpMenuOptions.mpWidth.map((item, key) => {
+                                    return <option key={key}>{item}</option>
+                                })
+                            }
+                        </select>
+                    </span>
                     {
                         (currentlySelectedItem?.name.includes("B-") || purchaseOption === standAloneMoutpieceOptions[1]) || currentlySelectedItem?.categories?.includes("Snaffle") || currentlySelectedItem?.categories?.includes("Bit") ?
                             <>
-                                <span>
-                                    <p className='pb-1'>Select width</p>
-                                    <select defaultValue="Select width" onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
-                                        {
-                                            mpMenuOptions.mpWidth.map((item, key) => {
-                                                return <option key={key}>{item}</option>
-                                            })
-                                        }
-                                    </select>
-                                </span>
                                 {
                                     (purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-")) ? <><span>
                                         <p className='pb-1'>Select bit movement</p>
