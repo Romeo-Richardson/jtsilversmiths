@@ -25,7 +25,7 @@ const Navbar = (): React.ReactNode => {
     const toggleRef = useRef<HTMLInputElement | null>(null)
 
     useEffect(() => {
-        if (window.location.href === "https://www.jtsilversmiths.com/half_breed_41_ctg.htm?disableMobileView=1" || window.location.href === "https://www.jtsilversmiths.com/subcategory_90.htm" || window.location.href === "https://www.jtsilversmiths.com/subcategory_335.htm") {
+        if (window.location.href === "https://www.jtsilversmiths.com/half_breed_41_ctg.htm?disableMobileView=1" || window.location.href === "https://www.jtsilversmiths.com/subcategory_90.htm" || window.location.href === "https://www.jtsilversmiths.com/subcategory_335.htm" || window.location.href === "https://www.jtsilversmiths.com/product_2840_detailed.htm") {
             push("/")
         }
     }, [])

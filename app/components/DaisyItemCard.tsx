@@ -89,10 +89,12 @@ const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthp
                         <strong>Bit ends:</strong> {asIsBitEnds}
                     </p>}
 
+                    {
+                        !title.includes("BR-") && <p>
+                            <strong>Purchase as pictured or customize in the drop menu</strong>
+                        </p>
+                    }
 
-                    <p>
-                        <strong>Purchase as pictured or customize in the drop menu</strong>
-                    </p>
 
                 </div>
                 <div className='flex items-center justify-end'>
