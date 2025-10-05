@@ -345,7 +345,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 quantity && addToCart({
                                     name: currentlySelectedItem?.name!,
                                     purchaseOption: currentlySelectedItem?.categories?.includes("Mouthpiece") ? purchaseOption : null,
-                                    finish: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemFinish : null,
+                                    finish: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemFinish : null,
                                     style: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemStyle : null,
                                     price: modPrice,
                                     quantity,
