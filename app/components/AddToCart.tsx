@@ -266,22 +266,23 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                     </select>
                                 </span>
                             </span>
-                            <span>
-                                <p className='pb-1'>Position of braces</p>
-                                <span className='flex items-center gap-4' >
-                                    <select defaultValue="Select bit movement" onChange={(e) => { setItemPositionOfBraces(e.currentTarget.value) }} className="select mb-6">
-                                        {
-                                            spadeMenuOptions.positionOfBraces.map((item, key) => {
-                                                return <option key={key}>{item}</option>
-                                            })
-                                        }
-                                    </select>
-                                    {/* <Image className='mb-6 hover:cursor-pointer' onClick={() => {
+                            {
+                                purchaseOption !== standAloneMoutpieceOptions[1] ? <span>
+                                    <p className='pb-1'>Position of braces</p>
+                                    <span className='flex items-center gap-4' >
+                                        <select defaultValue="Select bit movement" onChange={(e) => { setItemPositionOfBraces(e.currentTarget.value) }} className="select mb-6">
+                                            {
+                                                spadeMenuOptions.positionOfBraces.map((item, key) => {
+                                                    return <option key={key}>{item}</option>
+                                                })
+                                            }
+                                        </select>
+                                        {/* <Image className='mb-6 hover:cursor-pointer' onClick={() => {
                                         storeDocument.getElementById('my_modal_5')?.showModal()
                                     }} src={preview} height={24} width={24} alt=''></Image> */}
-                                </span>
-
-                            </span>
+                                    </span>
+                                </span> : <></>
+                            }
                             <span>
                                 <p className='pb-1'>Select Height</p>
                                 <select defaultValue="Select Angle" onChange={(e) => { setItemHeight(e.currentTarget.value) }} className="select mb-6">
@@ -294,7 +295,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             </span>
                         </> : <></>
                     }
-                    
+
                     {
                         currentlySelectedItem?.name.includes("B-") || currentlySelectedItem?.categories?.includes("Snaffle") ? <>
                             <span>
