@@ -362,7 +362,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 setItemWidth(`4-3/4" (Arabian)`)
                                 setItemStyle("MP-1")
                                 setItemMovement("Loose jaw")
-                                setItemAngle("Solid (Welded)")
+                                setItemAngle("1. Normal")
                                 setItemCopperOnSpoon("No copper on spade")
                                 setItemHeight("3")
                                 setItemBitEndsWIth("Leave as is")
