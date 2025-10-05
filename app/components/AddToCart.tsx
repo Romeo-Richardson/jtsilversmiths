@@ -179,7 +179,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             <span>
                                 <p className='pb-1'>Select mouthpiece style</p>
                                 <span className='flex items-center gap-4' >
-                                    <select ref={mpStyleRef} defaultValue={`MP-01`} onChange={(e) => { setItemStyle(e.currentTarget.value) }} className="select mb-6">
+                                    <select ref={mpStyleRef} value={itemStyle} onChange={(e) => { setItemStyle(e.currentTarget.value) }} className="select mb-6">
                                         {
                                             !currentlySelectedItem?.categories?.includes("Snaffle") ? [...range, "MP-25R (+$50)", "MP-26R (+$50)"].map((i, key) => {
                                                 return <option key={key} value={typeof (i) !== "string" ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}` : `${i}`}>{typeof (i) !== "string" ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}` : `${i}`}</option>
@@ -198,7 +198,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                     }
                     {(currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? <span>
                         <p className='pb-1'>Select width</p>
-                        <select defaultValue="Select width" onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
+                        <select defaultValue="Select width" value={itemWidth} onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
                             {
                                 mpMenuOptions.mpWidth.map((item, key) => {
                                     return <option key={key}>{item}</option>
@@ -212,7 +212,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 {
                                     (purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-")) ? <><span>
                                         <p className='pb-1'>Select bit movement</p>
-                                        <select defaultValue="Select bit movement" onChange={(e) => { setItemMovement(e.currentTarget.value) }} className="select mb-6">
+                                        <select value={itemMovement} onChange={(e) => { setItemMovement(e.currentTarget.value) }} className="select mb-6">
                                             {
                                                 mpMenuOptions.bitMovement.map((item, key) => {
                                                     return <option key={key}>{item}</option>
@@ -223,7 +223,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                         <span>
                                             <p className='pb-1'>Select angle</p>
                                             <span className='flex items-center gap-4' >
-                                                <select defaultValue="Select Angle" onChange={(e) => { setItemAngle(e.currentTarget.value) }} className="select mb-6">
+                                                <select value={itemAngle} onChange={(e) => { setItemAngle(e.currentTarget.value) }} className="select mb-6">
                                                     {
                                                         mpMenuOptions.mpAngle.map((item, key) => {
                                                             return <option key={key}>{item}</option>
@@ -239,7 +239,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                         <span>
                                             <p className='pb-1'>Bit Ends With</p>
                                             <span className='flex items-center gap-4' >
-                                                <select defaultValue="Select Angle" onChange={(e) => { setItemBitEndsWIth(e.currentTarget.value) }} className="select mb-6">
+                                                <select value={bitEnds} onChange={(e) => { setItemBitEndsWIth(e.currentTarget.value) }} className="select mb-6">
                                                     {
                                                         bitEnds.map((item, key) => {
                                                             if (item.length > 1) {
@@ -259,7 +259,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             <span>
                                 <p className='pb-1'>Copper on spoon</p>
                                 <span className='flex items-center gap-4' >
-                                    <select defaultValue="Select width" onChange={(e) => { setItemCopperOnSpoon(e.currentTarget.value) }} className="select mb-6">
+                                    <select value={itemCopperOnSpoon} onChange={(e) => { setItemCopperOnSpoon(e.currentTarget.value) }} className="select mb-6">
                                         {
                                             spadeMenuOptions.copperOnSpoon.map((item, key) => {
                                                 return <option key={key}>{item}</option>
@@ -272,7 +272,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 purchaseOption !== standAloneMoutpieceOptions[0] ? <span>
                                     <p className='pb-1'>Position of braces</p>
                                     <span className='flex items-center gap-4' >
-                                        <select defaultValue="Select bit movement" onChange={(e) => { setItemPositionOfBraces(e.currentTarget.value) }} className="select mb-6">
+                                        <select value={itemPositionOfBraces} onChange={(e) => { setItemPositionOfBraces(e.currentTarget.value) }} className="select mb-6">
                                             {
                                                 spadeMenuOptions.positionOfBraces.map((item, key) => {
                                                     return <option key={key}>{item}</option>
@@ -287,7 +287,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             }
                             <span>
                                 <p className='pb-1'>Select Height</p>
-                                <select defaultValue="Select Angle" onChange={(e) => { setItemHeight(e.currentTarget.value) }} className="select mb-6">
+                                <select value={itemHeight} onChange={(e) => { setItemHeight(e.currentTarget.value) }} className="select mb-6">
                                     {
                                         spadeMenuOptions.mpHeight.map((item, key) => {
                                             return <option key={key}>{item}</option>
@@ -302,7 +302,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                         currentlySelectedItem?.name.includes("B-") || currentlySelectedItem?.categories?.includes("Snaffle") ? <>
                             <span>
                                 <p className='pb-1'>Finish</p>
-                                <select defaultValue={"Value"} onChange={(e) => { setItemFinish(e.currentTarget.value) }} className="select mb-6">
+                                <select value={itemFinish} onChange={(e) => { setItemFinish(e.currentTarget.value) }} className="select mb-6">
                                     {
                                         itemFinishes.map((item, key) => {
                                             return <option key={key}>{item}</option>
