@@ -6,16 +6,16 @@ export type cartItem = {
     name: string,
     price: number,
     quantity: number,
-    width?: string,
-    movement?: string,
-    angle?: string,
-    copper?: string,
-    finish?: string,
-    bracePosition?: string,
-    height?: string,
-    description?: string,
-    style?: string
-    purchaseOption?: string,
+    width?: string | null,
+    movement?: string | null,
+    angle?: string | null,
+    copper?: string | null,
+    finish?: string | null,
+    bracePosition?: string | null,
+    height?: string | null,
+    description?: string | null,
+    style?: string | null
+    purchaseOption?: string | null,
 }
 
 type MainStoreType = {

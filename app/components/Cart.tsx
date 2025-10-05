@@ -87,7 +87,7 @@ const Cart = (): React.ReactNode => {
                                             {`${item.name}($${item.price}) x${item.quantity}`}
                                         </p>
                                         <p>
-                                            {`Name: ${item.name} Angle: ${item.angle}, Position of braces: ${item.bracePosition}, Copper: ${item.copper},Finish: ${item.finish}, Height: ${item.height}, Bit Movement: ${item.movement}, Style: ${item.style}, ${item.width}, ${item.purchaseOption},  Quantity: ${item.quantity}`}
+                                            {`Name: ${item.name}, ${item.angle ? `Angle: ${item.angle},` : ""} ${item.bracePosition ? `Position of Braces: ${item.bracePosition},` : ""} ${item.copper ? `Copper: ${item.copper},` : ""} ${item.finish ? `Finish: ${item.finish},` : ""} ${item.height ? `Height: ${item.height},` : ""} ${item.movement ? `Bit Movement: ${item.movement},` : ""} ${item.style ? `Style: ${item.style},` : ""} ${item.width ? `Width: ${item.width},` : ""} ${item.purchaseOption ? `Purchase Option: ${item.purchaseOption},` : ""} Quantity: ${item.quantity}`}
                                         </p>
                                     </div>
                                     <Image onClick={() => { removeFromCart(item) }} alt='delete item' src={close} className='min-h-4 min-w-4 max-h-8 max-w-8 scale-50'></Image>

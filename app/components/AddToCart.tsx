@@ -318,7 +318,6 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             {/* if there is a button in form, it will close the modal */}
                             <button className="btn mr-4" onClick={() => {
                                 setPurchaseOption("Purchase seperately")
-
                             }}>Close</button>
                             <button className='btn btn-primary' disabled={disabled} onClick={() => {
                                 let modPrice = currentlySelectedItem?.price!
@@ -343,7 +342,21 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                     modPrice = modPrice + 60
                                 }
                                 console.log(name)
-                                quantity && addToCart({ name: currentlySelectedItem?.name!, purchaseOption: purchaseOption, finish: itemFinish, style: itemStyle, price: modPrice, quantity, width: itemWidth, movement: itemMovement, angle: itemAngle, copper: itemCopperOnSpoon, bracePosition: itemPositionOfBraces, height: itemHeight, description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Position of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}` : "" })
+                                quantity && addToCart({
+                                    name: currentlySelectedItem?.name!,
+                                    purchaseOption: currentlySelectedItem?.categories?.includes("Mouthpiece") ? purchaseOption : null,
+                                    finish: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemFinish : null,
+                                    style: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemStyle : null,
+                                    price: modPrice,
+                                    quantity,
+                                    width: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemWidth : null,
+                                    movement: currentlySelectedItem?.categories?.includes("Bit") ? itemMovement : null,
+                                    angle: (currentlySelectedItem?.categories?.includes("Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemAngle : null,
+                                    copper: (currentlySelectedItem?.categories?.includes("Spade") || itemStyle.includes("$")) ? itemCopperOnSpoon : null,
+                                    bracePosition: (currentlySelectedItem?.categories?.includes("Spade") || itemStyle.includes("$")) ? itemPositionOfBraces : null,
+                                    height: (currentlySelectedItem?.categories?.includes("Spade") || itemStyle.includes("$")) ? itemHeight : null,
+                                    description: currentlySelectedItem?.name.includes("MP") ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Position of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}` : ""
+                                })
                                 setPurchaseOption("Purchase seperately")
                                 setItemWidth(`4-3/4" (Arabian)`)
                                 setItemStyle("MP-1")
