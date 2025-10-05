@@ -349,6 +349,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                     style: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemStyle : null,
                                     price: modPrice,
                                     quantity,
+                                    bitEnds: currentlySelectedItem?.categories?.includes("Bit") ? itemBitEndsWith : null,
                                     width: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemWidth : null,
                                     movement: currentlySelectedItem?.categories?.includes("Bit") ? itemMovement : null,
                                     angle: (currentlySelectedItem?.categories?.includes("Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemAngle : null,

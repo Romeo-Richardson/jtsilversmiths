@@ -16,6 +16,7 @@ export type cartItem = {
     description?: string | null,
     style?: string | null
     purchaseOption?: string | null,
+    bitEnds?: string | null
 }
 
 type MainStoreType = {
