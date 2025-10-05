@@ -267,7 +267,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 </span>
                             </span>
                             {
-                                purchaseOption !== standAloneMoutpieceOptions[1] ? <span>
+                                purchaseOption !== standAloneMoutpieceOptions[0] ? <span>
                                     <p className='pb-1'>Position of braces</p>
                                     <span className='flex items-center gap-4' >
                                         <select defaultValue="Select bit movement" onChange={(e) => { setItemPositionOfBraces(e.currentTarget.value) }} className="select mb-6">
