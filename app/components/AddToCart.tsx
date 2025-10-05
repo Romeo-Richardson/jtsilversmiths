@@ -205,7 +205,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                         </select>
                     </span> : <></>}
                     {
-                        (currentlySelectedItem?.name.includes("B-") || purchaseOption === standAloneMoutpieceOptions[1]) || currentlySelectedItem?.categories?.includes("Snaffle") || currentlySelectedItem?.categories?.includes("Bit") ?
+                        purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.categories?.includes("Snaffle") || currentlySelectedItem?.categories?.includes("Bit") ?
                             <>
                                 {
                                     (purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-")) ? <><span>
