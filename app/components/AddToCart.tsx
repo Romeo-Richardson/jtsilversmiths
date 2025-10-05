@@ -39,6 +39,8 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
 
     const [purchaseOption, setPurchaseOption] = useState<string>("Purchase seperately")
 
+    const mpStyleRef = useRef<HTMLSelectElement | null>(null)
+
 
 
     const mpMenuOptions = {
@@ -159,10 +161,10 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 <p className='pb-1'>{"Purchase mouthpiece seperately"}</p>
                                 <p className='pb-1'>{"or repair (replace mouthpiece)"}</p>
                                 <span className='flex items-center gap-4' >
-                                    <select defaultValue="Select width" onChange={(e) => { setPurchaseOption(e.currentTarget.value) }} className="select mb-6">
+                                    <select onChange={(e) => { setPurchaseOption(e.currentTarget.value) }} className="select mb-6">
                                         {
                                             standAloneMoutpieceOptions.map((item, key) => {
-                                                return <option key={key}>{item}</option>
+                                                return <option key={key} value={item}>{item}</option>
                                             })
                                         }
                                     </select>
@@ -177,12 +179,12 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             <span>
                                 <p className='pb-1'>Select mouthpiece style</p>
                                 <span className='flex items-center gap-4' >
-                                    <select defaultValue="Select width" onChange={(e) => { setItemStyle(e.currentTarget.value) }} className="select mb-6">
+                                    <select ref={mpStyleRef} onChange={(e) => { setItemStyle(e.currentTarget.value) }} className="select mb-6">
                                         {
                                             !currentlySelectedItem?.categories?.includes("Snaffle") ? [...range, "MP-25R (+$50)", "MP-26R (+$50)"].map((i, key) => {
-                                                return <option key={key}>{typeof (i) !== "string" ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}` : `${i}`}</option>
+                                                return <option key={key} value={typeof (i) !== "string" ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}` : `${i}`}>{typeof (i) !== "string" ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}` : `${i}`}</option>
                                             }) : snaffleMpOptions.map((i, key) => {
-                                                return <option key={key}>{`MP-${i}`}</option>
+                                                return <option key={key} value={`MP-${i}`}>{`MP-${i}`}</option>
                                             })
                                         }
                                     </select>
@@ -300,7 +302,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                         currentlySelectedItem?.name.includes("B-") || currentlySelectedItem?.categories?.includes("Snaffle") ? <>
                             <span>
                                 <p className='pb-1'>Finish</p>
-                                <select defaultValue="Select Angle" onChange={(e) => { setItemFinish(e.currentTarget.value) }} className="select mb-6">
+                                <select defaultValue={"Value"} onChange={(e) => { setItemFinish(e.currentTarget.value) }} className="select mb-6">
                                     {
                                         itemFinishes.map((item, key) => {
                                             return <option key={key}>{item}</option>
@@ -349,9 +351,9 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                     style: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemStyle : null,
                                     price: modPrice,
                                     quantity,
-                                    bitEnds: currentlySelectedItem?.categories?.includes("Bit") ? itemBitEndsWith : null,
+                                    bitEnds: (currentlySelectedItem?.categories?.includes("Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemBitEndsWith : null,
                                     width: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemWidth : null,
-                                    movement: currentlySelectedItem?.categories?.includes("Bit") ? itemMovement : null,
+                                    movement: (currentlySelectedItem?.categories?.includes("Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemMovement : null,
                                     angle: (currentlySelectedItem?.categories?.includes("Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemAngle : null,
                                     copper: (currentlySelectedItem?.categories?.includes("Spade") || itemStyle.includes("$")) ? itemCopperOnSpoon : null,
                                     bracePosition: (currentlySelectedItem?.categories?.includes("Spade") || itemStyle.includes("$")) ? itemPositionOfBraces : null,
@@ -369,6 +371,9 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 setItemPositionOfBraces("Position A (Center of Cheek)")
                                 setItemFinish("Stainless Steel with .925 Silver Overlay (SOS)")
                                 setPurchaseOption("Purchase seperately")
+                                if (mpStyleRef.current) {
+
+                                }
                                 if (quantitySelector.current) {
                                     quantitySelector.current.value = ""
                                 }
