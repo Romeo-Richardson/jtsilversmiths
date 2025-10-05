@@ -7,7 +7,7 @@ import cartImage from "../assets/cart-filled.png"
 import userImage from "../assets/user.png"
 
 import { UserButton, useUser } from '@clerk/nextjs'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Cart from './Cart'
 import jtlogo from "../assets/jtlogo1.png"
 
@@ -21,14 +21,15 @@ const Navbar = (): React.ReactNode => {
 
     const { push } = useRouter()
 
+    const path = usePathname()
+
 
     const toggleRef = useRef<HTMLInputElement | null>(null)
 
     useEffect(() => {
-        if (window.location.href !== "https://www.jtsilversmiths.com") {
-            if ((!window.location.href.includes("/shop") || !window.location.href.includes("/contact") || !window.location.href.includes("/adminpanel") || !window.location.href.includes("/adminpanel-delete") || !window.location.href.includes("/about") || !window.location.href.includes("/sign-in"))) {
-                push("/")
-            }
+        console.log(path)
+        if (path !== "/" && path !== "/about" && path !== "/contact" && path !== "/adminpanel" && path !== "/adminpanel-delete" && path !== "shop") {
+            push("/")
         }
     }, [])
 
