@@ -26,7 +26,7 @@ const Navbar = (): React.ReactNode => {
 
     useEffect(() => {
         if (!window.location.href.includes("/shop") || !window.location.href.includes("/contact") || !window.location.href.includes("/adminpanel")) {
-            if (window.location.href === "http://jtsilversmiths.com") {
+            if (window.location.href === "https://jtsilversmiths.com") {
 
             } else {
                 push("/")
