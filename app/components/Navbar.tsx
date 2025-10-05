@@ -25,8 +25,12 @@ const Navbar = (): React.ReactNode => {
     const toggleRef = useRef<HTMLInputElement | null>(null)
 
     useEffect(() => {
-        if (!window.location.href.includes("/shop") || !window.location.href.includes("/contact") || !window.location.href.includes("/adminpanel") || !window.location.href.includes("/adminpanel-delete") || !window.location.href.includes("/about") || !window.location.href.includes("/sign-in") || window.location.href !== "https://www.jtsilversmiths.com") {
-            push("/")
+        if (!window.location.href.includes("/shop") || !window.location.href.includes("/contact") || !window.location.href.includes("/adminpanel")) {
+            if (window.location.href === "http://jtsilversmiths.com") {
+
+            } else {
+                push("/")
+            }
         }
     }, [])
 

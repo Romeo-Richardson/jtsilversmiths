@@ -134,8 +134,6 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
 
     return (
         <>
-
-
             <dialog id="my_modal_5" className="modal">
                 <div className="modal-box">
                     <form method="dialog">
@@ -296,7 +294,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             </span>
                         </> : <></>
                     }
-
+                    
                     {
                         currentlySelectedItem?.name.includes("B-") || currentlySelectedItem?.categories?.includes("Snaffle") ? <>
                             <span>
