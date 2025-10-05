@@ -123,7 +123,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
     }, [quantity])
 
     useEffect(() => {
-        console.log(currentlySelectedItem?.categories)
+        currentlySelectedItem?.categories?.includes("Snaffle") && setItemStyle(`MP:${snaffleMpOptions[0]}`)
     }, [currentlySelectedItem])
 
     const snaffleMpOptions = [25, 43, 44, 45, 46, 55, 56, 99]
