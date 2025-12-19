@@ -78,6 +78,8 @@ export const POST = async (req: Request) => {
         const stripeSession = await stripe.checkout.sessions.create({
             line_items: [...lineItems],
             mode: 'payment',
+            billing_address_collection: "required",
+            shipping_address_collection: { allowed_countries: ["US", "CA"] },
             shipping_options: [
                 {
                     shipping_rate: await createShippingRate(1020, 3, 5, "Standard Shipping")
