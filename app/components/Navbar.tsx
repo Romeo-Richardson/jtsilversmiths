@@ -26,7 +26,7 @@ const Navbar = (): React.ReactNode => {
 
     useEffect(() => {
         console.log(path)
-        if (path !== "/" && path !== "/about" && path !== "/contact" && path !== "/adminpanel" && path !== "/adminpanel-delete" && path !== "shop") {
+        if (path !== "/" && path !== "/about" && path !== "/contact" && path !== "/adminpanel" && path !== "/adminpanel-delete" && path !== "shop" && path !== "/adminpanel-messages") {
             push("/")
         }
     }, [])
