@@ -6,8 +6,8 @@ const BigDaisyDisplayCard = (): React.ReactNode => {
         <div className="card text-primary-content w-4/5 h-4/5 lg:card-side bg-base-100 shadow-sm">
             <figure>
                 <img
-                    className='md:w-[1000px] max-[790px]:hidden md:h-[500px] w-full h-full'
-                    src="https://newlightdigital.com/wp-content/uploads/2024/01/new-website-in-2024.jpeg"
+                    className='md:w-[1000px] max-h-[624px] object-cover max-[790px]:hidden md:h-[500px] w-full h-full'
+                    src="https://d28uq625kfun5r.cloudfront.net/bitforhome.jpg?Signature=2f1efadace45e6ee52819958515f7103ec104a94aa5bcfa617971dbd6f803638"
                     alt="Album" />
             </figure>
             <div className="card-body">
