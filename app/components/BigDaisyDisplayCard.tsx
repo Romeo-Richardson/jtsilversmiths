@@ -12,7 +12,7 @@ const BigDaisyDisplayCard = (): React.ReactNode => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">Welcome to our new website!</h2>
-                <p className=' max-[465px]:w-auto w-full'>Our new website is under construction but currently running and operable. We are excited and will be adding our large inventory onto the site over time as quickly as possible. <br /> <br /> We take pride in providing quality products at an affordable price and we have not changed our prices over the past several years. However due to terrifs, a 10% increase is now necessary and is reflected in the slight price increase. For now, we will absorb the rest.  If you have any questions or inquiries, please contact us on our contact page or call us at <strong>{"(209) 492-0114"}</strong>. <br /><br />Thank you for your understanding. We value your business and look forward to serving you for many years to come.</p>
+                <p className=' max-[465px]:w-auto w-full'>Welcome to our new website, we are excited for you to be able to shop with us again. We specialize in custom manufacturing and are proud to offer you the finest handcrafted western silver show bits, spurs, snaffles, and silver accessories. We also carry horehair products, rawhide reins, leather goods and more on the way! If you need something you don't see please contact us  <strong>209-492-0114</strong> or <strong>1-877-587-4583</strong></p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary">
                         <Link href={"/contact"}>Contact Us</Link>
