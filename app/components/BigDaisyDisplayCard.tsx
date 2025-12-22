@@ -12,7 +12,7 @@ const BigDaisyDisplayCard = (): React.ReactNode => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">Welcome to our new website!</h2>
-                <p className=' max-[465px]:w-auto w-full'>Welcome to our new website, we are excited for you to be able to shop with us again. We specialize in custom manufacturing and are proud to offer you the finest handcrafted western silver show bits, spurs, snaffles, and silver accessories. We also carry horehair products, rawhide reins, leather goods and more on the way! If you need something you don't see please contact us  <strong>209-492-0114</strong> or <strong>1-877-587-4583</strong></p>
+                <p className=' max-[465px]:w-auto w-full'>Welcome to our new website, we are excited for you to be able to shop with us again. We specialize in custom manufacturing and are proud to offer you the finest handcrafted western silver show bits, spurs, snaffles, and silver accessories. We also carry horehair products, rawhide reins, leather goods and more on the way! If you need something you don't see please contact us at <strong>209-492-0114</strong> or <strong>1-877-587-4583</strong></p>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary">
                         <Link href={"/contact"}>Contact Us</Link>
