@@ -98,222 +98,198 @@ const SideMenu = () => {
                         },
                     ]
                 },
-                {
-                    name: "Western Silver Show Bits by STYLE",
-                    link: "/",
-                    subItems: [
-                        {
-                            name: `Argentine Snaffles`,
-                            link: "/",
-                        },
-                        {
-                            name: `Arizona Cheek`,
-                            link: "/",
-                        },
-                        {
-                            name: `Baby Doll Bit`,
-                            link: "/",
-                        },
-                        {
-                            name: `Big Concho`,
-                            link: "/",
-                        },
-                        {
-                            name: `Calvary Pattern Shank`,
-                            link: "/",
-                        },
-                        {
-                            name: `Charras`,
-                            link: "/",
-                        },
-                        {
-                            name: `Chileno Ring Bit Mouthpiece`,
-                            link: "/",
-                        },
-                        {
-                            name: `Gag Snaffle`,
-                            link: "/",
-                        },
-                        {
-                            name: `Las Cruces`,
-                            link: "/",
-                        },
-                        {
-                            name: "Nevada",
-                            link: "/"
-                        },
-                        {
-                            name: `Number 7`,
-                            link: "/",
-                        },
-                        {
-                            name: `Rod Iron Cheek (de Varilla)`,
-                            link: "/",
-                        },
-                        {
-                            name: `Santa Barbara`,
-                            link: "/",
-                        },
-                        {
-                            name: `Santa Lucia`,
-                            link: "/",
-                        },
-                        {
-                            name: `Santa Paula`,
-                            link: "/",
-                        },
-                        {
-                            name: `Santa Susanna`,
-                            link: "/",
-                        },
-                        {
-                            name: `Sonora`,
-                            link: "/",
-                        },
-                        {
-                            name: `U.S. Calvary Style`,
-                            link: "/",
-                        },
-                    ]
-                },
-                {
-                    name: "Western Silver Show Bits by THEME",
-                    link: "/",
-                    subItems: [
-                        {
-                            name: `Acorn`,
-                            link: "/",
-                        },
-                        {
-                            name: `Arrow`,
-                            link: "/",
-                        },
-                        {
-                            name: `Back bones (de Espinazo)`,
-                            link: "/",
-                        },
-                        {
-                            name: `Butterfly`,
-                            link: "/",
-                        },
-                        {
-                            name: `Card Suit Motiff`,
-                            link: "/",
-                        },
-                        {
-                            name: `Chevron Stripes`,
-                            link: "/",
-                        },
-                        {
-                            name: `Crescent Moon`,
-                            link: "/",
-                        },
-                        {
-                            name: `Daisy Concho`,
-                            link: "/",
-                        },
-                        {
-                            name: `Dragon Horse`,
-                            link: "/",
-                        },
-                        {
-                            name: "Eagle",
-                            link: "/"
-                        },
-                        {
-                            name: `Filigree`,
-                            link: "/",
-                        },
-                        {
-                            name: `Hearts`,
-                            link: "/",
-                        },
-                        {
-                            name: `Horseshoe`,
-                            link: "/",
-                        },
-                        {
-                            name: `Indian Head`,
-                            link: "/",
-                        },
-                        {
-                            name: `Pistol Bits`,
-                            link: "/",
-                        },
-                        {
-                            name: `Round Concho`,
-                            link: "/",
-                        },
-                        {
-                            name: `Shield`,
-                            link: "/",
-                        },
-                        {
-                            name: `Snake`,
-                            link: "/",
-                        },
-                        {
-                            name: `Special Bits`,
-                            link: "/",
-                        },
-                        {
-                            name: `Special Projects`,
-                            link: "/",
-                        },
-                        {
-                            name: `Star`,
-                            link: "/",
-                        },
-                        {
-                            name: `Sunflower (Flower)`,
-                            link: "/",
-                        },
-                        {
-                            name: `Trophy (Ideal for personalizing)`,
-                            link: "/",
-                        },
-                        {
-                            name: `Wagon Wheel`,
-                            link: "/",
-                        },
-                    ]
-                },
-                {
-                    name: "Western Silver Show Bits w/ BRAND",
-                    link: "/",
-                },
-                {
-                    name: "Custom Western Silver Show Bits",
-                    link: "/",
-                },
-                {
-                    name: "Western Silver Show Bits w/o SILVER",
-                    link: "/",
-                },
+                // {
+                //     name: "Western Silver Show Bits by STYLE",
+                //     link: "/",
+                //     subItems: [
+                //         {
+                //             name: `Argentine Snaffles`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Arizona Cheek`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Baby Doll Bit`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Big Concho`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Calvary Pattern Shank`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Charras`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Chileno Ring Bit Mouthpiece`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Gag Snaffle`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Las Cruces`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: "Nevada",
+                //             link: "/"
+                //         },
+                //         {
+                //             name: `Number 7`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Rod Iron Cheek (de Varilla)`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Santa Barbara`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Santa Lucia`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Santa Paula`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Santa Susanna`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Sonora`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `U.S. Calvary Style`,
+                //             link: "/",
+                //         },
+                //     ]
+                // },
                 // {
                 //     name: "Western Silver Show Bits by THEME",
                 //     link: "/",
-                //     subItems: [{
-                //         name: "Layer 3",
-                //         link: "/"
-                //     }]
+                //     subItems: [
+                //         {
+                //             name: `Acorn`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Arrow`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Back bones (de Espinazo)`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Butterfly`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Card Suit Motiff`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Chevron Stripes`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Crescent Moon`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Daisy Concho`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Dragon Horse`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: "Eagle",
+                //             link: "/"
+                //         },
+                //         {
+                //             name: `Filigree`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Hearts`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Horseshoe`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Indian Head`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Pistol Bits`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Round Concho`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Shield`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Snake`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Special Bits`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Special Projects`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Star`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Sunflower (Flower)`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Trophy (Ideal for personalizing)`,
+                //             link: "/",
+                //         },
+                //         {
+                //             name: `Wagon Wheel`,
+                //             link: "/",
+                //         },
+                //     ]
                 // },
                 // {
-                //     name: "Western Silver Show Bits by BRAND",
+                //     name: "Western Silver Show Bits w/ BRAND",
                 //     link: "/",
-                //     subItems: [{
-                //         name: "Layer 3",
-                //         link: "/"
-                //     }]
                 // },
                 // {
-                //     name: "Horse bits without silver",
+                //     name: "Custom Western Silver Show Bits",
                 //     link: "/",
-                //     subItems: [{
-                //         name: "Layer 3",
-                //         link: "/"
-                //     }]
-                // }
+                // },
+                // {
+                //     name: "Western Silver Show Bits w/o SILVER",
+                //     link: "/",
+                // },
             ]
         },
         {
