@@ -498,14 +498,6 @@ const SideMenu = () => {
                     link: "/",
                 },
                 {
-                    name: "Chin Straps",
-                    link: "/",
-                },
-                {
-                    name: "Curb Straps",
-                    link: "/",
-                },
-                {
                     name: "Headstalls",
                     link: "/",
                 },
