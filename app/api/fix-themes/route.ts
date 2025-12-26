@@ -11,8 +11,8 @@ export const GET = async (req: NextRequest) => {
         }
         allItems.forEach(async (item) => {
             console.log(item)
-            if (item.categories.includes("Heart")) {
-                await prisma.items.update({ where: { name: item.name }, data: { categories: { push: "Hearts" } } })
+            if (item.categories.includes("Bit") || item.categories.includes("Bits")) {
+                await prisma.items.update({ where: { name: item.name }, data: { categories: { push: "Horse Bit" } } })
             }
         })
         return NextResponse.json({ success: true }, { status: 200 })

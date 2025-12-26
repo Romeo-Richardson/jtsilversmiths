@@ -28,7 +28,7 @@ const SideMenu = () => {
 
     const [exampleData, setExampleData] = useState<SubMenuType[]>([
         {
-            name: "Bits",
+            name: "Horse Bits",
             link: "/",
             status: false,
             items: [
@@ -289,6 +289,28 @@ const SideMenu = () => {
                 {
                     name: "Western Silver Show Bits w/o SILVER",
                     link: "/",
+                    subItems: [
+                        {
+                            name: `Engraved Stainless Steel`,
+                            link: "/",
+                        },
+                        {
+                            name: `Engraved Steel`,
+                            link: "/",
+                        },
+                        {
+                            name: `German Silver`,
+                            link: "/",
+                        },
+                        {
+                            name: `Mexican Style Stainless`,
+                            link: "/",
+                        },
+                        {
+                            name: `Working Horse Bits`,
+                            link: "/",
+                        },
+                    ]
                 },
             ]
         },
@@ -424,7 +446,132 @@ const SideMenu = () => {
                     link: "/",
                 }
             ]
-        }
+        },
+        {
+            name: "Rawhide & Leather",
+            link: "/",
+            items: [
+                {
+                    name: "Belts",
+                    link: "/",
+                },
+                {
+                    name: "Bosals",
+                    link: "/",
+                    subItems: [
+                        {
+                            name: "Double Rope",
+                            link: "/",
+                        },
+                        {
+                            name: "Tie Down Nose Band",
+                            link: "/",
+                        },
+                        {
+                            name: "Hanger",
+                            link: "/",
+                        },
+                        {
+                            name: "GDR & Hanger",
+                            link: "/",
+                        },
+                        {
+                            name: "Bosals",
+                            link: "/"
+                        },
+                        {
+                            name: "Bosalitas",
+                            link: "/",
+                        },
+                        {
+                            name: "Broken Nose Bosalitas",
+                            link: "/",
+                        },
+                        {
+                            name: "Indian Hackamore",
+                            link: "/",
+                        },
+                    ]
+                },
+                {
+                    name: "Bull Whip or Latigo",
+                    link: "/",
+                },
+                {
+                    name: "Chin Straps",
+                    link: "/",
+                },
+                {
+                    name: "Curb Straps",
+                    link: "/",
+                },
+                {
+                    name: "Headstalls",
+                    link: "/",
+                },
+                {
+                    name: "Hondo - Rawhide",
+                    link: "/",
+                },
+                {
+                    name: "Indian Hackamore",
+                    link: "/",
+                },
+                {
+                    name: "Quirt (Whip)",
+                    link: "/",
+                },
+                {
+                    name: "Rein Connectors",
+                    link: "/",
+                },
+                {
+                    name: "Riata",
+                    link: "/",
+                },
+                {
+                    name: "Reins",
+                    link: "/",
+                    subItems: [
+                        {
+                            name: "Charro Reins",
+                            link: "/",
+                        },
+                        {
+                            name: "Romal Reins",
+                            link: "/",
+                        },
+                        {
+                            name: "Roping Reins",
+                            link: "/",
+                        },
+                        {
+                            name: "Split Reins",
+                            link: "/",
+                        },
+                    ]
+                },
+                {
+                    name: "Straps",
+                    link: "/",
+                    subItems: [
+                        {
+                            name: "Curb Straps",
+                            link: "/",
+                        },
+                        {
+                            name: "Chin Straps",
+                            link: "/",
+                        },
+                        {
+                            name: "Slobber Straps",
+                            link: "/",
+                        },
+                    ]
+                },
+            ]
+        },
+
     ])
 
 
