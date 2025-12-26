@@ -106,8 +106,9 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
     setDisplayedItems(items: items[]) {
         console.log(get().mainCategory)
         const category = get().mainCategory?.split("")
-
-        category?.pop()
+        if (category && category[category.length - 1] === "s") {
+            category?.pop()
+        }
         console.log(category?.join("")!)
 
         console.log(items)
@@ -135,7 +136,7 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
         console.log(get().currentlySelectedQuery)
         if (get().currentlySelectedQuery && !get().searchQueryInput) {
             get().setDisplayedItems(fallbackData.map((item: items) => {
-                if (item.categories.map((category) => category.toLocaleUpperCase()).includes(get().currentlySelectedQuery!.toUpperCase())) {
+                if (item.categories.map((category) => category).includes(get().currentlySelectedQuery!)) {
                     return item
                 }
             }).map((x: any) => {
