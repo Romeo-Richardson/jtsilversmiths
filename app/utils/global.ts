@@ -45,7 +45,7 @@ type MainStoreType = {
     mainCategory: string | null,
     setMainCategory: (category: string) => void,
     bosalFilter: BosalFilter | null,
-    setBosalFilter: (filter: BosalFilter) => void
+    setBosalFilter: (filter: BosalFilter | null) => void
 }
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -63,7 +63,7 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
         console.log(get().mainCategory)
     },
     bosalFilter: null,
-    setBosalFilter:(filter) => {
+    setBosalFilter: (filter) => {
         set({
             bosalFilter: filter
         })
@@ -181,13 +181,14 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             toast.error("Failed to find item")
         }
 
-        if (get().bosalFilter){
-            const filteredItems = get().displayedItems.map((item) => {
-                if(item.categories.includes(get().bosalFilter?.plait!) || item.categories.includes(get().bosalFilter?.diameter!) || item.categories.includes(get().bosalFilter?.color!)){
+        if (get().bosalFilter) {
+            console.log(get().bosalFilter)
+            const filteredItems = fallbackData.map((item: items) => {
+                if (item.categories.includes(get().bosalFilter?.plait!) && item.categories.includes(get().bosalFilter?.diameter!) && item.categories.includes(get().bosalFilter?.color!) && !item.categories.includes("")) {
                     return item
                 }
             }).map((x: any) => {
-                if(x !== undefined){
+                if (x !== undefined) {
                     return x
                 }
             })
