@@ -13,6 +13,7 @@ import { items } from '@prisma/client'
 import { useMainStore } from '../utils/global'
 import { getItems } from '../utils/apiCalls'
 import NavInput from './NavInput'
+import BosalFilter from './BosalFilter'
 
 const ShopDisplay = (): React.ReactNode => {
 
@@ -64,6 +65,9 @@ const ShopDisplay = (): React.ReactNode => {
             <div className='bg-neutral py-2 pl-4'>
                 <h1 className='text-3xl text-white'>Products - {`${currentlySelectedQuery ? currentlySelectedQuery : "All Items"}`}</h1>
             </div>
+            {
+                (currentlySelectedQuery === "Bosals" || currentlySelectedQuery === "Bosalitas" || currentlySelectedQuery === "Broken Nose Bosalitas") && <BosalFilter></BosalFilter>
+            }
             <div className='min-[701px]:hidden bg-base-200 py-2 pl-4'>
                 <NavInput></NavInput>
             </div>
