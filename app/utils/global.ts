@@ -16,7 +16,13 @@ export type cartItem = {
     description?: string | null,
     style?: string | null
     purchaseOption?: string | null,
-    bitEnds?: string | null
+    bitEnds?: string | null,
+}
+
+type BosalFilter = {
+    plait: string,
+    diameter: string,
+    color: string
 }
 
 type MainStoreType = {
@@ -37,7 +43,9 @@ type MainStoreType = {
     isExpressShipping: boolean,
     setIsExpressShipping: () => void,
     mainCategory: string | null,
-    setMainCategory: (category: string) => void
+    setMainCategory: (category: string) => void,
+    bosalFilter: BosalFilter | null,
+    setBosalFilter: (filter: BosalFilter) => void
 }
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -53,6 +61,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             mainCategory: category
         })
         console.log(get().mainCategory)
+    },
+    bosalFilter: null,
+    setBosalFilter:(filter) => {
+        set({
+            bosalFilter: filter
+        })
     },
     isExpressShipping: false,
     setIsExpressShipping: () => {
@@ -165,6 +179,20 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             get().setDisplayedItems([...fallbackData])
             get().setCurrentlySelectedQuery(null)
             toast.error("Failed to find item")
+        }
+
+        if (get().bosalFilter){
+            const filteredItems = get().displayedItems.map((item) => {
+                if(item.categories.includes(get().bosalFilter?.plait!) || item.categories.includes(get().bosalFilter?.diameter!) || item.categories.includes(get().bosalFilter?.color!)){
+                    return item
+                }
+            }).map((x: any) => {
+                if(x !== undefined){
+                    return x
+                }
+            })
+            console.log(filteredItems)
+            get().setDisplayedItems(filteredItems)
         }
     }
 }))
