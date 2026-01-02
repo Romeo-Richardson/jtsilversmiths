@@ -20,6 +20,9 @@ export const GET = async (req: NextRequest) => {
             // }
             if (item.asIsSize?.includes("(inside measurement)")) {
                 await prisma.items.update({ where: { name: item.name }, data: { asIsSize: "" } })
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
         })

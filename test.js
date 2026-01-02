@@ -7,7 +7,11 @@ const runFix = async () => {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 runFix()
+=======
+runFix()
+>>>>>>> Stashed changes
 =======
 runFix()
 >>>>>>> Stashed changes
