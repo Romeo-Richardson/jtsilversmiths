@@ -70,7 +70,7 @@ const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthp
                             <strong>Mouthpiece Angle:</strong> {asIsMouthpieceAngle}
                         </p>}
                         {asIsSize && <p>
-                            <strong>Style:</strong> {asIsSize}
+                            <strong>{`${(categories.includes("Bosals") || categories.includes("Bosalitas") || categories.includes("Broken Nose Bosalitas")) ? "Size (Inside Measurement):" : "Size:"}`}</strong> {asIsSize}
                         </p>}
                         {asIsColor && <p>
                             <strong>Color:</strong> {asIsColor}
@@ -90,10 +90,16 @@ const DaisyItemCard = ({ image, title, categories, price, asIsFinish, asIsMouthp
                     </p>}
 
                     {
-                        !title.includes("BR-") && <p>
+                        (!title.includes("BR-") && !categories.includes("Bosals") && !categories.includes("Bosalitas") && categories.includes("Broken Nose Bosalitas")) && <p>
                             <strong>Purchase as pictured or customize in the drop menu</strong>
                         </p>
                     }
+                    {
+                        (categories.includes("Bosals") || categories.includes("Bosalitas") || categories.includes("Broken Nose Bosalitas")) && <p className='mt-4'>
+                            <strong>All Bosals are firm, flexible yet soft to the touch. They are made with a Rawhide core. Purchase as pictured or contact us for special orders.</strong>
+                        </p>
+                    }
+
 
 
                 </div>

@@ -16,7 +16,7 @@ const BosalFilter = (): React.ReactNode => {
 
     const diameters = [`Diameter 1/4`, `Diameter 3/8`, `Diameter 1/2`, `Diameter 5/8`, `Diameter 3/4`]
 
-    const colors = ["Rawhide w/ Black", "Rawhide w/ Chocolate", "Black", "Rawhide w/ Black & Red Detail", "Rawhide", "Rawhide w/ Leather", "Rawhide w/ Chocolate w/ Rawhide Detail", "Rawhide w/ Chocolate w/ Red Detail", "Rawhide w/ Chocolate w/ Turquoise", "Rawhide w/ Latigo", "Black w/ Rawhide", "Chocolate w/ Rawhide", "Latigo w/ Rawhide", "Latigo", "Chocolate"]
+    const colors = ["Rawhide w/ Black", "Rawhide w/ Chocolate", "Black", "Latigo w/ Black", "Rawhide w/ Black & Red Detail", "Rawhide", "Rawhide w/ Leather", "Rawhide w/ Chocolate w/ Rawhide Detail", "Rawhide w/ Chocolate w/ Red Detail", "Rawhide w/ Chocolate w/ Turquoise", "Rawhide w/ Latigo", "Black w/ Rawhide", "Chocolate w/ Rawhide", "Latigo w/ Rawhide", "Latigo", "Chocolate"]
 
     const { data } = useQuery<any>({ queryKey: ["Items"], queryFn: () => getItems() })
 

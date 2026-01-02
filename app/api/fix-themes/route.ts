@@ -10,8 +10,8 @@ export const GET = async (req: NextRequest) => {
             return NextResponse.json({ error: "Failed to get item" }, { status: 500 })
         }
         allItems.forEach(async (item) => {
-            if (item.categories.includes("Diamter 3/8")) {
-                await prisma.items.update({ where: { name: item.name }, data: { categories: { push: "Diameter 3/8" } } })
+            if (item.categories.includes("Diamter 1/2") && item.categories.includes("Latigo")) {
+                await prisma.items.update({ where: { name: item.name }, data: { asIsSize: "~ 11 1/2 x 5 1/2" } })
             }
         })
         return NextResponse.json({ success: true }, { status: 200 })

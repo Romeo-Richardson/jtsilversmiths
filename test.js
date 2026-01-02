@@ -1,7 +1,9 @@
+
+
 import axios from "axios";
 
-const fixThemes = async () => {
+const runFix = async () => {
     await axios.get("http://localhost:3000/api/fix-themes")
 }
 
-fixThemes()
+runFix()
