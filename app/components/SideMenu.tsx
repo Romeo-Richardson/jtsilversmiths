@@ -468,7 +468,7 @@ const SideMenu = () => {
                             link: "/",
                         },
                         {
-                            name: "Hanger",
+                            name: "Bosal Hanger",
                             link: "/",
                         },
                         {
