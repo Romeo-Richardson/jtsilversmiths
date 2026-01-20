@@ -596,6 +596,10 @@ const SideMenu = () => {
                             name: "6 Strands",
                             link: "/",
                         },
+                        {
+                            name: "7 Strands",
+                            link: "/",
+                        },
                     ]
                 },
                 {
