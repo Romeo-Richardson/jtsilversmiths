@@ -541,7 +541,12 @@ const SideMenu = () => {
                             name: "Split Reins",
                             link: "/",
                         },
+
                     ]
+                },
+                {
+                    name: "Shoofly/Tassel",
+                    link: "/",
                 },
                 {
                     name: "Straps",
@@ -557,6 +562,104 @@ const SideMenu = () => {
                         },
                         {
                             name: "Slobber Straps",
+                            link: "/",
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            name: "Horse Hair",
+            link: "/",
+            items: [
+                {
+                    name: "Hat Bands",
+                    link: "/",
+                    subItems: [
+                        {
+                            name: "2 Strands",
+                            link: "/",
+                        },
+                        {
+                            name: "3 Strands",
+                            link: "/",
+                        },
+                        {
+                            name: "4 Strands",
+                            link: "/",
+                        },
+                        {
+                            name: "5 Strands",
+                            link: "/",
+                        },
+                        {
+                            name: "6 Strands",
+                            link: "/",
+                        },
+                    ]
+                },
+                {
+                    name: "Cinch",
+                    link: "/",
+                },
+                {
+                    name: "Fiador",
+                    link: "/",
+                },
+                {
+                    name: "Get Down Ropes",
+                    link: "/",
+                    subItems: [
+                        {
+                            name: "16 Feet",
+                            link: "/",
+                        },
+                        {
+                            name: "16 Feet x 3/8 Inches",
+                            link: "/",
+                        },
+                        {
+                            name: "14 Feet",
+                            link: "/",
+                        },
+                    ]
+                },
+                {
+                    name: "Key Chains",
+                    link: "/",
+                },
+                {
+                    name: "Jewlery",
+                    link: "/",
+                    subItems: [
+                        {
+                            name: "Bracelets",
+                            link: "/",
+                        },
+                        {
+                            name: "Earrings",
+                            link: "/",
+                        },
+                        {
+                            name: "Sets",
+                            link: "/",
+                        },
+                    ]
+                },
+                {
+                    name: "Mecates (Mane Horse Hair)",
+                    link: "/",
+                    subItems: [
+                        {
+                            name: "4 Strands",
+                            link: "/",
+                        },
+                        {
+                            name: "6 Strands",
+                            link: "/",
+                        },
+                        {
+                            name: "8 Strands",
                             link: "/",
                         },
                     ]
