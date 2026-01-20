@@ -615,10 +615,6 @@ const SideMenu = () => {
                             link: "/",
                         },
                         {
-                            name: "16 Feet x 3/8 Inches",
-                            link: "/",
-                        },
-                        {
                             name: "14 Feet",
                             link: "/",
                         },
