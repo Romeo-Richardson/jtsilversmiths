@@ -315,6 +315,39 @@ const SideMenu = () => {
             ]
         },
         {
+            name: "Horse Bit Accessories",
+            link: "/",
+            items: [
+                {
+                    name: "Misc. Bit Accessories",
+                    link: "/",
+                    subItems: [{
+                        name: "Rein Chain Swivels",
+                        link: "/"
+                    }, {
+                        name: "Rein Chain S Hooks",
+                        link: "/"
+                    }, {
+                        name: "Rein Chain Hooks",
+                        link: "/"
+                    }
+                    ]
+                },
+                {
+                    name: "Bit Hangers",
+                    link: "/",
+                },
+                {
+                    name: "Rein Ends",
+                    link: "/",
+                },
+                {
+                    name: "Rein  Chains",
+                    link: "/",
+                }]
+
+        },
+        {
             name: "Mouthpieces",
             link: "/",
             status: false,
@@ -567,39 +600,6 @@ const SideMenu = () => {
                     ]
                 },
             ]
-        },
-        {
-            name: "Horse Bit Accessories",
-            link: "/",
-            items: [
-                {
-                    name: "Misc. Bit Accessories",
-                    link: "/",
-                    subItems: [{
-                        name: "Rein Chain Swivels",
-                        link: "/"
-                    }, {
-                        name: "Rein Chain S Hooks",
-                        link: "/"
-                    }, {
-                        name: "Rein Chain Hooks",
-                        link: "/"
-                    }
-                    ]
-                },
-                {
-                    name: "Bit Hangers",
-                    link: "/",
-                },
-                {
-                    name: "Rein Ends",
-                    link: "/",
-                },
-                {
-                    name: "Rein  Chains",
-                    link: "/",
-                }]
-
         },
         // {
         //     name: "Horse Hair",
