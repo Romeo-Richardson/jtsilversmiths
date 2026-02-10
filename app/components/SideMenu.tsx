@@ -344,6 +344,56 @@ const SideMenu = () => {
                 {
                     name: "Rein  Chains",
                     link: "/",
+                    subItems: [
+                        {
+                            name: "BR-01",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-03",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-05",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-06",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-07",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-08",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-09",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-10",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-11",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-12",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-13",
+                            link: "/"
+                        },
+                        {
+                            name: "BR-14",
+                            link: "/"
+                        }
+                    ]
                 }]
 
         },
