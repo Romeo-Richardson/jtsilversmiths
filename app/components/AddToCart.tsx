@@ -196,7 +196,7 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                             </span>
                         </> : <></>
                     }
-                    {(currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? <span>
+                    {(currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Horse Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? <span>
                         <p className='pb-1'>Select width</p>
                         <select defaultValue="Select width" value={itemWidth} onChange={(e) => { setItemWidth(e.currentTarget.value) }} className="select mb-6">
                             {
@@ -207,10 +207,10 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                         </select>
                     </span> : <></>}
                     {
-                        purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.categories?.includes("Snaffle") || currentlySelectedItem?.categories?.includes("Bit") ?
+                        purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.categories?.includes("Snaffle") || currentlySelectedItem?.categories?.includes("Horse Bit") ?
                             <>
                                 {
-                                    (purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-")) ? <><span>
+                                    (purchaseOption === standAloneMoutpieceOptions[1] || currentlySelectedItem?.name.includes("B-") || currentlySelectedItem?.categories?.includes("Horse Bit")) ? <><span>
                                         <p className='pb-1'>Select bit movement</p>
                                         <select value={itemMovement} onChange={(e) => { setItemMovement(e.currentTarget.value) }} className="select mb-6">
                                             {
@@ -347,14 +347,14 @@ const AddToCart = ({ name, price, categories }: { name: string, price: number, c
                                 quantity && addToCart({
                                     name: currentlySelectedItem?.name!,
                                     purchaseOption: currentlySelectedItem?.categories?.includes("Mouthpiece") ? purchaseOption : null,
-                                    finish: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemFinish : null,
-                                    style: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemStyle : null,
+                                    finish: (currentlySelectedItem?.categories?.includes("Horse Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemFinish : null,
+                                    style: (currentlySelectedItem?.categories?.includes("Horse Bit") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemStyle : null,
                                     price: modPrice,
                                     quantity,
-                                    bitEnds: (currentlySelectedItem?.categories?.includes("Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemBitEndsWith : null,
-                                    width: (currentlySelectedItem?.categories?.includes("Bit") || currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemWidth : null,
-                                    movement: (currentlySelectedItem?.categories?.includes("Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemMovement : null,
-                                    angle: (currentlySelectedItem?.categories?.includes("Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemAngle : null,
+                                    bitEnds: (currentlySelectedItem?.categories?.includes("Horse Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemBitEndsWith : null,
+                                    width: (currentlySelectedItem?.categories?.includes("Horse Bit") || currentlySelectedItem?.categories?.includes("Mouthpiece") || currentlySelectedItem?.categories?.includes("Snaffle")) ? itemWidth : null,
+                                    movement: (currentlySelectedItem?.categories?.includes("Horse Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemMovement : null,
+                                    angle: (currentlySelectedItem?.categories?.includes("Horse Bit") || purchaseOption === standAloneMoutpieceOptions[1]) ? itemAngle : null,
                                     copper: (currentlySelectedItem?.categories?.includes("Spade") || itemStyle.includes("$")) ? itemCopperOnSpoon : null,
                                     bracePosition: (currentlySelectedItem?.categories?.includes("Spade") || itemStyle.includes("$")) ? itemPositionOfBraces : null,
                                     height: (currentlySelectedItem?.categories?.includes("Spade") || itemStyle.includes("$")) ? itemHeight : null,
