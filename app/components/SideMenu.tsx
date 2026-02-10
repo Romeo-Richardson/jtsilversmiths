@@ -563,6 +563,36 @@ const SideMenu = () => {
                 },
             ]
         },
+        {
+            name: "Horse Bit Accessories",
+            link: "/",
+            items: [
+                {
+                    name: "Misc. Bit Accessories",
+                    link: "/",
+                    subItems: [{
+                        name: "Rein Chain Swivels",
+                        link: "/"
+                    }, {
+                        name: "S Hooks",
+                        link: "/"
+                    }
+                    ]
+                },
+                {
+                    name: "Bit Hangers",
+                    link: "/",
+                },
+                {
+                    name: "Rein Ends",
+                    link: "/",
+                },
+                {
+                    name: "Rein  Chains",
+                    link: "/",
+                }
+            ]
+        },
 
     ])
 
