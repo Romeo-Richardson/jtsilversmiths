@@ -99,7 +99,9 @@ const ShopDisplay = (): React.ReactNode => {
                       asIsColor={item.asIsColor!}
                       asIsMaterial={item.asIsMaterial!}
                       price={
-                        Math.round(item.price + item.price * 0.32809) - 0.01
+                        item.categories.includes("Horse Bit")
+                          ? Math.round(item.price + item.price * 0.32809) - 0.01
+                          : Math.round(item.price + item.price * 0.1) - 0.01
                       }
                       asIsStyle={item.asIsStyle!}
                       asIsMouthpieceAngle={item.asIsMouthpieceAngle!}
@@ -128,7 +130,11 @@ const ShopDisplay = (): React.ReactNode => {
                     asIsSize={item.asIsSize!}
                     asIsColor={item.asIsColor!}
                     asIsMaterial={item.asIsMaterial!}
-                    price={Math.round(item.price + item.price * 0.32809) - 0.01}
+                    price={
+                      item.categories.includes("Horse Bit")
+                        ? Math.round(item.price + item.price * 0.32809) - 0.01
+                        : Math.round(item.price + item.price * 0.1) - 0.01
+                    }
                     asIsStyle={item.asIsStyle!}
                     asIsMouthpieceAngle={item.asIsMouthpieceAngle!}
                     image={item.image}
