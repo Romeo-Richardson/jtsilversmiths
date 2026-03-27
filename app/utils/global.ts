@@ -17,6 +17,7 @@ export type cartItem = {
     style?: string | null
     purchaseOption?: string | null,
     bitEnds?: string | null,
+    categories: string[] | undefined
 }
 
 type BosalFilter = {
@@ -35,6 +36,7 @@ type MainStoreType = {
     setCurrentlySelectedItem: (name: string, price: number, categories: string[]) => void,
     addToCart: (item: cartItem) => void,
     removeFromCart: (item: cartItem) => void,
+    setCart: (cart: any) => void,
     currentlySelectedQuery: string | null,
     setCurrentlySelectedQuery: (query: string | null) => void,
     displayedItems: items[],
@@ -103,6 +105,14 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             cart: [...temp],
             cartQuantity: get().cartQuantity - item.quantity
         })
+    },
+    setCart: (items) => {
+
+            set({
+            cart: items
+        })
+        
+        
     },
     currentlySelectedItem: null,
     setCurrentlySelectedItem: (name: string, price: number, categories: string[]) => {

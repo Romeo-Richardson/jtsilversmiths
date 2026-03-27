@@ -1,90 +1,154 @@
-"use client"
+"use client";
 
-import React, { use, useEffect } from 'react'
-import ItemCard, { ItemCardType } from './ItemCard'
-import item1 from '../assets/item-example-1.jpg'
-import item2 from '../assets/item-example-2.jpg'
-import item3 from '../assets/item-example-3.jpg'
-import item4 from '../assets/item-example-4.jpg'
-import DaisyItemCard from './DaisyItemCard'
-import axios from 'axios'
-import { useQuery } from '@tanstack/react-query'
-import { items } from '@prisma/client'
-import { useMainStore } from '../utils/global'
-import { getItems } from '../utils/apiCalls'
-import NavInput from './NavInput'
-import BosalFilter from './BosalFilter'
+import React, { use, useEffect } from "react";
+import ItemCard, { ItemCardType } from "./ItemCard";
+import item1 from "../assets/item-example-1.jpg";
+import item2 from "../assets/item-example-2.jpg";
+import item3 from "../assets/item-example-3.jpg";
+import item4 from "../assets/item-example-4.jpg";
+import DaisyItemCard from "./DaisyItemCard";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { items } from "@prisma/client";
+import { useMainStore } from "../utils/global";
+import { getItems } from "../utils/apiCalls";
+import NavInput from "./NavInput";
+import BosalFilter from "./BosalFilter";
 
 const ShopDisplay = (): React.ReactNode => {
+  const {
+    searchQueryInput,
+    currentlySelectedQuery,
+    setDisplayedItems,
+    displayedItems,
+  } = useMainStore();
 
-    const { searchQueryInput, currentlySelectedQuery, setDisplayedItems, displayedItems } = useMainStore()
+  const { data, isFetched } = useQuery({
+    queryKey: ["Items"],
+    queryFn: getItems,
+  });
 
-    const { data, isFetched } = useQuery({ queryKey: ["Items"], queryFn: getItems })
+  if (isFetched) {
+    console.log(data);
+  }
 
-    if (isFetched) {
-        console.log(data)
-    }
+  // useEffect(() => {
+  //     if (currentlySelectedQuery && !searchQueryInput) {
+  //         setDisplayedItems(data?.data.map((item: items) => {
+  //             if (item.categories.includes(currentlySelectedQuery)) {
+  //                 return item
+  //             }
+  //         }))
+  //     } else if (!currentlySelectedQuery && searchQueryInput) {
+  //         setDisplayedItems(data?.data.map((item: items) => {
+  //             if (item.name.includes(searchQueryInput.toString())) {
+  //                 return item
+  //             }
+  //         }))
+  //     } else {
+  //         if (isFetched) {
+  //             setDisplayedItems(data?.data)
+  //         }
+  //     }
 
+  // }, [currentlySelectedQuery, searchQueryInput, data])
 
-    // useEffect(() => {
-    //     if (currentlySelectedQuery && !searchQueryInput) {
-    //         setDisplayedItems(data?.data.map((item: items) => {
-    //             if (item.categories.includes(currentlySelectedQuery)) {
-    //                 return item
-    //             }
-    //         }))
-    //     } else if (!currentlySelectedQuery && searchQueryInput) {
-    //         setDisplayedItems(data?.data.map((item: items) => {
-    //             if (item.name.includes(searchQueryInput.toString())) {
-    //                 return item
-    //             }
-    //         }))
-    //     } else {
-    //         if (isFetched) {
-    //             setDisplayedItems(data?.data)
-    //         }
-    //     }
+  // const itemCardInfo: ItemCardType = {
+  //     name: "Example Item",
+  //     price: "$12.50",
+  //     image: exampleItem,
+  //     height: "350px",
+  //     width: "200px"
+  // }
 
-    // }, [currentlySelectedQuery, searchQueryInput, data])
+  useEffect(() => {
+    console.log(displayedItems);
+  }, [displayedItems]);
 
-    // const itemCardInfo: ItemCardType = {
-    //     name: "Example Item",
-    //     price: "$12.50",
-    //     image: exampleItem,
-    //     height: "350px",
-    //     width: "200px"
-    // }
-
-    useEffect(() => {
-        console.log(displayedItems)
-    }, [displayedItems])
-
-
-    return (
-        <div className=' grow flex flex-col'>
-            <div className='bg-neutral py-2 pl-4'>
-                <h1 className='text-3xl text-white'>Products - {`${currentlySelectedQuery ? currentlySelectedQuery : "All Items"}`}</h1>
-            </div>
-            {
-                (currentlySelectedQuery === "Bosals" || currentlySelectedQuery === "Bosalitas" || currentlySelectedQuery === "Broken Nose Bosalitas") && <BosalFilter></BosalFilter>
-            }
-            <div className='min-[701px]:hidden bg-base-200 py-2 pl-4'>
-                <NavInput></NavInput>
-            </div>
-            <div className='flex flex-wrap gap-4 p-4 max-h-[1600px] overflow-auto mb-6 justify-center'>
-                {
-                    // searchResults() ? searchResults()?.map((item, key: number) => {
-                    //     return <DaisyItemCard key={key} {...item} title={item.name}></DaisyItemCard>
-                    // }) : data?.data.map((item: items, key: number) => {
-                    //     return <DaisyItemCard key={key} {...item} title={item.name}></DaisyItemCard>
-                    // })
-                    displayedItems?.length! !== 0 ? displayedItems?.map((item, key) => {
-                        return item && <DaisyItemCard key={key} categories={item.categories} asIsSize={item.asIsSize!} asIsColor={item.asIsColor!} asIsMaterial={item.asIsMaterial!} price={Math.round(item.price + (item.price * .10)) - .01} asIsStyle={item.asIsStyle!} asIsMouthpieceAngle={item.asIsMouthpieceAngle!} asIsCopperHoodAndCricket={item.asIsWithCopperHoodAndCricket!} asIsHeight={item.asIsHeight!} asIsTheme={item.asIsTheme!} image={item.image} title={item.name} asIsBitEnds={item.asIsBitEnds!} asIsBitMovement={item.asIsBitMovement!} asIsFinish={item.asIsFinish!} asIsMouthpieceStyle={item.asIsMouthpieceStyle!} asIsSizeCheek={item.asIsSizeCheek!} asIsTongueRelief={item.asIsTongueRelief!}></DaisyItemCard>
-                    }) : data?.data.map((item: items, key: number) => {
-                        return <DaisyItemCard key={key} categories={item.categories} asIsSize={item.asIsSize!} asIsColor={item.asIsColor!} asIsMaterial={item.asIsMaterial!} price={Math.round(item.price + (item.price * .10)) - .01} asIsStyle={item.asIsStyle!} asIsMouthpieceAngle={item.asIsMouthpieceAngle!} image={item.image} asIsCopperHoodAndCricket={item.asIsWithCopperHoodAndCricket!} asIsHeight={item.asIsHeight!} asIsTheme={item.asIsTheme!} asIsBitEnds={item.asIsBitEnds!} asIsBitMovement={item.asIsBitMovement!} asIsFinish={item.asIsFinish!} asIsMouthpieceStyle={item.asIsMouthpieceStyle!} asIsSizeCheek={item.asIsSizeCheek!} asIsTongueRelief={item.asIsTongueRelief!} title={item.name}></DaisyItemCard>
-                    })
-                }
-                {/* <DaisyItemCard image={item1}></DaisyItemCard>
+  return (
+    <div className=" grow flex flex-col">
+      <div className="bg-neutral py-2 pl-4">
+        <h1 className="text-3xl text-white">
+          Products -{" "}
+          {`${currentlySelectedQuery ? currentlySelectedQuery : "All Items"}`}
+        </h1>
+      </div>
+      {(currentlySelectedQuery === "Bosals" ||
+        currentlySelectedQuery === "Bosalitas" ||
+        currentlySelectedQuery === "Broken Nose Bosalitas") && (
+        <BosalFilter></BosalFilter>
+      )}
+      <div className="min-[701px]:hidden bg-base-200 py-2 pl-4">
+        <NavInput></NavInput>
+      </div>
+      <div className="flex flex-wrap gap-4 p-4 max-h-[1600px] overflow-auto mb-6 justify-center">
+        {
+          // searchResults() ? searchResults()?.map((item, key: number) => {
+          //     return <DaisyItemCard key={key} {...item} title={item.name}></DaisyItemCard>
+          // }) : data?.data.map((item: items, key: number) => {
+          //     return <DaisyItemCard key={key} {...item} title={item.name}></DaisyItemCard>
+          // })
+          displayedItems?.length! !== 0
+            ? displayedItems?.map((item, key) => {
+                return (
+                  item && (
+                    <DaisyItemCard
+                      key={key}
+                      categories={item.categories}
+                      asIsSize={item.asIsSize!}
+                      asIsColor={item.asIsColor!}
+                      asIsMaterial={item.asIsMaterial!}
+                      price={
+                        Math.round(item.price + item.price * 0.32809) - 0.01
+                      }
+                      asIsStyle={item.asIsStyle!}
+                      asIsMouthpieceAngle={item.asIsMouthpieceAngle!}
+                      asIsCopperHoodAndCricket={
+                        item.asIsWithCopperHoodAndCricket!
+                      }
+                      asIsHeight={item.asIsHeight!}
+                      asIsTheme={item.asIsTheme!}
+                      image={item.image}
+                      title={item.name}
+                      asIsBitEnds={item.asIsBitEnds!}
+                      asIsBitMovement={item.asIsBitMovement!}
+                      asIsFinish={item.asIsFinish!}
+                      asIsMouthpieceStyle={item.asIsMouthpieceStyle!}
+                      asIsSizeCheek={item.asIsSizeCheek!}
+                      asIsTongueRelief={item.asIsTongueRelief!}
+                    ></DaisyItemCard>
+                  )
+                );
+              })
+            : data?.data.map((item: items, key: number) => {
+                return (
+                  <DaisyItemCard
+                    key={key}
+                    categories={item.categories}
+                    asIsSize={item.asIsSize!}
+                    asIsColor={item.asIsColor!}
+                    asIsMaterial={item.asIsMaterial!}
+                    price={Math.round(item.price + item.price * 0.32809) - 0.01}
+                    asIsStyle={item.asIsStyle!}
+                    asIsMouthpieceAngle={item.asIsMouthpieceAngle!}
+                    image={item.image}
+                    asIsCopperHoodAndCricket={
+                      item.asIsWithCopperHoodAndCricket!
+                    }
+                    asIsHeight={item.asIsHeight!}
+                    asIsTheme={item.asIsTheme!}
+                    asIsBitEnds={item.asIsBitEnds!}
+                    asIsBitMovement={item.asIsBitMovement!}
+                    asIsFinish={item.asIsFinish!}
+                    asIsMouthpieceStyle={item.asIsMouthpieceStyle!}
+                    asIsSizeCheek={item.asIsSizeCheek!}
+                    asIsTongueRelief={item.asIsTongueRelief!}
+                    title={item.name}
+                  ></DaisyItemCard>
+                );
+              })
+        }
+        {/* <DaisyItemCard image={item1}></DaisyItemCard>
                 <DaisyItemCard image={item3}></DaisyItemCard>
                 <DaisyItemCard image={item2}></DaisyItemCard>
                 <DaisyItemCard image={item3}></DaisyItemCard>
@@ -95,9 +159,9 @@ const ShopDisplay = (): React.ReactNode => {
                 <DaisyItemCard image={item1}></DaisyItemCard>
                 <DaisyItemCard image={item2}></DaisyItemCard>
                 <DaisyItemCard image={item4}></DaisyItemCard> */}
-            </div>
-        </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default ShopDisplay
+export default ShopDisplay;
