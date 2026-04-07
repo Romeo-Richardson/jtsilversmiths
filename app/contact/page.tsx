@@ -10,13 +10,14 @@ const page = (): React.ReactNode => {
 
     const [isMessageSent, setIsMessageSent] = useState(false)
 
-    const createInquiry = async (firstName: FormDataEntryValue | null, lastName: FormDataEntryValue | null, email: FormDataEntryValue | null, subject: FormDataEntryValue | null, message: FormDataEntryValue | null) => {
-        const { data } = await axios.post("https://www.jtsilversmiths.com/api/create-inquiry", {
+    const createInquiry = async (firstName: FormDataEntryValue | null, lastName: FormDataEntryValue | null, email: FormDataEntryValue | null, subject: FormDataEntryValue | null, message: FormDataEntryValue | null, phoneNumber: FormDataEntryValue | null) => {
+        const { data } = await axios.post("/api/create-inquiry", {
             firstName,
             lastName,
             email,
             subject,
-            message
+            message,
+            phoneNumber
         })
 
         if (data) {
@@ -40,7 +41,8 @@ const page = (): React.ReactNode => {
                     const email = formData.get("email")
                     const subject = formData.get("subject")
                     const message = formData.get("message")
-                    toast.promise(createInquiry(firstName, lastName, email, subject, message), {
+                    const phoneNumber = formData.get("phone-number")
+                    toast.promise(createInquiry(firstName, lastName, email, subject, message, phoneNumber), {
                         success: "Message sent",
                         error: "Failed to send message",
                         loading: "Sending Message..."
@@ -51,6 +53,9 @@ const page = (): React.ReactNode => {
                         <div className='flex items-center justify-center max-[500px]:flex-col max-[500px]:w-full gap-4'>
                             <input className='input input-neutral' type="text" name='firstName' placeholder='First Name' />
                             <input className='input input-neutral' type="text" name='lastName' placeholder='Last Name' />
+                        </div>
+                        <div className='flex'>
+                            <input className='input  input-neutral grow' type='tel' required name='phone-number' placeholder='Phone Number' />
                         </div>
                         <div className='flex'>
                             <input className='input  input-neutral grow' type="email" required name='email' placeholder='Email' />

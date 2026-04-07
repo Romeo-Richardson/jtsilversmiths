@@ -4,11 +4,11 @@ import { NextResponse } from "next/server"
 export const POST = async (req: Request) => {
     try {
         await prisma.$connect()
-        const { firstName, lastName, email, subject, message } = await req.json()
-        if (!firstName || !lastName || !email || !subject || !message) {
+        const { firstName, lastName, email, subject, message, phoneNumber } = await req.json()
+        if (!firstName || !lastName || !email || !subject || !message || !phoneNumber) {
             return NextResponse.json({ error: "Failed to recieve inquiry" }, { status: 500 })
         }
-        const newInquiry = await prisma.inquiry.create({ data: { firstName, lastName, email, subject, message } })
+        const newInquiry = await prisma.inquiry.create({ data: { firstName, lastName, email, subject, message, phoneNumber, date: new Date().toDateString() } })
         if (!newInquiry) {
             return NextResponse.json({ error: "Failed to create new inquiry" }, { status: 500 })
         }

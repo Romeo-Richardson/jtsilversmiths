@@ -16,7 +16,7 @@ const Navbar = (): React.ReactNode => {
 
     const navOptions: { name: string, link: string }[] = [{ name: "Home", link: "/" }, { name: "Shop", link: "/shop" }, { name: "About", link: "/about" }, { name: "Contact", link: "/contact" }]
 
-    const { isSignedIn } = useUser()
+    const { isSignedIn, user } = useUser()
 
     const { push } = useRouter()
 
@@ -25,10 +25,12 @@ const Navbar = (): React.ReactNode => {
     const toggleRef = useRef<HTMLInputElement | null>(null)
 
     useEffect(() => {
+
         console.log(path)
         if (path !== "/" && path !== "/about" && path !== "/contact" && path !== "/adminpanel" && path !== "/adminpanel-delete" && path !== "shop" && path !== "/adminpanel-messages") {
             push("/")
         }
+
     }, [])
 
     return (
@@ -76,13 +78,14 @@ const Navbar = (): React.ReactNode => {
                 </div>
             </div>
             <div className='flex items-center gap-2'>
-                {/* {
+                {
                     isSignedIn ? <UserButton></UserButton> :
-                        <button className='btn btn-primary' onClick={() => { push("/sign-in") }}>
-                            <Image src={userImage} height={20} width={20} alt="Cart button"></Image>
-                        </button>
+                        // <button className='btn btn-primary' onClick={() => { push("/sign-in") }}>
+                        //     <Image src={userImage} height={20} width={20} alt="Cart button"></Image>
+                        // </button>
+                        <></>
 
-                } */}
+                }
                 <Cart></Cart>
             </div>
         </div>

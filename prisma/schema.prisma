@@ -32,10 +32,12 @@ model items {
 }
 
 model inquiry {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  firstName String
-  lastName  String
-  email     String
-  subject   String
-  message   String
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  firstName   String
+  lastName    String
+  date        String?
+  email       String
+  phoneNumber String?
+  subject     String
+  message     String
 }
