@@ -495,7 +495,7 @@ const SideMenu = () => {
                     link: "/",
                 },
                 {
-                    name: "Poiny Tail Holders",
+                    name: "Pony Tail Holders",
                     link: "/",
                 },
                 {
