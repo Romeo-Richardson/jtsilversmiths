@@ -55,6 +55,8 @@ type MainStoreType = {
   setMainCategory: (category: string) => void;
   bosalFilter: BosalFilter | null;
   setBosalFilter: (filter: BosalFilter | null) => void;
+  reloadMessages: boolean;
+  setReloadMessages: (status: boolean) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -86,6 +88,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
   cartQuantity: 0,
   setCartQuantity: (quantity) => {
     set({ cartQuantity: quantity });
+  },
+  reloadMessages: false,
+  setReloadMessages: (status: boolean) => {
+    set({
+      reloadMessages: status,
+    });
   },
   cart: [],
   addToCart: (item: cartItem) => {
