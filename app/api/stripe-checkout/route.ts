@@ -83,8 +83,6 @@ export const POST = async (req: Request) => {
     const stripeSession = await stripe.checkout.sessions.create({
       line_items: [...lineItems],
       mode: "payment",
-      customer_email: "customer@example.com",
-      payment_intent_data: { receipt_email: "jtsilversmiths@yahoo.com" },
       billing_address_collection: "required",
       phone_number_collection: { enabled: true },
       shipping_address_collection: { allowed_countries: ["US", "CA"] },

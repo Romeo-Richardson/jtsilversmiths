@@ -17,6 +17,7 @@ const page = () => {
   const { isSignedIn, user } = useUser();
   const { signOut } = useClerk();
 
+  const [isDisbled, setIsDisabled] = useState(false)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const [itemDetails, setItemDetails] = useState({});
@@ -398,7 +399,9 @@ const page = () => {
 
                 // console.log(formData.get("itemPrice"))
                 // submit(formData)
+                setIsDisabled(true)
                 submit(e);
+                setIsDisabled(false)
               }}
             >
               {inputOptions.map((item, key) => {
@@ -468,7 +471,7 @@ const page = () => {
                   accept="image/*"
                 />
               </div>
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-primary" type="submit" disabled={isDisbled}>
                 Submit
               </button>
             </form>
