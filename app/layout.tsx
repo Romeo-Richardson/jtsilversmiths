@@ -1,5 +1,3 @@
-
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -23,7 +21,23 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "JTSilversmiths | B-C Silversmiths | JTS",
-  description: "Vintage Western Silver Show Horse bits, mouthpieces, snaffles and more",
+  description:
+    "Vintage Western Silver Show Horse bits, mouthpieces, snaffles, accessories and more",
+  keywords: [
+    "Horse Bits",
+    "Horse Bit",
+    "Western Silver Show",
+    "Horse Mouthpiece",
+    "Snaffles",
+    "Horse Accessories",
+    "Horse Hair",
+    "JTSilversmiths",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+  },
 };
 
 export default function RootLayout({

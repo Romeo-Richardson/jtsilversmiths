@@ -14,8 +14,10 @@ import { useMainStore } from "../utils/global";
 import { getItems } from "../utils/apiCalls";
 import NavInput from "./NavInput";
 import BosalFilter from "./BosalFilter";
+import { useParams } from "next/navigation";
 
 const ShopDisplay = (): React.ReactNode => {
+  const params = useParams();
   const {
     searchQueryInput,
     currentlySelectedQuery,
@@ -64,6 +66,10 @@ const ShopDisplay = (): React.ReactNode => {
   useEffect(() => {
     console.log(displayedItems);
   }, [displayedItems]);
+
+  useEffect(() => {
+    console.log(params);
+  });
 
   return (
     <div className=" grow flex flex-col">

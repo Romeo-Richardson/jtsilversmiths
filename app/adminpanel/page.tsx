@@ -17,7 +17,7 @@ const page = () => {
   const { isSignedIn, user } = useUser();
   const { signOut } = useClerk();
 
-  const [isDisbled, setIsDisabled] = useState(false)
+  const [isDisbled, setIsDisabled] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const [itemDetails, setItemDetails] = useState({});
@@ -212,6 +212,28 @@ const page = () => {
     { name: "22 Feet", status: false },
     { name: "24 Feet", status: false },
     { name: "26 Feet", status: false },
+    { name: "Tassel Style 1", status: false },
+    { name: "Tassel Style 2", status: false },
+    { name: "Tassel Style 3", status: false },
+    { name: "Tassel Style 4", status: false },
+    { name: "Tassel Style 5", status: false },
+    { name: "Tassel Style 6", status: false },
+    { name: "Tassel Style 7", status: false },
+    { name: "Tassel Style 8", status: false },
+    { name: "Tassel Style 9", status: false },
+    { name: "KC Style 1", status: false },
+    { name: "KC Style 2", status: false },
+    { name: "KC Style 3", status: false },
+    { name: "KC Style 4", status: false },
+    { name: "KC Style 5", status: false },
+    { name: "KC Style 6", status: false },
+    { name: "KC Style 7", status: false },
+    { name: "KC Style 8", status: false },
+    { name: "KC Style 9", status: false },
+    { name: "KC Style 10", status: false },
+    { name: "Other Key Chains", status: false },
+    { name: "Other Tassels", status: false },
+    { name: "w/ Silver Ferrule", status: false },
   ]);
 
   const [inputOptions, setInputOptions] = useState<
@@ -399,9 +421,9 @@ const page = () => {
 
                 // console.log(formData.get("itemPrice"))
                 // submit(formData)
-                setIsDisabled(true)
+                setIsDisabled(true);
                 submit(e);
-                setIsDisabled(false)
+                setIsDisabled(false);
               }}
             >
               {inputOptions.map((item, key) => {
@@ -471,7 +493,11 @@ const page = () => {
                   accept="image/*"
                 />
               </div>
-              <button className="btn btn-primary" type="submit" disabled={isDisbled}>
+              <button
+                className="btn btn-primary"
+                type="submit"
+                disabled={isDisbled}
+              >
                 Submit
               </button>
             </form>

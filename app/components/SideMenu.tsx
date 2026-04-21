@@ -564,10 +564,106 @@ const SideMenu = () => {
         {
           name: "Shoofly/Tassels",
           link: "/",
+          subItems: [
+            {
+              name: "Tassel Style 1",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 2",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 3",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 4",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 5",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 6",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 7",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 8",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 9",
+              link: "/",
+            },
+            {
+              name: "Tassel Style 10",
+              link: "/",
+            },
+            {
+              name: "w/ Silver Ferrule",
+              link: "/",
+            },
+            {
+              name: "Other Tassels",
+              link: "/",
+            },
+          ],
         },
         {
           name: "Key Chains",
           link: "/",
+          subItems: [
+            {
+              name: "KC Style 1",
+              link: "/",
+            },
+            {
+              name: "KC Style 2",
+              link: "/",
+            },
+            {
+              name: "KC Style 3",
+              link: "/",
+            },
+            {
+              name: "KC Style 4",
+              link: "/",
+            },
+            {
+              name: "KC Style 5",
+              link: "/",
+            },
+            {
+              name: "KC Style 6",
+              link: "/",
+            },
+            {
+              name: "KC Style 7",
+              link: "/",
+            },
+            {
+              name: "KC Style 8",
+              link: "/",
+            },
+            {
+              name: "KC Style 9",
+              link: "/",
+            },
+            {
+              name: "KC Style 10",
+              link: "/",
+            },
+            {
+              name: "Other Key Chains",
+              link: "/",
+            },
+          ],
         },
         {
           name: "Jewlery",
