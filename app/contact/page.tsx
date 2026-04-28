@@ -5,26 +5,26 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "JTSilversmiths Contact",
-  description: "JT Silversmiths - Contact",
-  keywords: [
-    "Horse Bits",
-    "Horse Bit",
-    "Western Silver Show",
-    "Horse Mouthpiece",
-    "Snaffles",
-    "Horse Accessories",
-    "Horse Hair",
-    "JTSilversmiths",
-    "JTSilversmiths Contact",
-  ],
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-  },
-};
+// export const metadata: Metadata = {
+//   title: "JTSilversmiths Contact",
+//   description: "JT Silversmiths - Contact",
+//   keywords: [
+//     "Horse Bits",
+//     "Horse Bit",
+//     "Western Silver Show",
+//     "Horse Mouthpiece",
+//     "Snaffles",
+//     "Horse Accessories",
+//     "Horse Hair",
+//     "JTSilversmiths",
+//     "JTSilversmiths Contact",
+//   ],
+//   robots: {
+//     index: true,
+//     follow: true,
+//     nocache: false,
+//   },
+// };
 
 const page = (): React.ReactNode => {
   const [isMessageSent, setIsMessageSent] = useState(false);
