@@ -13,8 +13,8 @@ export const GET = async (req: NextRequest) => {
     }
 
     await prisma.items.updateMany({
-      where: { categories: { has: "12 Inch Length" } },
-      data: { categories: { push: "Tassel Style 1" } },
+      where: { categories: { has: "Tassel Style 1" } },
+      data: { categories: { push: "Large Tassel" } },
     });
 
     return NextResponse.json({ success: true }, { status: 200 });
