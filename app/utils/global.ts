@@ -44,8 +44,8 @@ type MainStoreType = {
   addToCart: (item: cartItem) => void;
   removeFromCart: (item: cartItem) => void;
   setCart: (cart: any) => void;
-  currentlySelectedQuery: string | null;
-  setCurrentlySelectedQuery: (query: string | null) => void;
+  currentlySelectedQuery: any;
+  setCurrentlySelectedQuery: (query: any) => void;
   displayedItems: items[];
   setDisplayedItems: (items: items[]) => void;
   setupQuery: (fallbackData: any) => void;

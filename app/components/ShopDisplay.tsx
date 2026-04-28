@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useEffect } from "react";
+import React, { use, useEffect, useLayoutEffect } from "react";
 import ItemCard, { ItemCardType } from "./ItemCard";
 import item1 from "../assets/item-example-1.jpg";
 import item2 from "../assets/item-example-2.jpg";
@@ -18,17 +18,27 @@ import { useParams } from "next/navigation";
 
 const ShopDisplay = (): React.ReactNode => {
   const params = useParams();
+  const { data, isFetched } = useQuery({
+    queryKey: ["Items"],
+    queryFn: getItems,
+  });
   const {
     searchQueryInput,
     currentlySelectedQuery,
     setDisplayedItems,
     displayedItems,
+    setCurrentlySelectedQuery,
+    setupQuery,
+    setSearchQueryInput,
   } = useMainStore();
 
-  const { data, isFetched } = useQuery({
-    queryKey: ["Items"],
-    queryFn: getItems,
-  });
+  useLayoutEffect(() => {
+    if (params.id && isFetched) {
+      setCurrentlySelectedQuery(null);
+      setSearchQueryInput(decodeURIComponent(params.id.toString()));
+      setupQuery(data.data);
+    }
+  }, [data]);
 
   if (isFetched) {
     console.log(data);

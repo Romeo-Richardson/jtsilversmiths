@@ -27,20 +27,20 @@ const Navbar = (): React.ReactNode => {
 
   const toggleRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    console.log(path);
-    if (
-      path !== "/" &&
-      path !== "/about" &&
-      path !== "/contact" &&
-      path !== "/adminpanel" &&
-      path !== "/adminpanel-delete" &&
-      path !== "shop" &&
-      path !== "/adminpanel-messages"
-    ) {
-      push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log(path);
+  //   if (
+  //     path !== "/" &&
+  //     path !== "/about" &&
+  //     path !== "/contact" &&
+  //     path !== "/adminpanel" &&
+  //     path !== "/adminpanel-delete" &&
+  //     path !== "shop" &&
+  //     path !== "/adminpanel-messages"
+  //   ) {
+  //     push("/");
+  //   }
+  // }, []);
 
   return (
     <div className="h-22 bg-primary text-primary-content  flex items-center justify-between max-[700px]:px-2 px-12">

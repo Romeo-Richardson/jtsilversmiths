@@ -221,7 +221,7 @@ const page = () => {
     { name: "Tassel Style 7", status: false },
     { name: "Tassel Style 8", status: false },
     { name: "Tassel Style 9", status: false },
-    { name: "KC Style 1", status: false },
+    { name: "KC Style 1 (KC-16)", status: false },
     { name: "KC Style 2", status: false },
     { name: "KC Style 3", status: false },
     { name: "KC Style 4", status: false },

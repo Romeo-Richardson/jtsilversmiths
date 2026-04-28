@@ -620,7 +620,7 @@ const SideMenu = () => {
           link: "/",
           subItems: [
             {
-              name: "KC Style 1",
+              name: "KC Style 1 (KC-16)",
               link: "/",
             },
             {
