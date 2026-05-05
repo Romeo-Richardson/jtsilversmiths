@@ -1,7 +1,7 @@
 import { Metadata, MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseURL = "jtsilversmiths.com";
+  const baseURL = "https://www.jtsilversmiths.com";
   return [
     {
       url: baseURL,
@@ -18,13 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseURL}/about`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseURL}/shop`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 0.9,
     },
   ];
