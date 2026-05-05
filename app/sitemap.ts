@@ -9,5 +9,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${baseURL}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseURL}/about`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseURL}/shop`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
 }
