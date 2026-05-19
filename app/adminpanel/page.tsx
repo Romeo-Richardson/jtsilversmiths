@@ -85,7 +85,6 @@ const page = () => {
     { name: "Dark Shade", status: false },
     { name: "Key Chains", status: false },
     { name: "Shoofly/Tassels", status: false },
-    { name: "Charro Reins", status: false },
     { name: "Roping Reins", status: false },
     { name: "Split Reins", status: false },
     { name: "Charro Reins", status: false },
