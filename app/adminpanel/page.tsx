@@ -212,6 +212,7 @@ const page = () => {
     { name: "22 Feet", status: false },
     { name: "24 Feet", status: false },
     { name: "26 Feet", status: false },
+    { name: "2 Strands", status: false },
     { name: "Tassel Style 1", status: false },
     { name: "Tassel Style 2", status: false },
     { name: "Tassel Style 3", status: false },
