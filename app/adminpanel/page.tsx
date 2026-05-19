@@ -205,6 +205,7 @@ const page = () => {
     { name: "Rein Connectors", status: false },
     { name: "Riata", status: false },
     { name: "Reins", status: false },
+    { name: "Romal Reins", status: false },
     { name: "Straps", status: false },
     { name: "Big Concho", status: false },
     { name: "Rawhide & Leather", status: false },
