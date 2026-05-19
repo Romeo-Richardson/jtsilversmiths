@@ -108,7 +108,7 @@ const page = () => {
     { name: "Other", status: false },
     { name: "Barrette", status: false },
     { name: "Hair Clip", status: false },
-    { name: "Pony Tail Holder", status: false },
+    { name: "Pony Tail Holders", status: false },
     { name: "Comb", status: false },
     { name: "Hair Accessorie", status: false },
     { name: "Argentine Snaffles", status: false },
