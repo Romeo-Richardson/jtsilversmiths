@@ -18,7 +18,6 @@ export default function sitemap(): MetadataRoute.Robots {
         userAgent: "Googlebot",
         allow: "/",
         disallow: [
-          "/api/",
           "/adminpanel/",
           "/adminpanel-delete/",
           "/adminpanel-messages/",
