@@ -70,6 +70,7 @@ const page = () => {
     { name: "7 Strands", status: false },
     { name: "8  Strands", status: false },
     { name: "Bracelets", status: false },
+    { name: "Jewlery", status: false },
     { name: "Earrings", status: false },
     { name: "Sets", status: false },
     { name: "Cinch", status: false },
@@ -241,6 +242,9 @@ const page = () => {
     { name: "Other Key Chains", status: false },
     { name: "Other Tassels", status: false },
     { name: "w/ Silver Ferrule", status: false },
+    { name: "Rawels", status: false },
+    { name: "Misc. Spur Accessories", status: false },
+    { name: "Spur Accessories", status: false },
   ]);
 
   const [inputOptions, setInputOptions] = useState<

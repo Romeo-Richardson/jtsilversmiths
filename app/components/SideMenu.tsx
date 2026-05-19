@@ -708,8 +708,18 @@ const SideMenu = () => {
       link: "/",
       items: [
         {
-          name: "Accessories",
+          name: "Spur Accessories",
           link: "/",
+          subItems: [
+            {
+              name: "Rawels",
+              link: "/",
+            },
+            {
+              name: "Misc. Spur Accessories",
+              link: "/",
+            },
+          ],
         },
         {
           name: "For Cutting Horses",
