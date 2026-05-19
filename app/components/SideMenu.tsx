@@ -734,7 +734,7 @@ const SideMenu = () => {
           link: "/",
         },
         {
-          name: "w/o Silver",
+          name: "Spurs w/o Silver",
           link: "/",
         },
       ],

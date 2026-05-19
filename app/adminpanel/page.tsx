@@ -245,6 +245,10 @@ const page = () => {
     { name: "Rawels", status: false },
     { name: "Misc. Spur Accessories", status: false },
     { name: "Spur Accessories", status: false },
+    { name: "Spur Best Sellers", status: false },
+    { name: "Western Pleasure", status: false },
+    { name: "Spurs w/o Silver", status: false },
+    { name: "For Cutting Horses", status: false },
   ]);
 
   const [inputOptions, setInputOptions] = useState<
