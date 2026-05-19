@@ -712,7 +712,7 @@ const SideMenu = () => {
           link: "/",
           subItems: [
             {
-              name: "Rawels",
+              name: "Rowels",
               link: "/",
             },
             {

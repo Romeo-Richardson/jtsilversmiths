@@ -242,7 +242,7 @@ const page = () => {
     { name: "Other Key Chains", status: false },
     { name: "Other Tassels", status: false },
     { name: "w/ Silver Ferrule", status: false },
-    { name: "Rawels", status: false },
+    { name: "Rowels", status: false },
     { name: "Misc. Spur Accessories", status: false },
     { name: "Spur Accessories", status: false },
     { name: "Spur Best Sellers", status: false },
