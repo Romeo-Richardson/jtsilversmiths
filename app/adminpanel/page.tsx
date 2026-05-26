@@ -257,6 +257,15 @@ const page = () => {
     { name: "w/ Stripes engraved on points (w/o Silver)", status: false },
     { name: "Lots & point", status: false },
     { name: "Regular Rowels", status: false },
+    { name: "Patina (Rust)", status: false },
+    { name: "1 Inch", status: false },
+    { name: "1 1/4 Inches", status: false },
+    { name: "1 1/2 Inches", status: false },
+    { name: "1 3/4 Inches", status: false },
+    { name: "2 Inches", status: false },
+    { name: "2 1/4 Inches", status: false },
+    { name: "2 1/2 Inches", status: false },
+    { name: "2 3/4 Inches", status: false },
   ]);
 
   const [inputOptions, setInputOptions] = useState<

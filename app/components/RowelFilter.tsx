@@ -22,9 +22,17 @@ const RowelFilter = (): React.ReactNode => {
     "Regular Rowels",
   ];
 
-  const sizes = ["10 Inch Length", "12 Inch Length"];
+  const sizes = [
+    "1 Inch",
+    "1 1/4 Inches",
+    "1 1/2 Inches",
+    "1 3/4 Inches",
+    "2 Inches",
+    "2 1/4 Inches",
+    "2 1/2 Inches",
+  ];
 
-  const colors = ["Black", "White"];
+  const colors = ["Patina (Rust)", "Black", "Blue", "Stainless Steel"];
 
   const { data } = useQuery<any>({
     queryKey: ["Items"],
