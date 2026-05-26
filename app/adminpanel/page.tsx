@@ -255,7 +255,7 @@ const page = () => {
     { name: "w/ Silver dots on outside the points", status: false },
     { name: "w/ Chevron Stripes + matching jingle bobs", status: false },
     { name: "w/ Stripes engraved on points (w/o Silver)", status: false },
-    { name: "Lots & point", status: false },
+    { name: "w/ Lots of points", status: false },
     { name: "Regular Rowels", status: false },
     { name: "Patina (Rust)", status: false },
     { name: "1 Inch", status: false },
