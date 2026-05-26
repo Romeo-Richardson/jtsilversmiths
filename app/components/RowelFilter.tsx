@@ -18,7 +18,7 @@ const RowelFilter = (): React.ReactNode => {
     "w/ Silver dots on outside the points",
     "w/ Chevron Stripes + matching jingle bobs",
     "w/ Stripes engraved on points (w/o Silver)",
-    "Lots & point",
+    "w/ Lots of points",
     "Regular Rowels",
   ];
 
