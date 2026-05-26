@@ -5,6 +5,7 @@ import { useMainStore } from "../utils/global";
 import preview from "../assets/visibility.png";
 import Image, { StaticImageData } from "next/image";
 import sackImage from "../assets/sackett.webp";
+import { items } from "@prisma/client";
 
 const AddToCart = ({
   name,
@@ -21,8 +22,14 @@ const AddToCart = ({
 
   const [disabled, setDisabled] = useState<boolean>(true);
 
-  const { addToCart, setCurrentlySelectedItem, currentlySelectedItem } =
-    useMainStore();
+  const {
+    addToCart,
+    setCurrentlySelectedItem,
+    currentlySelectedItem,
+    setRowelModifier,
+    rowelPriceModiferFunc,
+    rowelModifier,
+  } = useMainStore();
 
   const [itemWidth, setItemWidth] = useState<string>(`4-3/4" (Arabian)`);
 
@@ -36,6 +43,9 @@ const AddToCart = ({
   const [itemPositionOfBraces, setItemPositionOfBraces] = useState<string>(
     "Position A (Center of Cheek)",
   );
+
+  const [rowelSize, setRowelSize] = useState<string>("1 Inch");
+  const [rowelColor, setRowelColor] = useState<string>("Patina (Rust)");
 
   const [itemHeight, setItemHeight] = useState<string>("3");
 
@@ -67,6 +77,16 @@ const AddToCart = ({
     bitMovement: ["Loose jaw", "Regular", "Solid (Welded)"],
     mpAngle: ["1. Normal", "2. Slight drop", "3. Straight (Drop towards back)"],
   };
+
+  const rowelSizes: string[] = [
+    "1 Inch",
+    "1 1/4 Inches",
+    "1 1/2 Inches",
+    "1 3/4 Inches",
+    "2 Inches",
+    "2 1/4 Inches",
+    "2 1/2 Inches",
+  ];
 
   const itemFinishes: string[] = [
     "Stainless Steel with .925 Silver Overlay (SOS)",
@@ -116,6 +136,13 @@ const AddToCart = ({
     "B-1631",
     "B-1641",
   ];
+
+  const rowelColors: string[] = [
+    "Patina (Rust)",
+    "Black",
+    "Blue",
+    "Stainless Steel",
+  ];
   const spadeList: number[] = [
     13, 14, 17, 30, 59, 63, 66, 67, 71, 72, 73, 74, 75, 76, 77, 78, 80, 84, 85,
     101,
@@ -144,6 +171,19 @@ const AddToCart = ({
     currentlySelectedItem?.categories?.includes("Snaffle") &&
       setItemStyle(`MP:${snaffleMpOptions[0]}`);
   }, [currentlySelectedItem]);
+
+  useEffect(() => {
+    console.log(rowelModifier);
+    if (currentlySelectedItem) {
+      const cloneItem = currentlySelectedItem;
+      cloneItem.price = rowelPriceModiferFunc(cloneItem as items);
+      setCurrentlySelectedItem(
+        cloneItem.name,
+        cloneItem.price,
+        cloneItem.categories!,
+      );
+    }
+  }, [rowelModifier]);
 
   const snaffleMpOptions = [25, 43, 44, 45, 46, 55, 56, 99];
 
@@ -211,7 +251,60 @@ const AddToCart = ({
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box space-y-2">
           <h3 className="font-bold text-lg mb-4">{`${currentlySelectedItem?.name} ($${currentlySelectedItem?.price})`}</h3>
-
+          {currentlySelectedItem?.categories?.includes("Rowels") ? (
+            <>
+              <span>
+                <p className="pb-1">Select Color</p>
+                <select
+                  defaultValue="Select Color"
+                  value={rowelColor}
+                  onChange={(e) => {
+                    setRowelColor(e.currentTarget.value);
+                  }}
+                  className="select mb-6"
+                >
+                  {rowelColors.map((item, key) => {
+                    return <option key={key}>{item}</option>;
+                  })}
+                </select>
+              </span>
+              <span>
+                <p className="pb-1">Select Size</p>
+                <select
+                  defaultValue="Select Size"
+                  value={rowelSize}
+                  onChange={(e) => {
+                    setRowelSize(e.currentTarget.value);
+                    console.log("tryingx");
+                    if (rowelSizes.indexOf(e.currentTarget.value) === 0) {
+                      setRowelModifier(2);
+                    } else
+                      setRowelModifier(
+                        2 + rowelSizes.indexOf(e.currentTarget.value) * 2,
+                      );
+                  }}
+                  className="select mb-6"
+                >
+                  {rowelSizes.map((item, key) => {
+                    return (
+                      <option
+                        key={key}
+                        onClick={() => {
+                          if (key === 0) {
+                            setRowelModifier(2);
+                          } else setRowelModifier(2 + key * 2);
+                        }}
+                      >
+                        {item}
+                      </option>
+                    );
+                  })}
+                </select>
+              </span>
+            </>
+          ) : (
+            <></>
+          )}
           {currentlySelectedItem?.categories?.includes("Mouthpiece") && (
             <>
               <span>
@@ -589,6 +682,8 @@ const AddToCart = ({
                         ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Position of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}`
                         : "",
                     });
+                  setRowelColor("Patina (Rust)");
+                  setRowelSize("1 Inch");
                   setPurchaseOption("Purchase seperately");
                   setItemWidth(`4-3/4" (Arabian)`);
                   setItemStyle("MP-1");

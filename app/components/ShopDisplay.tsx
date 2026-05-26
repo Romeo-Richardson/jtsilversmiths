@@ -10,7 +10,7 @@ import DaisyItemCard from "./DaisyItemCard";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { items } from "@prisma/client";
-import { useMainStore } from "../utils/global";
+import { cartItem, useMainStore } from "../utils/global";
 import { getItems } from "../utils/apiCalls";
 import NavInput from "./NavInput";
 import BosalFilter from "./BosalFilter";
@@ -25,8 +25,12 @@ const ShopDisplay = (): React.ReactNode => {
   });
   const {
     searchQueryInput,
+    setCurrentlySelectedItem,
+    currentlySelectedItem,
+    rowelModifier,
     currentlySelectedQuery,
     setDisplayedItems,
+    rowelPriceModiferFunc,
     displayedItems,
     setCurrentlySelectedQuery,
     setupQuery,
@@ -82,6 +86,32 @@ const ShopDisplay = (): React.ReactNode => {
     console.log(params);
   });
 
+  // const priceModifications = (item: items): number => {
+  //   if (item.categories.includes("Horse Bit")) {
+  //     return Math.round(item.price + item.price * 0.32809) - 0.01;
+  //   } else if (item.categories.includes("Rowels")) {
+  //     if (item.categories.includes("Clover leaf rowels")) {
+  //       return (9 + rowelModifier) * 2.4;
+  //     } else if (item.categories.includes("w/ Silver on outside the points")) {
+  //       return (40 + rowelModifier) * 2.4;
+  //     } else if (
+  //       item.categories.includes("w/ Chevron stripes + matching jingle bobs")
+  //     ) {
+  //       return (18 + rowelModifier) * 2.4;
+  //     } else if (
+  //       item.categories.includes("w/ Stripes engraved on points (w/o silver)")
+  //     ) {
+  //       return (11 + rowelModifier) * 2.4;
+  //     } else if (
+  //       item.categories.includes("w/ Silver dots on outside the points")
+  //     ) {
+  //       return (25 + rowelModifier) * 2.4;
+  //     } else return (10 + rowelModifier) * 2.4;
+  //   } else {
+  //     return Math.round(item.price + item.price * 0.1) - 0.01;
+  //   }
+  // };
+
   return (
     <div className=" grow flex flex-col">
       <div className="bg-neutral py-2 pl-4">
@@ -116,11 +146,7 @@ const ShopDisplay = (): React.ReactNode => {
                       asIsSize={item.asIsSize!}
                       asIsColor={item.asIsColor!}
                       asIsMaterial={item.asIsMaterial!}
-                      price={
-                        item.categories.includes("Horse Bit")
-                          ? Math.round(item.price + item.price * 0.32809) - 0.01
-                          : Math.round(item.price + item.price * 0.1) - 0.01
-                      }
+                      price={rowelPriceModiferFunc(item)}
                       asIsStyle={item.asIsStyle!}
                       asIsMouthpieceAngle={item.asIsMouthpieceAngle!}
                       asIsCopperHoodAndCricket={
@@ -148,11 +174,7 @@ const ShopDisplay = (): React.ReactNode => {
                     asIsSize={item.asIsSize!}
                     asIsColor={item.asIsColor!}
                     asIsMaterial={item.asIsMaterial!}
-                    price={
-                      item.categories.includes("Horse Bit")
-                        ? Math.round(item.price + item.price * 0.32809) - 0.01
-                        : Math.round(item.price + item.price * 0.1) - 0.01
-                    }
+                    price={rowelPriceModiferFunc(item)}
                     asIsStyle={item.asIsStyle!}
                     asIsMouthpieceAngle={item.asIsMouthpieceAngle!}
                     image={item.image}
