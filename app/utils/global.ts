@@ -107,22 +107,22 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       return Math.round(item.price + item.price * 0.32809) - 0.01;
     } else if (item.categories.includes("Rowels")) {
       if (item.categories.includes("Clover leaf rowels")) {
-        return (9 + get().rowelModifier) * 2.4;
+        return Math.round((9 + get().rowelModifier) * 2.4) - 0.01;
       } else if (item.categories.includes("w/ Silver on outside the points")) {
-        return (40 + get().rowelModifier) * 2.4;
+        return Math.round((40 + get().rowelModifier) * 2.4) - 0.01;
       } else if (
         item.categories.includes("w/ Chevron Stripes + matching jingle bobs")
       ) {
-        return (18 + get().rowelModifier) * 2.4;
+        return Math.round((18 + get().rowelModifier) * 2.4) - 0.01;
       } else if (
         item.categories.includes("w/ Stripes engraved on points (w/o Silver)")
       ) {
-        return (11 + get().rowelModifier) * 2.4;
+        return Math.round((11 + get().rowelModifier) * 2.4) - 0.01;
       } else if (
         item.categories.includes("w/ Silver dots on outside the points")
       ) {
-        return (25 + get().rowelModifier) * 2.4;
-      } else return (10 + get().rowelModifier) * 2.4;
+        return Math.round((25 + get().rowelModifier) * 2.4) - 0.01;
+      } else return Math.round((10 + get().rowelModifier) * 2.4) - 0.01;
     } else {
       return Math.round(item.price + item.price * 0.1) - 0.01;
     }
