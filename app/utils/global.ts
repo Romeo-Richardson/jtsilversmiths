@@ -25,6 +25,12 @@ type BosalFilter = {
   color: string;
 };
 
+type RowelFilter = {
+  rowelType: string;
+  size: string;
+  color: string;
+};
+
 type MainStoreType = {
   searchQueryInput: FormDataEntryValue | null;
   setSearchQueryInput: (inputValue: FormDataEntryValue | null) => void;
@@ -55,6 +61,8 @@ type MainStoreType = {
   setMainCategory: (category: string) => void;
   bosalFilter: BosalFilter | null;
   setBosalFilter: (filter: BosalFilter | null) => void;
+  rowelFilter: RowelFilter | null;
+  setRowelFilter: (filter: RowelFilter | null) => void;
   reloadMessages: boolean;
   setReloadMessages: (status: boolean) => void;
 };
@@ -72,6 +80,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       mainCategory: category,
     });
     console.log(get().mainCategory);
+  },
+  rowelFilter: null,
+  setRowelFilter: (filter) => {
+    set({
+      rowelFilter: filter,
+    });
   },
   bosalFilter: null,
   setBosalFilter: (filter) => {

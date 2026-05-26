@@ -243,12 +243,20 @@ const page = () => {
     { name: "Other Tassels", status: false },
     { name: "w/ Silver Ferrule", status: false },
     { name: "Rowels", status: false },
+    { name: "Spur", status: false },
     { name: "Misc. Spur Accessories", status: false },
     { name: "Spur Accessories", status: false },
     { name: "Spur Best Sellers", status: false },
     { name: "Western Pleasure", status: false },
     { name: "Spurs w/o Silver", status: false },
     { name: "For Cutting Horses", status: false },
+    { name: "Clover leaf rowels", status: false },
+    { name: "w/ Silver on outside the points", status: false },
+    { name: "w/ Silver dots on outside the points", status: false },
+    { name: "w/ Chevron Stripes + matching jingle bobs", status: false },
+    { name: "w/ Stripes engraved on points (w/o Silver)", status: false },
+    { name: "Lots & point", status: false },
+    { name: "Regular Rowels", status: false },
   ]);
 
   const [inputOptions, setInputOptions] = useState<
