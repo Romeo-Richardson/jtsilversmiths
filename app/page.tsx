@@ -5,6 +5,28 @@ import Navbar from "./components/Navbar";
 import MainHeader from "./components/MainHeader";
 import BestSellers from "./components/BestSellers";
 import WhatsNew from "./components/WhatsNew";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "JTSilversmiths | B-C Silversmiths | JTS",
+  description:
+    "Vintage Western Silver Show Horse bits, mouthpieces, snaffles, accessories and more",
+  keywords: [
+    "Horse Bits",
+    "Horse Bit",
+    "Western Silver Show",
+    "Horse Mouthpiece",
+    "Snaffles",
+    "Horse Accessories",
+    "Horse Hair",
+    "JTSilversmiths",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+  },
+};
 
 export default function Home() {
   return (
