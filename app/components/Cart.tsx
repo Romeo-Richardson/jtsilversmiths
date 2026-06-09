@@ -120,7 +120,7 @@ const Cart = (): React.ReactNode => {
                       {`${item.name}($${item.price}) x${item.quantity}`}
                     </p>
                     <p>
-                      {`Name: ${item.name}, ${item.angle ? `Angle: ${item.angle},` : ""} ${item.bracePosition ? `Position of Braces: ${item.bracePosition},` : ""} ${item.copper ? `Copper: ${item.copper},` : ""} ${item.finish ? `Finish: ${item.finish},` : ""} ${item.height ? `Height: ${item.height},` : ""} ${item.movement ? `Bit Movement: ${item.movement},` : ""} ${item.style ? `Style: ${item.style},` : ""} ${item.width ? `Width: ${item.width},` : ""} ${item.bitEnds ? `Bit Ends With: ${item.bitEnds},` : ""}  ${item.purchaseOption ? `Purchase Option: ${item.purchaseOption},` : ""} Quantity: ${item.quantity}`}
+                      {`Name: ${item.name}, ${item.angle ? `Angle: ${item.angle},` : ""} ${item.bracePosition ? `Position of Braces: ${item.bracePosition},` : ""} ${item.copper ? `Copper: ${item.copper},` : ""} ${item.finish ? `Finish: ${item.finish},` : ""} ${item.height ? `Height: ${item.height},` : ""} ${item.movement ? `Bit Movement: ${item.movement},` : ""} ${item.style ? `Style: ${item.style},` : ""} ${item.width ? `Width: ${item.width},` : ""} ${item.bitEnds ? `Bit Ends With: ${item.bitEnds},` : ""}  ${item.purchaseOption ? `Purchase Option: ${item.purchaseOption},` : ""} Quantity: ${item.quantity}, Description: ${item.description}`}
                     </p>
                   </div>
                   <Image

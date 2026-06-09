@@ -678,9 +678,13 @@ const AddToCart = ({
                         itemStyle.includes("$")
                           ? itemHeight
                           : null,
-                      description: currentlySelectedItem?.name.includes("MP")
-                        ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Position of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}`
-                        : "",
+                      description:
+                        (currentlySelectedItem?.name.includes("MP")
+                          ? `Width: ${itemWidth ? itemWidth : "N/A"}, Movement: ${itemMovement ? itemMovement : "N/A"}, Angle: ${itemAngle ? itemAngle : "N/A"}, Copper on spoon: ${itemCopperOnSpoon ? itemCopperOnSpoon : "N/A"}, Position of braces: ${itemPositionOfBraces ? itemPositionOfBraces : "N/A"}, Height: ${itemHeight ? itemHeight : "N/A"}, Finish: ${itemFinish ? itemFinish : "N/A"}, Mouthpiece Style: ${itemStyle ? itemStyle : "N/A"}, Rowel Style: ${rowelColor ? rowelColor : "N/A"}`
+                          : "") ||
+                        (currentlySelectedItem?.categories?.includes("Rowels")
+                          ? `Rowel Color: ${rowelColor}, Rowel Size: ${rowelSize}`
+                          : "N/A"),
                     });
                   setRowelColor("Patina (Rust)");
                   setRowelSize("1 Inch");
