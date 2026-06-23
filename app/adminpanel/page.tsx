@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  RedirectToSignIn,
-  SignedIn,
-  SignedOut,
-  useClerk,
-  useUser,
-} from "@clerk/nextjs";
 import axios from "axios";
 import { stat } from "node:fs";
 import React, { useEffect, useState } from "react";
@@ -14,8 +7,6 @@ import toast from "react-hot-toast";
 
 const page = () => {
   const [file, setFile] = useState<File | null>(null);
-  const { isSignedIn, user } = useUser();
-  const { signOut } = useClerk();
 
   const [isDisbled, setIsDisabled] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -365,20 +356,6 @@ const page = () => {
     console.log(itemDetails);
   }, [itemDetails]);
 
-  useEffect(() => {
-    if (isSignedIn) {
-      console.log(user.id);
-      if (
-        !(
-          user.id === "user_3C2V9rtJsMvQJUiufTNdnd6bSpf" ||
-          user.id === "user_2yCOu54baLL57crreJsy8nxRKra"
-        )
-      ) {
-        signOut();
-      }
-    }
-  }, [user]);
-
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // console.log(formData.get('image'))
@@ -437,108 +414,103 @@ const page = () => {
 
   return (
     <>
-      <SignedIn>
-        <div className="flex flex-col items-center justify-center">
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border my-4 p-4">
-            <legend className="fieldset-legend">Upload new item</legend>
-            <form
-              className="flex flex-col gap-4 mb-6"
-              onSubmit={(e) => {
-                // e.preventDefault()
-                // const formData = new FormData()
-                // formData.append("image", file)
-                // inputOptions.forEach((item) => {
-                //     formData.append(item.inputName, item.value)
-                // })
+      <div className="flex flex-col items-center justify-center">
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border my-4 p-4">
+          <legend className="fieldset-legend">Upload new item</legend>
+          <form
+            className="flex flex-col gap-4 mb-6"
+            onSubmit={(e) => {
+              // e.preventDefault()
+              // const formData = new FormData()
+              // formData.append("image", file)
+              // inputOptions.forEach((item) => {
+              //     formData.append(item.inputName, item.value)
+              // })
 
-                // console.log(formData.get("itemPrice"))
-                // submit(formData)
-                setIsDisabled(true);
-                submit(e);
-                setIsDisabled(false);
-              }}
-            >
-              {inputOptions.map((item, key) => {
-                return (
-                  <div className="flex flex-col gap-2" key={key}>
-                    <p>{item.inputLabel}</p>
-                    <input
-                      className="input w-full"
-                      name={item.inputName}
-                      onChange={(e) => {
-                        const value = e.currentTarget.value;
-                        setInputOptions((prev) => {
-                          const copy = [...prev];
-                          copy[copy.indexOf(item)].value = value;
-                          return (prev = [...copy]);
-                        });
+              // console.log(formData.get("itemPrice"))
+              // submit(formData)
+              setIsDisabled(true);
+              submit(e);
+              setIsDisabled(false);
+            }}
+          >
+            {inputOptions.map((item, key) => {
+              return (
+                <div className="flex flex-col gap-2" key={key}>
+                  <p>{item.inputLabel}</p>
+                  <input
+                    className="input w-full"
+                    name={item.inputName}
+                    onChange={(e) => {
+                      const value = e.currentTarget.value;
+                      setInputOptions((prev) => {
+                        const copy = [...prev];
+                        copy[copy.indexOf(item)].value = value;
+                        return (prev = [...copy]);
+                      });
+                    }}
+                    type="text"
+                  />
+                </div>
+              );
+            })}
+            <div>
+              <p>Applicable Categories</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {applicableCategories
+                .sort((a, b) =>
+                  a.name.localeCompare(b.name, undefined, {
+                    sensitivity: "base",
+                  }),
+                )
+                .map((item, key) => {
+                  return (
+                    <span
+                      className={`badge hover:cursor-pointer badge-primary ${!selectedCategories.includes(item.name) && "badge-outline"}`}
+                      key={key}
+                      onClick={() => {
+                        if (selectedCategories.includes(item.name)) {
+                          console.log("delete");
+                          setSelectedCategories((catPrev) => {
+                            const catCopy = [...catPrev];
+                            catCopy.splice(catCopy.indexOf(item.name), 1);
+                            return (catPrev = [...catCopy]);
+                          });
+                        } else {
+                          setSelectedCategories(
+                            (catPrev) => (catPrev = [...catPrev, item.name]),
+                          );
+                        }
                       }}
-                      type="text"
-                    />
-                  </div>
-                );
-              })}
-              <div>
-                <p>Applicable Categories</p>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {applicableCategories
-                  .sort((a, b) =>
-                    a.name.localeCompare(b.name, undefined, {
-                      sensitivity: "base",
-                    }),
-                  )
-                  .map((item, key) => {
-                    return (
-                      <span
-                        className={`badge hover:cursor-pointer badge-primary ${!selectedCategories.includes(item.name) && "badge-outline"}`}
-                        key={key}
-                        onClick={() => {
-                          if (selectedCategories.includes(item.name)) {
-                            console.log("delete");
-                            setSelectedCategories((catPrev) => {
-                              const catCopy = [...catPrev];
-                              catCopy.splice(catCopy.indexOf(item.name), 1);
-                              return (catPrev = [...catCopy]);
-                            });
-                          } else {
-                            setSelectedCategories(
-                              (catPrev) => (catPrev = [...catPrev, item.name]),
-                            );
-                          }
-                        }}
-                      >
-                        {item.name}
-                      </span>
-                    );
-                  })}
-              </div>
-              <div>
-                <p>Upload Image</p>
-                <input
-                  className="file-input file-input-primary"
-                  onChange={(e) => {
-                    e.target.files && setFile(e.target.files[0]);
-                  }}
-                  name="image"
-                  type="file"
-                  accept="image/*"
-                />
-              </div>
-              <button
-                className="btn btn-primary"
-                type="submit"
-                disabled={isDisbled}
-              >
-                Submit
-              </button>
-            </form>
-          </fieldset>
-        </div>
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn></RedirectToSignIn>
-      </SignedOut>
+                    >
+                      {item.name}
+                    </span>
+                  );
+                })}
+            </div>
+            <div>
+              <p>Upload Image</p>
+              <input
+                className="file-input file-input-primary"
+                onChange={(e) => {
+                  e.target.files && setFile(e.target.files[0]);
+                }}
+                name="image"
+                type="file"
+                accept="image/*"
+              />
+            </div>
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={isDisbled}
+            >
+              Submit
+            </button>
+          </form>
+        </fieldset>
+      </div>
     </>
   );
 };

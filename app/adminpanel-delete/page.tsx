@@ -1,6 +1,5 @@
 "use client";
 
-import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/clerk-react";
 import { useClerk, useUser } from "@clerk/nextjs";
 import axios from "axios";
 import React, { useEffect } from "react";
@@ -29,30 +28,25 @@ const page = (): React.ReactNode => {
   };
   return (
     <>
-      <SignedIn>
-        <form
-          className="flex flex-col items-center justify-center min-h-screen gap-3"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const formData = new FormData(e.currentTarget);
-            const item = formData.get("item");
-            toast.promise(deleteItem(item), {
-              success: "Item Deleted",
-              loading: "Deleting item...",
-              error: "Failed to delete item",
-            });
-          }}
-        >
-          <p>Item Name</p>
-          <input className="input" name="item" type="text" />
-          <button className="btn btn-primary" type="submit">
-            Delete Item
-          </button>
-        </form>
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn></RedirectToSignIn>
-      </SignedOut>
+      <form
+        className="flex flex-col items-center justify-center min-h-screen gap-3"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const formData = new FormData(e.currentTarget);
+          const item = formData.get("item");
+          toast.promise(deleteItem(item), {
+            success: "Item Deleted",
+            loading: "Deleting item...",
+            error: "Failed to delete item",
+          });
+        }}
+      >
+        <p>Item Name</p>
+        <input className="input" name="item" type="text" />
+        <button className="btn btn-primary" type="submit">
+          Delete Item
+        </button>
+      </form>
     </>
   );
 };
