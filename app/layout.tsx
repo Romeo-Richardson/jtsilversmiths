@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import OptionalNotificationBanner from "./components/OptionalNotificationBanner";
 import MainLogoBanner from "./components/MainLogoBanner";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
 import TanstackProvider from "./utils/TanstackProvider";
 
 const geistSans = Geist({
@@ -46,19 +43,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en" data-theme="emerald">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <TanstackProvider>
-            <OptionalNotificationBanner></OptionalNotificationBanner>
-            <Navbar></Navbar>
-            {children}
-            <Footer></Footer>
-          </TanstackProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" data-theme="emerald">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <TanstackProvider>
+          <OptionalNotificationBanner></OptionalNotificationBanner>
+          <Navbar></Navbar>
+          {children}
+          <Footer></Footer>
+        </TanstackProvider>
+      </body>
+    </html>
   );
 }
