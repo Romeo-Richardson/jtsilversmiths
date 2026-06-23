@@ -4,21 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
-import { UserButton, useUser } from "@clerk/nextjs";
 import { usePathname, useRouter } from "next/navigation";
 import Cart from "./Cart";
 import jtlogo from "../assets/jtlogo1.png";
 
 const Navbar = (): React.ReactNode => {
-  const { isSignedIn, user } = useUser();
   const navOptions: ({ name: string; link: string } | null)[] = [
     { name: "Home", link: "/" },
     { name: "Shop", link: "/shop" },
     { name: "About", link: "/about" },
     { name: "Contact", link: "/contact" },
-    isSignedIn ? { name: "Add Item", link: "/adminpanel" } : null,
-    isSignedIn ? { name: "Delete Item", link: "/adminpanel-delete" } : null,
-    isSignedIn ? { name: "Messages", link: "/adminpanel-messages" } : null,
+    // isSignedIn ? { name: "Add Item", link: "/adminpanel" } : null,
+    // isSignedIn ? { name: "Delete Item", link: "/adminpanel-delete" } : null,
+    // isSignedIn ? { name: "Messages", link: "/adminpanel-messages" } : null,
   ];
 
   const { push } = useRouter();
@@ -121,14 +119,6 @@ const Navbar = (): React.ReactNode => {
         </div>
       </div>
       <div className="flex items-center gap-2">
-        {isSignedIn ? (
-          <UserButton></UserButton>
-        ) : (
-          // <button className='btn btn-primary' onClick={() => { push("/sign-in") }}>
-          //     <Image src={userImage} height={20} width={20} alt="Cart button"></Image>
-          // </button>
-          <></>
-        )}
         <Cart></Cart>
       </div>
     </div>
