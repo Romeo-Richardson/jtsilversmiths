@@ -5,7 +5,6 @@ import OptionalNotificationBanner from "./components/OptionalNotificationBanner"
 import MainLogoBanner from "./components/MainLogoBanner";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { ClerkProvider } from "@clerk/nextjs";
 import TanstackProvider from "./utils/TanstackProvider";
 
 const geistSans = Geist({
