@@ -737,6 +737,52 @@ const SideMenu = () => {
           name: "Spurs w/o Silver",
           link: "/",
         },
+        {
+          name: "Spurs (By type of shank)",
+          link: "/",
+          subItems: [
+            {
+              name: "Straight (Almost none / No drop)",
+              link: "/",
+            },
+            {
+              name: "Curved Down - Quarter inch drop",
+              link: "/",
+            },
+            {
+              name: "Curved Down - Half inch drop",
+              link: "/",
+            },
+            {
+              name: "Up-Turning",
+              link: "/",
+            },
+            {
+              name: "Other Up-Turning",
+              link: "/",
+            },
+            {
+              name: "Goose Neck",
+              link: "/",
+            },
+          ],
+        },
+        {
+          name: "Roping Spurs",
+          link: "/",
+        },
+        {
+          name: "DOUBLE MOUNTED",
+          link: "/",
+        },
+        {
+          name: "Custom - w/ brand etc.",
+          link: "/",
+        },
+        {
+          name: "Special",
+          link: "/",
+        },
       ],
     },
     {

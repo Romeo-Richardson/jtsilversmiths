@@ -2,21 +2,35 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useTransition } from "react";
 
 import { usePathname, useRouter } from "next/navigation";
 import Cart from "./Cart";
 import jtlogo from "../assets/jtlogo1.png";
+import authenticationLayer from "../utils/authLayer";
+import authCheck from "../utils/authCheck";
 
 const Navbar = (): React.ReactNode => {
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+  const [isPending, startTransition] = useTransition();
+  useEffect(() => {
+    startTransition(async () => {
+      try {
+        const auth = await authCheck();
+        setIsSignedIn(auth);
+      } catch {
+        console.log("error");
+      }
+    });
+  }, []);
   const navOptions: ({ name: string; link: string } | null)[] = [
     { name: "Home", link: "/" },
     { name: "Shop", link: "/shop" },
     { name: "About", link: "/about" },
     { name: "Contact", link: "/contact" },
-    // isSignedIn ? { name: "Add Item", link: "/adminpanel" } : null,
-    // isSignedIn ? { name: "Delete Item", link: "/adminpanel-delete" } : null,
-    // isSignedIn ? { name: "Messages", link: "/adminpanel-messages" } : null,
+    isSignedIn ? { name: "Add Item", link: "/adminpanel" } : null,
+    isSignedIn ? { name: "Delete Item", link: "/adminpanel-delete" } : null,
+    isSignedIn ? { name: "Messages", link: "/adminpanel-messages" } : null,
   ];
 
   const { push } = useRouter();

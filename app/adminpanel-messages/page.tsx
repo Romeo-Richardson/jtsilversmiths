@@ -1,13 +1,15 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect } from "react";
+import React, { useEffect, useTransition } from "react";
 import { getInquiries } from "../utils/apiCalls";
 import Inquiry from "../components/Inquiry";
 
 import { useMainStore } from "../utils/global";
+import authenticationLayer from "../utils/authLayer";
 
 const page = (): React.ReactNode => {
+  const [isPending, startTransition] = useTransition();
   const { data, isFetched, refetch } = useQuery({
     queryKey: ["Inquiries"],
     queryFn: () => getInquiries(),
@@ -18,6 +20,16 @@ const page = (): React.ReactNode => {
   if (isFetched) {
     console.log(data);
   }
+
+  useEffect(() => {
+    startTransition(async () => {
+      try {
+        await authenticationLayer();
+      } catch {
+        console.log("error");
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (reloadMessages) {

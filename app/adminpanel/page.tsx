@@ -1,15 +1,21 @@
 "use client";
 
 import axios from "axios";
-import { stat } from "node:fs";
-import React, { useEffect, useState } from "react";
+
+import { redirect } from "next/navigation";
+
+import React, { useEffect, useState, useTransition } from "react";
 import toast from "react-hot-toast";
+import authenticationLayer from "../utils/authLayer";
+import { login } from "../utils/handleLogin";
 
 const page = () => {
   const [file, setFile] = useState<File | null>(null);
 
   const [isDisbled, setIsDisabled] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const [isPending, startTransition] = useTransition();
 
   const [itemDetails, setItemDetails] = useState({});
   const [applicableCategories, setApplicableCategories] = useState<
@@ -257,6 +263,17 @@ const page = () => {
     { name: "2 1/4 Inches", status: false },
     { name: "2 1/2 Inches", status: false },
     { name: "2 3/4 Inches", status: false },
+    { name: "Spurs (By type of shank)", status: false },
+    { name: "Straight (Almost none / No drop)", status: false },
+    { name: "Curved Down - Quarter inch drop", status: false },
+    { name: "Curved Down - Half inch drop", status: false },
+    { name: "Up-Turning", status: false },
+    { name: "Other Up-Turning", status: false },
+    { name: "Goose Neck", status: false },
+    { name: "Roping Spurs", status: false },
+    { name: "DOUBLE MOUNTED", status: false },
+    { name: "Custom - w/ brand etc.", status: false },
+    { name: "Special", status: false },
   ]);
 
   const [inputOptions, setInputOptions] = useState<
@@ -397,6 +414,16 @@ const page = () => {
     });
     console.log(catData);
   };
+
+  useEffect(() => {
+    startTransition(async () => {
+      try {
+        await authenticationLayer();
+      } catch {
+        console.log("error");
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (file) {

@@ -1,14 +1,27 @@
 "use client";
 
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useTransition } from "react";
 import toast from "react-hot-toast";
+import authenticationLayer from "../utils/authLayer";
 
 const page = (): React.ReactNode => {
+  const [isPending, startTransition] = useTransition();
   const deleteItem = async (name: FormDataEntryValue | null) => {
     const { data } = await axios.post("/api/delete-item", { name });
     data ? console.log(data) : console.log("Failed to delete item");
   };
+
+  useEffect(() => {
+    startTransition(async () => {
+      try {
+        await authenticationLayer();
+      } catch {
+        console.log("error");
+      }
+    });
+  }, []);
+
   return (
     <>
       <form
