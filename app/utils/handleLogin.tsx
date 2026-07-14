@@ -8,7 +8,7 @@ export async function login(formData: FormData) {
   const password = String(formData.get("password") || "");
 
   // Replace this with your real database/auth provider check
-  if (email !== "admin@example.com" || password !== "password123") {
+  if (email !== "jtsilversmiths@yahoo.com" || password !== "713Jts2026") {
     redirect("/login?error=invalid");
   }
 
