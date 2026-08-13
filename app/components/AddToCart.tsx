@@ -37,6 +37,10 @@ const AddToCart = ({
 
   const [itemAngle, setItemAngle] = useState<string>("1. Normal");
 
+  const [diameter, setDiameter] = useState<string>("");
+
+  const diameterOptions = [`1/4"`, `3/8"`, `1/2"`, `5/8"`, `3/4"`];
+
   const [itemCopperOnSpoon, setItemCopperOnSpoon] =
     useState<string>("No copper on spade");
 
@@ -318,6 +322,31 @@ const AddToCart = ({
                     className="select mb-6"
                   >
                     {standAloneMoutpieceOptions.map((item, key) => {
+                      return (
+                        <option key={key} value={item}>
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </span>
+              </span>
+            </>
+          )}
+          {currentlySelectedItem?.categories?.includes(
+            "Mecates (Mane Horse Hair)",
+          ) && (
+            <>
+              <span>
+                <p className="pb-1">{"Diameter"}</p>
+                <span className="flex items-center gap-4">
+                  <select
+                    onChange={(e) => {
+                      setDiameter(e.currentTarget.value);
+                    }}
+                    className="select mb-6"
+                  >
+                    {diameterOptions.map((item, key) => {
                       return (
                         <option key={key} value={item}>
                           {item}
