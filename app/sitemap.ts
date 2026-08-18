@@ -1,7 +1,10 @@
 import { Metadata, MetadataRoute } from "next";
+import { getItems } from "./utils/apiCalls";
+import { items } from "@prisma/client";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseURL = "https://www.jtsilversmiths.com";
+  const products = await getItems();
   return [
     {
       url: baseURL,
@@ -27,5 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
     },
+    ...products.data.map((item: items) => {
+      return {
+        url: `${baseURL}/shop/${item.name}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.8,
+      };
+    }),
   ];
 }
