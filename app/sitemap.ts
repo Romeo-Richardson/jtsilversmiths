@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...products.data.map((item: items) => {
       return {
-        url: `${baseURL}/shop/${decodeURIComponent(item.name)}`,
+        url: `${baseURL}/shop/${encodeURIComponent(item.name)}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.8,
