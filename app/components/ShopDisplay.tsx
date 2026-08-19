@@ -16,6 +16,7 @@ import NavInput from "./NavInput";
 import BosalFilter from "./BosalFilter";
 import { useParams } from "next/navigation";
 import RowelFilter from "./RowelFilter";
+import MecateFilter from "./MecateFilter";
 
 const ShopDisplay = (): React.ReactNode => {
   const params = useParams();
@@ -124,6 +125,12 @@ const ShopDisplay = (): React.ReactNode => {
         currentlySelectedQuery === "Bosalitas" ||
         currentlySelectedQuery === "Broken Nose Bosalitas") && (
         <BosalFilter></BosalFilter>
+      )}
+      {(currentlySelectedQuery === "Mecates (Mane Horse Hair)" ||
+        currentlySelectedQuery === "4 Strands" ||
+        currentlySelectedQuery === "6 Strands" ||
+        currentlySelectedQuery === "8 Strands") && (
+        <MecateFilter></MecateFilter>
       )}
       {currentlySelectedQuery === "Rowels" && <RowelFilter></RowelFilter>}
       <div className="min-[701px]:hidden bg-base-200 py-2 pl-4">

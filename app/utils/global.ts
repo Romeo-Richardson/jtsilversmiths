@@ -31,6 +31,12 @@ type RowelFilter = {
   color: string;
 };
 
+type MecateFilter = {
+  length: string;
+  diameter: string;
+  color: string;
+};
+
 type MainStoreType = {
   searchQueryInput: FormDataEntryValue | null;
   setSearchQueryInput: (inputValue: FormDataEntryValue | null) => void;
@@ -68,6 +74,8 @@ type MainStoreType = {
   rowelModifier: number;
   setRowelModifier: (mod: number) => void;
   rowelPriceModiferFunc: (item: items) => number;
+  mecateFilter: MecateFilter | null;
+  setMecateFilter: (filter: MecateFilter | null) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -95,6 +103,10 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
     set({
       bosalFilter: filter,
     });
+  },
+  mecateFilter: null,
+  setMecateFilter: (filter) => {
+    set({ mecateFilter: filter });
   },
   rowelModifier: 2,
   setRowelModifier: (mod) => {
@@ -285,6 +297,28 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             item.categories.includes(get().bosalFilter?.plait!) &&
             item.categories.includes(get().bosalFilter?.diameter!) &&
             item.categories.includes(get().bosalFilter?.color!) &&
+            !item.categories.includes("")
+          ) {
+            return item;
+          }
+        })
+        .map((x: any) => {
+          if (x !== undefined) {
+            return x;
+          }
+        });
+      console.log(filteredItems);
+      get().setDisplayedItems(filteredItems);
+    }
+
+    if (get().mecateFilter) {
+      console.log(get().mecateFilter);
+      const filteredItems = fallbackData
+        .map((item: items) => {
+          if (
+            item.categories.includes(get().mecateFilter?.length!) &&
+            item.categories.includes(get().mecateFilter?.diameter!) &&
+            item.categories.includes(get().mecateFilter?.color!) &&
             !item.categories.includes("")
           ) {
             return item;
