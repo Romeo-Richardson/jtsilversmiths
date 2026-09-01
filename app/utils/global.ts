@@ -357,7 +357,7 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
           if (
             item.categories.includes(get().mecateFilter?.length!) &&
             item.categories.includes(get().mecateFilter?.diameter!) &&
-            item.categories.includes(get().mecateFilter?.color!) &&
+            item.asIsColor?.includes(get().mecateFilter?.color!) &&
             !item.categories.includes("") &&
             get().secondaryQuery !== "Hat Bands"
           ) {

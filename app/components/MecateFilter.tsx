@@ -23,17 +23,17 @@ const MecateFilter = (): React.ReactNode => {
   ];
 
   const colors = [
-    "black",
-    "gray",
-    "brown (sorrel)",
-    "white",
-    "blue",
-    "green",
-    "pink",
-    "purple",
-    "red",
-    "yellow",
-    "tan",
+    "Black",
+    "Gray",
+    "Brown (Sorrel)",
+    "White",
+    "Blue",
+    "Green",
+    "Pink",
+    "Purple",
+    "Red",
+    "Yellow",
+    "Tan",
   ];
 
   const { data } = useQuery<any>({
