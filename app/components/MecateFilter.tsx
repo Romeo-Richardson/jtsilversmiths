@@ -23,22 +23,17 @@ const MecateFilter = (): React.ReactNode => {
   ];
 
   const colors = [
-    "Rawhide w/ Black",
-    "Rawhide w/ Chocolate",
-    "Black",
-    "Latigo w/ Black",
-    "Rawhide w/ Black & Red Detail",
-    "Rawhide",
-    "Rawhide w/ Leather",
-    "Rawhide w/ Chocolate w/ Rawhide Detail",
-    "Rawhide w/ Chocolate w/ Red Detail",
-    "Rawhide w/ Chocolate w/ Turquoise",
-    "Rawhide w/ Latigo",
-    "Black w/ Rawhide",
-    "Chocolate w/ Rawhide",
-    "Latigo w/ Rawhide",
-    "Latigo",
-    "Chocolate",
+    "black",
+    "gray",
+    "brown (sorrel)",
+    "white",
+    "blue",
+    "green",
+    "pink",
+    "purple",
+    "red",
+    "yellow",
+    "tan",
   ];
 
   const { data } = useQuery<any>({

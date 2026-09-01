@@ -9,7 +9,7 @@ import { getItems } from "../utils/apiCalls";
 
 type MenuItemType = {
   name: string;
-  link: "/";
+  link: string;
   status?: boolean;
 };
 
@@ -515,27 +515,27 @@ const SideMenu = () => {
           subItems: [
             {
               name: "2 Strands",
-              link: "/",
+              link: "Hat Bands",
             },
             {
               name: "3 Strands",
-              link: "/",
+              link: "Hat Bands",
             },
             {
               name: "4 Strands",
-              link: "/",
+              link: "Hat Bands",
             },
             {
               name: "5 Strands",
-              link: "/",
+              link: "Hat Bands",
             },
             {
               name: "6 Strands",
-              link: "/",
+              link: "Hat Bands",
             },
             {
               name: "7 Strands",
-              link: "/",
+              link: "Hat Bands",
             },
           ],
         },
@@ -912,6 +912,8 @@ const SideMenu = () => {
     setCurrentlySelectedQuery,
     setupQuery,
     setMainCategory,
+    secondaryQuery,
+    setSecondaryQuery,
   } = useMainStore();
 
   return (
@@ -973,6 +975,7 @@ const SideMenu = () => {
                         e.preventDefault();
                         setSearchQueryInput(null);
                         setCurrentlySelectedQuery(subMenuItem.name);
+                        setSecondaryQuery(subMenuItem.link);
                         console.log(data.data);
                         setupQuery(data.data);
                       }}
@@ -990,6 +993,8 @@ const SideMenu = () => {
                                 e.preventDefault();
                                 setSearchQueryInput(null);
                                 setCurrentlySelectedQuery(item.name);
+                                setSecondaryQuery(item.link);
+                                console.log(secondaryQuery);
                                 console.log(data.data);
                                 setupQuery(data.data);
                               }}

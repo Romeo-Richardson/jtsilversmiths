@@ -716,6 +716,7 @@ const AddToCart = ({
                           : "N/A"),
                     });
                   setRowelColor("Patina (Rust)");
+                  setDiameter("");
                   setRowelSize("1 Inch");
                   setPurchaseOption("Purchase seperately");
                   setItemWidth(`4-3/4" (Arabian)`);

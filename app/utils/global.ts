@@ -76,6 +76,8 @@ type MainStoreType = {
   rowelPriceModiferFunc: (item: items) => number;
   mecateFilter: MecateFilter | null;
   setMecateFilter: (filter: MecateFilter | null) => void;
+  secondaryQuery: string | null;
+  setSecondaryQuery: (status: string | null) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -107,6 +109,10 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
   mecateFilter: null,
   setMecateFilter: (filter) => {
     set({ mecateFilter: filter });
+  },
+  secondaryQuery: null,
+  setSecondaryQuery: (status) => {
+    set({ secondaryQuery: status });
   },
   rowelModifier: 2,
   setRowelModifier: (mod) => {
@@ -247,7 +253,19 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
                 .map((category) => category)
                 .includes(get().currentlySelectedQuery!)
             ) {
-              return item;
+              if (
+                get().secondaryQuery === "Hat Bands" &&
+                (item.categories.includes("Mecates (Mane Horse Hair)") ||
+                  item.categories.includes("Get Down Ropes") ||
+                  item.categories.includes("Reins"))
+              ) {
+                return;
+              } else if (
+                get().secondaryQuery !== "Hat Bands" &&
+                item.categories.includes("Hat Bands")
+              ) {
+                return;
+              } else return item;
             }
           })
           .map((x: any) => {
@@ -260,19 +278,40 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       get().setDisplayedItems(
         fallbackData
           .map((item: items) => {
-            if (
-              item.name
-                .toUpperCase()
-                .includes(get().searchQueryInput!.toString().toUpperCase())
-            ) {
-              return item;
+            // if (
+            //   item.name
+            //     .toUpperCase()
+            //     .includes(get().searchQueryInput!.toString().toUpperCase())
+            // ) {
+            //   return item;
+            // }
+            const name = item.name.toUpperCase();
+
+            let score = 0;
+
+            const q = get().searchQueryInput?.toString().trim().toUpperCase()!;
+
+            if (name === q) {
+              score += 100;
+            } else if (name.startsWith(q)) {
+              score += 75;
+            } else if (name.includes(q)) {
+              score += 50;
             }
+
+            item.categories.forEach((i) => {
+              if (
+                i.toUpperCase().startsWith(q) ||
+                i.toUpperCase().includes(q)
+              ) {
+                score += 25;
+              }
+            });
+
+            return { ...item, searchScore: score };
           })
-          .map((x: any) => {
-            if (x !== undefined) {
-              return x;
-            }
-          }),
+          .filter((product: any) => product.searchScore > 0)
+          .sort((a: any, b: any) => b.searchScore - a.searchScore),
       );
       console.log(get().displayedItems?.length);
     } else {
@@ -319,7 +358,8 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             item.categories.includes(get().mecateFilter?.length!) &&
             item.categories.includes(get().mecateFilter?.diameter!) &&
             item.categories.includes(get().mecateFilter?.color!) &&
-            !item.categories.includes("")
+            !item.categories.includes("") &&
+            get().secondaryQuery !== "Hat Bands"
           ) {
             return item;
           }

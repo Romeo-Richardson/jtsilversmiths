@@ -36,6 +36,7 @@ const ShopDisplay = (): React.ReactNode => {
     setCurrentlySelectedQuery,
     setupQuery,
     setSearchQueryInput,
+    secondaryQuery,
   } = useMainStore();
 
   useLayoutEffect(() => {
@@ -129,9 +130,8 @@ const ShopDisplay = (): React.ReactNode => {
       {(currentlySelectedQuery === "Mecates (Mane Horse Hair)" ||
         currentlySelectedQuery === "4 Strands" ||
         currentlySelectedQuery === "6 Strands" ||
-        currentlySelectedQuery === "8 Strands") && (
-        <MecateFilter></MecateFilter>
-      )}
+        currentlySelectedQuery === "8 Strands") &&
+        secondaryQuery !== "Hat Bands" && <MecateFilter></MecateFilter>}
       {currentlySelectedQuery === "Rowels" && <RowelFilter></RowelFilter>}
       <div className="min-[701px]:hidden bg-base-200 py-2 pl-4">
         <NavInput></NavInput>
@@ -145,33 +145,39 @@ const ShopDisplay = (): React.ReactNode => {
           // })
           displayedItems?.length! !== 0
             ? displayedItems?.map((item, key) => {
-                return (
-                  item && (
-                    <DaisyItemCard
-                      key={key}
-                      categories={item.categories}
-                      asIsSize={item.asIsSize!}
-                      asIsColor={item.asIsColor!}
-                      asIsMaterial={item.asIsMaterial!}
-                      price={rowelPriceModiferFunc(item)}
-                      asIsStyle={item.asIsStyle!}
-                      asIsMouthpieceAngle={item.asIsMouthpieceAngle!}
-                      asIsCopperHoodAndCricket={
-                        item.asIsWithCopperHoodAndCricket!
-                      }
-                      asIsHeight={item.asIsHeight!}
-                      asIsTheme={item.asIsTheme!}
-                      image={item.image}
-                      title={item.name}
-                      asIsBitEnds={item.asIsBitEnds!}
-                      asIsBitMovement={item.asIsBitMovement!}
-                      asIsFinish={item.asIsFinish!}
-                      asIsMouthpieceStyle={item.asIsMouthpieceStyle!}
-                      asIsSizeCheek={item.asIsSizeCheek!}
-                      asIsTongueRelief={item.asIsTongueRelief!}
-                    ></DaisyItemCard>
-                  )
-                );
+                if (
+                  secondaryQuery === "Hat Bands" &&
+                  item?.categories.includes("Mecates (Mane Horse Hair)")
+                ) {
+                  return <></>;
+                } else
+                  return (
+                    item && (
+                      <DaisyItemCard
+                        key={key}
+                        categories={item.categories}
+                        asIsSize={item.asIsSize!}
+                        asIsColor={item.asIsColor!}
+                        asIsMaterial={item.asIsMaterial!}
+                        price={rowelPriceModiferFunc(item)}
+                        asIsStyle={item.asIsStyle!}
+                        asIsMouthpieceAngle={item.asIsMouthpieceAngle!}
+                        asIsCopperHoodAndCricket={
+                          item.asIsWithCopperHoodAndCricket!
+                        }
+                        asIsHeight={item.asIsHeight!}
+                        asIsTheme={item.asIsTheme!}
+                        image={item.image}
+                        title={item.name}
+                        asIsBitEnds={item.asIsBitEnds!}
+                        asIsBitMovement={item.asIsBitMovement!}
+                        asIsFinish={item.asIsFinish!}
+                        asIsMouthpieceStyle={item.asIsMouthpieceStyle!}
+                        asIsSizeCheek={item.asIsSizeCheek!}
+                        asIsTongueRelief={item.asIsTongueRelief!}
+                      ></DaisyItemCard>
+                    )
+                  );
               })
             : data?.data.map((item: items, key: number) => {
                 return (
