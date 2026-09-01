@@ -355,9 +355,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       const filteredItems = fallbackData
         .map((item: items) => {
           if (
-            item.categories.includes(get().mecateFilter?.length!) &&
-            item.categories.includes(get().mecateFilter?.diameter!) &&
-            item.asIsColor?.includes(get().mecateFilter?.color!) &&
+            (item.categories.includes(get().mecateFilter?.length!) ||
+              get().mecateFilter?.length === "All") &&
+            (item.categories.includes(get().mecateFilter?.diameter!) ||
+              get().mecateFilter?.diameter === "All") &&
+            (item.asIsColor?.includes(get().mecateFilter?.color!) ||
+              get().mecateFilter?.color === "All") &&
             !item.categories.includes("") &&
             get().secondaryQuery !== "Hat Bands"
           ) {

@@ -8,13 +8,14 @@ import { items } from "@prisma/client";
 import { getItems } from "../utils/apiCalls";
 
 const MecateFilter = (): React.ReactNode => {
-  const [length, setLength] = useState<string>("");
-  const [diameter, setDiameter] = useState<string>("");
-  const [color, setColor] = useState<string>("");
+  const [length, setLength] = useState<string>("All");
+  const [diameter, setDiameter] = useState<string>("All");
+  const [color, setColor] = useState<string>("All");
 
-  const lengths: string[] = ["22 Feet", "24 Feet"];
+  const lengths: string[] = ["All", "22 Feet", "24 Feet"];
 
   const diameters = [
+    `All`,
     `Diameter 1/4`,
     `Diameter 3/8`,
     `Diameter 1/2`,
@@ -23,6 +24,7 @@ const MecateFilter = (): React.ReactNode => {
   ];
 
   const colors = [
+    "All",
     "Black",
     "Gray",
     "Brown (Sorrel)",
