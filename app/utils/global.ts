@@ -1,6 +1,7 @@
 import { items } from "@prisma/client";
 import toast from "react-hot-toast";
 import { create } from "zustand";
+import HatBandFilter from "../components/HatBandFilter";
 
 export type cartItem = {
   name: string;
@@ -34,6 +35,11 @@ type RowelFilter = {
 type MecateFilter = {
   length: string;
   diameter: string;
+  color: string;
+};
+
+type HatBandFilter = {
+  tassels: string;
   color: string;
 };
 
@@ -78,6 +84,8 @@ type MainStoreType = {
   setMecateFilter: (filter: MecateFilter | null) => void;
   secondaryQuery: string | null;
   setSecondaryQuery: (status: string | null) => void;
+  hatBandFilter: HatBandFilter | null;
+  setHatBandFilter: (filter: HatBandFilter | null) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -109,6 +117,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
   mecateFilter: null,
   setMecateFilter: (filter) => {
     set({ mecateFilter: filter });
+  },
+  hatBandFilter: null,
+  setHatBandFilter: (filter) => {
+    set({
+      hatBandFilter: filter,
+    });
   },
   secondaryQuery: null,
   setSecondaryQuery: (status) => {
@@ -374,6 +388,28 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
         });
       console.log(filteredItems);
       get().setDisplayedItems(filteredItems);
+    }
+
+    if (get().hatBandFilter) {
+      const filterdItems = fallbackData
+        .map((item: items) => {
+          if (item.categories.includes("Hat Bands")) {
+            if (
+              (item.asIsColor?.includes(get().hatBandFilter?.color!) ||
+                get().hatBandFilter?.color === "All") &&
+              (item.categories.includes(get().hatBandFilter?.tassels!) ||
+                get().hatBandFilter?.tassels === "All")
+            ) {
+              return item;
+            }
+          }
+        })
+        .map((x: any) => {
+          if (x !== undefined) {
+            return x;
+          }
+        });
+      get().setDisplayedItems(filterdItems);
     }
   },
 }));
