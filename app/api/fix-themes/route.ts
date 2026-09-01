@@ -12,11 +12,9 @@ export const GET = async (req: NextRequest) => {
       );
     }
 
-    allItems.forEach(async (item) => {
-      await prisma.items.update({
-        where: { name: item.name },
-        data: { name: item.name.replaceAll("&", "and") },
-      });
+    await prisma.items.updateMany({
+      where: { categories: { has: "Hat Bands" } },
+      data: { categories: { push: ["Hatbands", "Hatband"] } },
     });
 
     return NextResponse.json({ success: true }, { status: 200 });

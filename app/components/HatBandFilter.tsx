@@ -35,39 +35,46 @@ const HatBandFilter = (): React.ReactNode => {
   };
 
   return (
-    <form className="flex items-center justify-center gap-12 bg-base-100 py-4 px-2">
-      <select
-        className="select"
-        name="Diameter"
-        defaultValue={""}
-        onClick={(e) => {
-          setTassels(e.currentTarget.value);
-        }}
-      >
-        {tasselOptions.map((item, key) => {
-          return (
-            <option key={key} value={item}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
-      <select
-        className="select"
-        name="Color"
-        defaultValue={""}
-        onClick={(e) => {
-          setColor(e.currentTarget.value);
-        }}
-      >
-        {colors.map((item, key) => {
-          return (
-            <option key={key} value={item}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
+    <form className="flex items-center justify-evenly gap-20 bg-base-100 py-4 px-2">
+      <div className="flex flex-col w-1/5">
+        <p>Number of Tassels</p>
+        <select
+          className="select"
+          name="Diameter"
+          defaultValue={""}
+          onClick={(e) => {
+            setTassels(e.currentTarget.value);
+          }}
+        >
+          {tasselOptions.map((item, key) => {
+            return (
+              <option key={key} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+      <div className="flex flex-col w-1/5">
+        <p>Select Color</p>
+        <select
+          className="select"
+          name="Color"
+          defaultValue={""}
+          onClick={(e) => {
+            setColor(e.currentTarget.value);
+          }}
+        >
+          {colors.map((item, key) => {
+            return (
+              <option key={key} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
       <button
         className="btn btn-primary"
         disabled={!isDisabled()}
