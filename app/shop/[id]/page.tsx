@@ -62,6 +62,12 @@ export const metadata: Metadata = {
     "Horse Hair Earrings",
     "Silver Spurs",
     "Silver Snaffels",
+    "Jewelery",
+    "Gifts",
+    "Cowboy Gear",
+    "Cowboy Accessories",
+    "Cowgirl Gear",
+    "Cowgirl Accessories",
   ],
   robots: {
     index: true,
