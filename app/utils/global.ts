@@ -393,7 +393,10 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
     if (get().hatBandFilter) {
       const filterdItems = fallbackData
         .map((item: items) => {
-          if (item.categories.includes("Hat Bands")) {
+          if (
+            item.categories.includes("Hat Bands") &&
+            item.categories.includes(get().currentlySelectedQuery)
+          ) {
             if (
               (item.asIsColor?.includes(get().hatBandFilter?.color!) ||
                 get().hatBandFilter?.color === "All") &&
