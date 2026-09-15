@@ -54,7 +54,7 @@ const RowelFilter = (): React.ReactNode => {
         className="select"
         defaultValue={""}
         name="Plait"
-        onClick={(e) => {
+        onChange={(e) => {
           setRowelType(e.currentTarget.value);
         }}
       >
@@ -70,7 +70,7 @@ const RowelFilter = (): React.ReactNode => {
         className="select"
         name="Diameter"
         defaultValue={""}
-        onClick={(e) => {
+        onChange={(e) => {
           setSize(e.currentTarget.value);
         }}
       >
@@ -86,7 +86,7 @@ const RowelFilter = (): React.ReactNode => {
         className="select"
         name="Color"
         defaultValue={""}
-        onClick={(e) => {
+        onChange={(e) => {
           setColor(e.currentTarget.value);
         }}
       >

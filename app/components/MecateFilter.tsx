@@ -58,7 +58,7 @@ const MecateFilter = (): React.ReactNode => {
         className="select"
         defaultValue={""}
         name="Plait"
-        onClick={(e) => {
+        onChange={(e) => {
           setLength(e.currentTarget.value);
         }}
       >
@@ -74,7 +74,7 @@ const MecateFilter = (): React.ReactNode => {
         className="select"
         name="Diameter"
         defaultValue={""}
-        onClick={(e) => {
+        onChange={(e) => {
           setDiameter(e.currentTarget.value);
         }}
       >

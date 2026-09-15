@@ -42,7 +42,7 @@ const HatBandFilter = (): React.ReactNode => {
           className="select"
           name="Diameter"
           defaultValue={""}
-          onClick={(e) => {
+          onChange={(e) => {
             setTassels(e.currentTarget.value);
           }}
         >
@@ -61,7 +61,7 @@ const HatBandFilter = (): React.ReactNode => {
           className="select"
           name="Color"
           defaultValue={""}
-          onClick={(e) => {
+          onChange={(e) => {
             setColor(e.currentTarget.value);
           }}
         >

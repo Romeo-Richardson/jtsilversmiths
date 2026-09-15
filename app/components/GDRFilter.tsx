@@ -37,7 +37,7 @@ const GDRFilter = (): React.ReactNode => {
           className="select"
           name="Diameter"
           defaultValue={""}
-          onClick={(e) => {
+          onChange={(e) => {
             setDiameter(e.currentTarget.value);
           }}
         >
@@ -56,7 +56,7 @@ const GDRFilter = (): React.ReactNode => {
           className="select"
           name="Color"
           defaultValue={""}
-          onClick={(e) => {
+          onChange={(e) => {
             setColor(e.currentTarget.value);
           }}
         >
@@ -72,7 +72,6 @@ const GDRFilter = (): React.ReactNode => {
 
       <button
         className="btn btn-primary"
-        disabled={!isDisabled()}
         onClick={(e) => {
           e.preventDefault();
           console.log({ diameter, color });
