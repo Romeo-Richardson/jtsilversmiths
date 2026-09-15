@@ -383,7 +383,8 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             (item.categories.includes(get().GDRFilter?.diameter!) ||
               get().GDRFilter?.diameter === "All") &&
             (item.categories.includes(get().GDRFilter?.color!) ||
-              get().GDRFilter?.color === "All")
+              get().GDRFilter?.color === "All") &&
+            item.categories.includes("Get Down Ropes")
           ) {
             return item;
           }
