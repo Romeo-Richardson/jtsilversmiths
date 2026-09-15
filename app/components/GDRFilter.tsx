@@ -11,9 +11,9 @@ const GDRFilter = (): React.ReactNode => {
   const [diameter, setDiameter] = useState<string>("All");
   const [color, setColor] = useState<string>("All");
 
-  const diameters = ["All", "Diameter 1/4", "Diameter 3/8"];
+  const diameters = ["Diameter 1/4", "Diameter 3/8"];
 
-  const colors = ["All", "Black", "Gray", "Brown (Sorrel)", "White", "Tan"];
+  const colors = ["Black", "Gray", "Brown (Sorrel)", "White", "Tan"];
 
   const { data } = useQuery<any>({
     queryKey: ["Items"],
