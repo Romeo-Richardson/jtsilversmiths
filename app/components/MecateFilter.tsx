@@ -90,7 +90,7 @@ const MecateFilter = (): React.ReactNode => {
         className="select"
         name="Color"
         defaultValue={""}
-        onClick={(e) => {
+        onChange={(e) => {
           setColor(e.currentTarget.value);
         }}
       >
