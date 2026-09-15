@@ -26,6 +26,11 @@ type BosalFilter = {
   color: string;
 };
 
+type GDRFilterType = {
+  diameter: string;
+  color: string;
+};
+
 type RowelFilter = {
   rowelType: string;
   size: string;
@@ -86,6 +91,8 @@ type MainStoreType = {
   setSecondaryQuery: (status: string | null) => void;
   hatBandFilter: HatBandFilter | null;
   setHatBandFilter: (filter: HatBandFilter | null) => void;
+  GDRFilter: GDRFilterType | null;
+  setGDRFilter: (filter: GDRFilterType | null) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -113,6 +120,10 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
     set({
       bosalFilter: filter,
     });
+  },
+  GDRFilter: null,
+  setGDRFilter: (filter) => {
+    set({ GDRFilter: filter });
   },
   mecateFilter: null,
   setMecateFilter: (filter) => {
@@ -351,6 +362,28 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             item.categories.includes(get().bosalFilter?.diameter!) &&
             item.categories.includes(get().bosalFilter?.color!) &&
             !item.categories.includes("")
+          ) {
+            return item;
+          }
+        })
+        .map((x: any) => {
+          if (x !== undefined) {
+            return x;
+          }
+        });
+      console.log(filteredItems);
+      get().setDisplayedItems(filteredItems);
+    }
+
+    if (get().GDRFilter) {
+      console.log(get().GDRFilter);
+      const filteredItems = fallbackData
+        .map((item: items) => {
+          if (
+            (item.categories.includes(get().GDRFilter?.diameter!) ||
+              get().GDRFilter?.diameter === "All") &&
+            (item.categories.includes(get().GDRFilter?.color!) ||
+              get().GDRFilter?.color === "All")
           ) {
             return item;
           }
