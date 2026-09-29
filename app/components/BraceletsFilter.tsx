@@ -8,8 +8,8 @@ import { items } from "@prisma/client";
 import { getItems } from "../utils/apiCalls";
 
 const BraceletsFilter = (): React.ReactNode => {
-  const [strands, setStrands] = useState<string>("All");
-  const [color, setColor] = useState<string>("All");
+  const [strands, setStrands] = useState<string>("1 Strand");
+  const [color, setColor] = useState<string>("Black");
 
   const strandOptions: string[] = [
     "1 Strand",
@@ -58,7 +58,7 @@ const BraceletsFilter = (): React.ReactNode => {
         <select
           className="select"
           name="Diameter"
-          defaultValue={""}
+          defaultValue={"1 Strand"}
           onChange={(e) => {
             setStrands(e.currentTarget.value);
           }}
@@ -78,7 +78,7 @@ const BraceletsFilter = (): React.ReactNode => {
         <select
           className="select"
           name="Color"
-          defaultValue={""}
+          defaultValue={"Black"}
           onChange={(e) => {
             setColor(e.currentTarget.value);
           }}
