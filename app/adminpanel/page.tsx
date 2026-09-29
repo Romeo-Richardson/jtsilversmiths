@@ -50,7 +50,7 @@ const page = () => {
     { name: "26 Inch Length", status: false },
     { name: "Barber Pole", status: false },
     { name: "Large Tassel", status: false },
-    { name: "Grey", status: false },
+    { name: "Gray", status: false },
     { name: "Brown (Sorrel)", status: false },
     { name: "White", status: false },
     { name: "Blue", status: false },
@@ -274,6 +274,9 @@ const page = () => {
     { name: "DOUBLE MOUNTED", status: false },
     { name: "Custom - w/ brand etc.", status: false },
     { name: "Special", status: false },
+    { name: "Tiny Bosalita", status: false },
+    { name: "Tiny Tassel", status: false },
+    { name: "Round", status: false },
   ]);
 
   const [inputOptions, setInputOptions] = useState<

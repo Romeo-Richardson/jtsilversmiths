@@ -1,7 +1,6 @@
 import { items } from "@prisma/client";
 import toast from "react-hot-toast";
 import { create } from "zustand";
-import HatBandFilter from "../components/HatBandFilter";
 
 export type cartItem = {
   name: string;
@@ -45,6 +44,11 @@ type MecateFilter = {
 
 type HatBandFilter = {
   tassels: string;
+  color: string;
+};
+
+type BraceletFilter = {
+  strands: string;
   color: string;
 };
 
@@ -93,6 +97,8 @@ type MainStoreType = {
   setHatBandFilter: (filter: HatBandFilter | null) => void;
   GDRFilter: GDRFilterType | null;
   setGDRFilter: (filter: GDRFilterType | null) => void;
+  braceletFilter: BraceletFilter | null;
+  setBraceletFilter: (filter: BraceletFilter | null) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -108,6 +114,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       mainCategory: category,
     });
     console.log(get().mainCategory);
+  },
+  braceletFilter: null,
+  setBraceletFilter: (filter) => {
+    set({
+      braceletFilter: filter,
+    });
   },
   rowelFilter: null,
   setRowelFilter: (filter) => {
@@ -436,6 +448,28 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
                 get().hatBandFilter?.color === "All") &&
               (item.categories.includes(get().hatBandFilter?.tassels!) ||
                 get().hatBandFilter?.tassels === "All")
+            ) {
+              return item;
+            }
+          }
+        })
+        .map((x: any) => {
+          if (x !== undefined) {
+            return x;
+          }
+        });
+      get().setDisplayedItems(filterdItems);
+    }
+    if (get().braceletFilter) {
+      const filterdItems = fallbackData
+        .map((item: items) => {
+          if (
+            item.categories.includes("Bracelets") &&
+            item.categories.includes(get().currentlySelectedQuery)
+          ) {
+            if (
+              item.categories.includes(get().braceletFilter?.color!) &&
+              item.categories.includes(get().braceletFilter?.strands!)
             ) {
               return item;
             }

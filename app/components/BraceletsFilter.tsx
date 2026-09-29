@@ -7,25 +7,26 @@ import setQuery from "../utils/setQuery";
 import { items } from "@prisma/client";
 import { getItems } from "../utils/apiCalls";
 
-const HatBandFilter = (): React.ReactNode => {
-  const [tassels, setTassels] = useState<string>("All");
+const BraceletsFilter = (): React.ReactNode => {
+  const [strands, setStrands] = useState<string>("All");
   const [color, setColor] = useState<string>("All");
 
-  const tasselOptions = [
-    "All",
-    "With 1 Tassel",
-    "With 2 Tassels",
-    "With No Tassel",
+  const strandOptions: string[] = [
+    "1 Strand",
+    "2 Strands",
+    "3 Strands",
+    "4 Strands",
+    "5 Strands",
   ];
 
-  const colors = [
-    "All",
+  const colors: string[] = [
     "Black",
     "Gray",
     "Brown (Sorrel)",
     "White",
     "Tan",
     "Blue",
+    "Red",
   ];
 
   const { data } = useQuery<any>({
@@ -33,28 +34,36 @@ const HatBandFilter = (): React.ReactNode => {
     queryFn: () => getItems(),
   });
 
-  const { setHatBandFilter, setupQuery, currentlySelectedQuery, mainCategory } =
-    useMainStore();
+  const {
+    setBraceletFilter,
+    setupQuery,
+    currentlySelectedQuery,
+    mainCategory,
+  } = useMainStore();
 
   const isDisabled = () => {
-    if (!tassels || !color) {
+    if (!strands || !color) {
       return false;
     } else return true;
   };
 
+  useEffect(() => {
+    isDisabled();
+  }, [strands, color]);
+
   return (
     <form className="flex items-center justify-evenly gap-20 bg-base-100 py-4 px-2">
       <div className="flex flex-col w-1/5">
-        <p>Number of Tassels</p>
+        <p>Strands</p>
         <select
           className="select"
           name="Diameter"
           defaultValue={""}
           onChange={(e) => {
-            setTassels(e.currentTarget.value);
+            setStrands(e.currentTarget.value);
           }}
         >
-          {tasselOptions.map((item, key) => {
+          {strandOptions.map((item, key) => {
             return (
               <option key={key} value={item}>
                 {item}
@@ -63,6 +72,7 @@ const HatBandFilter = (): React.ReactNode => {
           })}
         </select>
       </div>
+
       <div className="flex flex-col w-1/5">
         <p>Select Color</p>
         <select
@@ -88,8 +98,8 @@ const HatBandFilter = (): React.ReactNode => {
         disabled={!isDisabled()}
         onClick={(e) => {
           e.preventDefault();
-          console.log({ tassels, color });
-          setHatBandFilter({ tassels, color });
+          console.log({ strands, color });
+          setBraceletFilter({ strands, color });
           setupQuery(data?.data);
         }}
       >
@@ -100,8 +110,8 @@ const HatBandFilter = (): React.ReactNode => {
         onClick={(e) => {
           e.preventDefault();
           setColor("");
-          setTassels("");
-          setHatBandFilter(null);
+          setStrands("");
+          setBraceletFilter(null);
           setupQuery(data?.data);
         }}
       >
@@ -111,4 +121,4 @@ const HatBandFilter = (): React.ReactNode => {
   );
 };
 
-export default HatBandFilter;
+export default BraceletsFilter;

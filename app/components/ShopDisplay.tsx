@@ -19,6 +19,7 @@ import RowelFilter from "./RowelFilter";
 import MecateFilter from "./MecateFilter";
 import HatBandFilter from "./HatBandFilter";
 import GDRFilter from "./GDRFilter";
+import BraceletsFilter from "./BraceletsFilter";
 
 const ShopDisplay = (): React.ReactNode => {
   const params = useParams();
@@ -138,6 +139,9 @@ const ShopDisplay = (): React.ReactNode => {
       {secondaryQuery === "Hat Bands" && <HatBandFilter></HatBandFilter>}
       {(currentlySelectedQuery === "16 Feet" ||
         currentlySelectedQuery === "14 Feet") && <GDRFilter></GDRFilter>}
+      {currentlySelectedQuery === "Bracelets" && (
+        <BraceletsFilter></BraceletsFilter>
+      )}
       <div className="min-[701px]:hidden bg-base-200 py-2 pl-4">
         <NavInput></NavInput>
       </div>

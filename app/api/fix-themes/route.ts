@@ -13,8 +13,12 @@ export const GET = async (req: NextRequest) => {
     }
 
     await prisma.items.updateMany({
-      where: { categories: { has: "Hat Bands" } },
-      data: { categories: { push: ["Hatbands", "Hatband"] } },
+      where: {
+        asIsSize: `3/8" wide. TWO Tassels. Hitch knot allows adjusting the size of hat band.`,
+      },
+      data: {
+        asIsSize: `3/8" wide. TWO 3-1/2" Tassels. 1/2" Hitch knot allows adjusting the size of hat band.`,
+      },
     });
 
     return NextResponse.json({ success: true }, { status: 200 });
