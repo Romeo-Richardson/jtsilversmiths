@@ -12,13 +12,15 @@ export const GET = async (req: NextRequest) => {
       );
     }
 
-    await prisma.items.updateMany({
-      where: {
-        asIsSize: `3/8" wide. TWO Tassels. Hitch knot allows adjusting the size of hat band.`,
-      },
-      data: {
-        asIsSize: `3/8" wide. TWO 3-1/2" Tassels. 1/2" Hitch knot allows adjusting the size of hat band.`,
-      },
+    allItems.forEach(async (x) => {
+      const catCopy = x.categories;
+      x.categories.push("Sets");
+      if (x.name.includes("SET")) {
+        await prisma.items.update({
+          where: { id: x.id },
+          data: { categories: catCopy },
+        });
+      }
     });
 
     return NextResponse.json({ success: true }, { status: 200 });

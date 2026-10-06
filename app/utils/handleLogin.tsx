@@ -24,3 +24,9 @@ export async function login(formData: FormData) {
 
   redirect("/adminpanel");
 }
+
+export const logout = async () => {
+  const cookieStore = await cookies();
+
+  cookieStore.delete("session");
+};

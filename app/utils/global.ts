@@ -52,6 +52,11 @@ type BraceletFilter = {
   color: string;
 };
 
+type EarringFilter = {
+  style: string;
+  color: string;
+};
+
 type MainStoreType = {
   searchQueryInput: FormDataEntryValue | null;
   setSearchQueryInput: (inputValue: FormDataEntryValue | null) => void;
@@ -99,6 +104,8 @@ type MainStoreType = {
   setGDRFilter: (filter: GDRFilterType | null) => void;
   braceletFilter: BraceletFilter | null;
   setBraceletFilter: (filter: BraceletFilter | null) => void;
+  earringFilter: EarringFilter | null;
+  setEarringFilter: (filter: EarringFilter | null) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -114,6 +121,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       mainCategory: category,
     });
     console.log(get().mainCategory);
+  },
+  earringFilter: null,
+  setEarringFilter: (filter) => {
+    set({
+      earringFilter: filter,
+    });
   },
   braceletFilter: null,
   setBraceletFilter: (filter) => {
@@ -470,6 +483,29 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             if (
               item.categories.includes(get().braceletFilter?.color!) &&
               item.categories.includes(get().braceletFilter?.strands!)
+            ) {
+              return item;
+            }
+          }
+        })
+        .map((x: any) => {
+          if (x !== undefined) {
+            return x;
+          }
+        });
+      get().setDisplayedItems(filterdItems);
+    }
+
+    if (get().earringFilter) {
+      const filterdItems = fallbackData
+        .map((item: items) => {
+          if (
+            item.categories.includes("Earrings") &&
+            item.categories.includes(get().currentlySelectedQuery)
+          ) {
+            if (
+              item.categories.includes(get().earringFilter?.color!) &&
+              item.categories.includes(get().earringFilter?.style!)
             ) {
               return item;
             }

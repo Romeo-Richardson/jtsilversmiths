@@ -20,6 +20,7 @@ import MecateFilter from "./MecateFilter";
 import HatBandFilter from "./HatBandFilter";
 import GDRFilter from "./GDRFilter";
 import BraceletsFilter from "./BraceletsFilter";
+import EarringFilter from "./EarringFilter";
 
 const ShopDisplay = (): React.ReactNode => {
   const params = useParams();
@@ -142,6 +143,8 @@ const ShopDisplay = (): React.ReactNode => {
       {currentlySelectedQuery === "Bracelets" && (
         <BraceletsFilter></BraceletsFilter>
       )}
+      {(currentlySelectedQuery === "Earrings" ||
+        currentlySelectedQuery === "Sets") && <EarringFilter></EarringFilter>}
       <div className="min-[701px]:hidden bg-base-200 py-2 pl-4">
         <NavInput></NavInput>
       </div>

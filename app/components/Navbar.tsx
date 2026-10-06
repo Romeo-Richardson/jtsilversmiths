@@ -31,6 +31,7 @@ const Navbar = (): React.ReactNode => {
     isSignedIn ? { name: "Add Item", link: "/adminpanel" } : null,
     isSignedIn ? { name: "Delete Item", link: "/adminpanel-delete" } : null,
     isSignedIn ? { name: "Messages", link: "/adminpanel-messages" } : null,
+    isSignedIn ? { name: "Logout", link: "/logout" } : null,
   ];
 
   const { push } = useRouter();
