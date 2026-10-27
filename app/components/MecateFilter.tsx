@@ -12,7 +12,7 @@ const MecateFilter = (): React.ReactNode => {
   const [diameter, setDiameter] = useState<string>("All");
   const [color, setColor] = useState<string>("All");
 
-  const lengths: string[] = ["All", "22 Feet", "24 Feet"];
+  const lengths: string[] = ["All", "22 Feet", "24 Feet", "26 Feet"];
 
   const diameters = [
     `All`,
