@@ -8,12 +8,13 @@ import { items } from "@prisma/client";
 import { getItems } from "../utils/apiCalls";
 
 const EarringFilter = (): React.ReactNode => {
-  const [style, setStyle] = useState<string>("1 Strand");
-  const [color, setColor] = useState<string>("Black");
+  const [style, setStyle] = useState<string>("All");
+  const [color, setColor] = useState<string>("All");
 
-  const styles: string[] = ["Round", "Tiny Bosalita", "Tiny Tassel"];
+  const styles: string[] = ["All", "Round", "Tiny Bosalita", "Tiny Tassel"];
 
   const colors: string[] = [
+    "All",
     "Black",
     "Gray",
     "Brown (Sorrel)",
@@ -48,7 +49,7 @@ const EarringFilter = (): React.ReactNode => {
         <select
           className="select"
           name="Diameter"
-          defaultValue={"1 Strand"}
+          defaultValue={"All"}
           onChange={(e) => {
             setStyle(e.currentTarget.value);
           }}
@@ -68,7 +69,7 @@ const EarringFilter = (): React.ReactNode => {
         <select
           className="select"
           name="Color"
-          defaultValue={"Black"}
+          defaultValue={"All"}
           onChange={(e) => {
             setColor(e.currentTarget.value);
           }}
@@ -99,8 +100,8 @@ const EarringFilter = (): React.ReactNode => {
         className="btn btn-primary"
         onClick={(e) => {
           e.preventDefault();
-          setColor("");
-          setStyle("");
+          setColor("All");
+          setStyle("All");
           setEarringFilter(null);
           setupQuery(data?.data);
         }}

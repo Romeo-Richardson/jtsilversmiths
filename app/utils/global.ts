@@ -383,10 +383,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       const filteredItems = fallbackData
         .map((item: items) => {
           if (
-            item.categories.includes(get().bosalFilter?.plait!) &&
-            item.categories.includes(get().bosalFilter?.diameter!) &&
-            item.categories.includes(get().bosalFilter?.color!) &&
-            !item.categories.includes("")
+            (item.categories.includes(get().bosalFilter?.plait!) ||
+              get().bosalFilter?.plait === "All") &&
+            (item.categories.includes(get().bosalFilter?.diameter!) ||
+              get().bosalFilter?.diameter === "All") &&
+            (item.categories.includes(get().bosalFilter?.color!) ||
+              get().bosalFilter?.color === "All")
           ) {
             return item;
           }
@@ -481,8 +483,10 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             item.categories.includes(get().currentlySelectedQuery)
           ) {
             if (
-              item.categories.includes(get().braceletFilter?.color!) &&
-              item.categories.includes(get().braceletFilter?.strands!)
+              (item.categories.includes(get().braceletFilter?.color!) ||
+                get().braceletFilter?.color === "All") &&
+              (item.categories.includes(get().braceletFilter?.strands!) ||
+                get().braceletFilter?.strands === "All")
             ) {
               return item;
             }
@@ -504,8 +508,10 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             item.categories.includes(get().currentlySelectedQuery)
           ) {
             if (
-              item.categories.includes(get().earringFilter?.color!) &&
-              item.categories.includes(get().earringFilter?.style!)
+              (item.categories.includes(get().earringFilter?.color!) ||
+                get().earringFilter?.color === "All") &&
+              (item.categories.includes(get().earringFilter?.style!) ||
+                get().earringFilter?.style === "All")
             ) {
               return item;
             }

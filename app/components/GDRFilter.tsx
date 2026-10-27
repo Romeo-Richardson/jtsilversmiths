@@ -11,9 +11,9 @@ const GDRFilter = (): React.ReactNode => {
   const [diameter, setDiameter] = useState<string>("All");
   const [color, setColor] = useState<string>("All");
 
-  const diameters = ["Diameter 1/4", "Diameter 3/8"];
+  const diameters = ["All", "Diameter 1/4", "Diameter 3/8"];
 
-  const colors = ["Black", "Gray", "Brown (Sorrel)", "White", "Tan"];
+  const colors = ["All", "Black", "Gray", "Brown (Sorrel)", "White", "Tan"];
 
   const { data } = useQuery<any>({
     queryKey: ["Items"],
@@ -36,7 +36,7 @@ const GDRFilter = (): React.ReactNode => {
         <select
           className="select"
           name="Diameter"
-          defaultValue={""}
+          defaultValue={"All"}
           onChange={(e) => {
             setDiameter(e.currentTarget.value);
           }}
@@ -55,7 +55,7 @@ const GDRFilter = (): React.ReactNode => {
         <select
           className="select"
           name="Color"
-          defaultValue={""}
+          defaultValue={"All"}
           onChange={(e) => {
             setColor(e.currentTarget.value);
           }}
@@ -85,8 +85,8 @@ const GDRFilter = (): React.ReactNode => {
         className="btn btn-primary"
         onClick={(e) => {
           e.preventDefault();
-          setColor("");
-          setDiameter("");
+          setColor("All");
+          setDiameter("All");
           setGDRFilter(null);
           setupQuery(data?.data);
         }}

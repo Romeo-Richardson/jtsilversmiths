@@ -49,7 +49,7 @@ const HatBandFilter = (): React.ReactNode => {
         <select
           className="select"
           name="Diameter"
-          defaultValue={""}
+          defaultValue={"All"}
           onChange={(e) => {
             setTassels(e.currentTarget.value);
           }}
@@ -68,7 +68,7 @@ const HatBandFilter = (): React.ReactNode => {
         <select
           className="select"
           name="Color"
-          defaultValue={""}
+          defaultValue={"All"}
           onChange={(e) => {
             setColor(e.currentTarget.value);
           }}
@@ -99,8 +99,8 @@ const HatBandFilter = (): React.ReactNode => {
         className="btn btn-primary"
         onClick={(e) => {
           e.preventDefault();
-          setColor("");
-          setTassels("");
+          setColor("All");
+          setTassels("All");
           setHatBandFilter(null);
           setupQuery(data?.data);
         }}

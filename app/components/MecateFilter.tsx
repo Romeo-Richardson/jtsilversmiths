@@ -56,7 +56,7 @@ const MecateFilter = (): React.ReactNode => {
     <form className="flex items-center justify-center gap-12 bg-base-100 py-4 px-2">
       <select
         className="select"
-        defaultValue={""}
+        defaultValue={"All"}
         name="Plait"
         onChange={(e) => {
           setLength(e.currentTarget.value);
@@ -73,7 +73,7 @@ const MecateFilter = (): React.ReactNode => {
       <select
         className="select"
         name="Diameter"
-        defaultValue={""}
+        defaultValue={"All"}
         onChange={(e) => {
           setDiameter(e.currentTarget.value);
         }}
@@ -89,7 +89,7 @@ const MecateFilter = (): React.ReactNode => {
       <select
         className="select"
         name="Color"
-        defaultValue={""}
+        defaultValue={"All"}
         onChange={(e) => {
           setColor(e.currentTarget.value);
         }}
@@ -118,9 +118,9 @@ const MecateFilter = (): React.ReactNode => {
         className="btn btn-primary"
         onClick={(e) => {
           e.preventDefault();
-          setColor("");
-          setDiameter("");
-          setLength("");
+          setColor("All");
+          setDiameter("All");
+          setLength("All");
           setMecateFilter(null);
           setupQuery(data?.data);
         }}
