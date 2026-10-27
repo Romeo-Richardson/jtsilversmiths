@@ -376,24 +376,27 @@ const AddToCart = ({
                     className="select mb-6"
                   >
                     {!currentlySelectedItem?.categories?.includes("Snaffle")
-                      ? [...range, "MP-25R (+$50)", "MP-26R (+$50)"].map(
-                          (i, key) => {
-                            return (
-                              <option
-                                key={key}
-                                value={
-                                  typeof i !== "string"
-                                    ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}`
-                                    : `${i}`
-                                }
-                              >
-                                {typeof i !== "string"
+                      ? [
+                          ...range,
+                          "MP-72 (+$35)",
+                          "MP-25R (+$50)",
+                          "MP-26R (+$50)",
+                        ].map((i, key) => {
+                          return (
+                            <option
+                              key={key}
+                              value={
+                                typeof i !== "string"
                                   ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}`
-                                  : `${i}`}
-                              </option>
-                            );
-                          },
-                        )
+                                  : `${i}`
+                              }
+                            >
+                              {typeof i !== "string"
+                                ? `MP-${key + 1 < 10 ? "0" : ""}${(key + 1).toString()}${upchargeList.includes(key + 1) ? `${key + 1 === 66 ? " (+$60)" : " (+$35)"}` : ""}`
+                                : `${i}`}
+                            </option>
+                          );
+                        })
                       : snaffleMpOptions.map((i, key) => {
                           return (
                             <option
