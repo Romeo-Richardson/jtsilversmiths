@@ -48,7 +48,6 @@ const page = () => {
     { name: "24 Inch Length", status: false },
     { name: "22 Inch Length", status: false },
     { name: "26 Inch Length", status: false },
-    { name: "26 Feet", status: false },
     { name: "Barber Pole", status: false },
     { name: "Large Tassel", status: false },
     { name: "Gray", status: false },
