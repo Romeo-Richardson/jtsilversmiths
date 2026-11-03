@@ -548,6 +548,20 @@ const SideMenu = () => {
           link: "/",
         },
         {
+          name: "Reins",
+          link: "/",
+          subItems: [
+            {
+              name: "Roping Reins",
+              link: "",
+            },
+            {
+              name: "Split Reins",
+              link: "",
+            },
+          ],
+        },
+        {
           name: "Get Down Ropes",
           link: "/",
           subItems: [

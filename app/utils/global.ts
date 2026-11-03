@@ -57,6 +57,12 @@ type EarringFilter = {
   color: string;
 };
 
+type ReinFilter = {
+  diameter: string;
+  color: string;
+  style: string;
+};
+
 type MainStoreType = {
   searchQueryInput: FormDataEntryValue | null;
   setSearchQueryInput: (inputValue: FormDataEntryValue | null) => void;
@@ -106,6 +112,8 @@ type MainStoreType = {
   setBraceletFilter: (filter: BraceletFilter | null) => void;
   earringFilter: EarringFilter | null;
   setEarringFilter: (filter: EarringFilter | null) => void;
+  reinFilter: ReinFilter | null;
+  setReinFilter: (filter: ReinFilter | null) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -158,6 +166,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
   setHatBandFilter: (filter) => {
     set({
       hatBandFilter: filter,
+    });
+  },
+  reinFilter: null,
+  setReinFilter: (filter) => {
+    set({
+      reinFilter: filter,
     });
   },
   secondaryQuery: null,
@@ -512,6 +526,34 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
                 get().earringFilter?.color === "All") &&
               (item.categories.includes(get().earringFilter?.style!) ||
                 get().earringFilter?.style === "All")
+            ) {
+              return item;
+            }
+          }
+        })
+        .map((x: any) => {
+          if (x !== undefined) {
+            return x;
+          }
+        });
+      get().setDisplayedItems(filterdItems);
+    }
+
+    if (get().reinFilter) {
+      const filterdItems = fallbackData
+        .map((item: items) => {
+          if (
+            (item.categories.includes("Roping Reins") ||
+              item.categories.includes("Split Reins")) &&
+            item.categories.includes(get().currentlySelectedQuery)
+          ) {
+            if (
+              (item.categories.includes(get().reinFilter?.color!) ||
+                get().reinFilter?.color === "All") &&
+              (item.categories.includes(get().reinFilter?.diameter!) ||
+                get().reinFilter?.diameter === "All") &&
+              (item.categories.includes(get().reinFilter?.style!) ||
+                get().reinFilter?.style === "All")
             ) {
               return item;
             }

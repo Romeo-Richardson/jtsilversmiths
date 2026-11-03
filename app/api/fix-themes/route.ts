@@ -13,12 +13,10 @@ export const GET = async (req: NextRequest) => {
     }
 
     allItems.forEach(async (x) => {
-      const catCopy = x.categories;
-      x.categories.push("Sets");
-      if (x.name.includes("SET")) {
+      if (x.categories.includes("Split Reins")) {
         await prisma.items.update({
           where: { id: x.id },
-          data: { categories: catCopy },
+          data: { categories: { push: "Diameter 3/8" } },
         });
       }
     });
