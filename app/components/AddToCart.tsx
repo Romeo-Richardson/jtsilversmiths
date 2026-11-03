@@ -155,7 +155,6 @@ const AddToCart = ({
     if (typeof document !== null) {
       setStoreDocument(document);
     }
-    console.log(name);
   }, []);
 
   useEffect(() => {
@@ -168,7 +167,6 @@ const AddToCart = ({
     } else {
       setDisabled(false);
     }
-    console.log(quantity);
   }, [quantity]);
 
   useEffect(() => {
@@ -177,7 +175,6 @@ const AddToCart = ({
   }, [currentlySelectedItem]);
 
   useEffect(() => {
-    console.log(rowelModifier);
     if (currentlySelectedItem) {
       const cloneItem = currentlySelectedItem;
       cloneItem.price = rowelPriceModiferFunc(cloneItem as items);

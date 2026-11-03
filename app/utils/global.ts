@@ -275,6 +275,7 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
   displayedItems: [],
   setDisplayedItems(items: items[]) {
     console.log(get().mainCategory);
+    console.log(get().currentlySelectedQuery);
     const category = get().mainCategory?.split("");
     if (category && category[category.length - 1] === "s") {
       category?.pop();
@@ -286,7 +287,6 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
     if (!get().searchQueryInput && get().mainCategory) {
       items = items
         .map((item) => {
-          console.log(item);
           if (
             item !== undefined &&
             item.categories?.includes(category?.join("")!)
@@ -300,7 +300,7 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
           }
         });
     }
-
+    console.log(items);
     set({
       displayedItems: [...items],
     });

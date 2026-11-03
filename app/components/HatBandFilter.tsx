@@ -15,7 +15,7 @@ const HatBandFilter = (): React.ReactNode => {
     "All",
     "With 1 Tassel",
     "With 2 Tassels",
-    "With No Tassel",
+    "Without Tassels",
   ];
 
   const colors = [
