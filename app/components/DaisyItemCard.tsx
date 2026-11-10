@@ -4,6 +4,8 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import AddToCart from "./AddToCart";
 import { useParams } from "next/navigation";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const DaisyItemCard = ({
   image,
@@ -24,6 +26,7 @@ const DaisyItemCard = ({
   asIsSize,
   asIsColor,
   asIsMaterial,
+  relatedItems,
 }: {
   image: string;
   categories: string[];
@@ -44,8 +47,11 @@ const DaisyItemCard = ({
   asIsTheme?: string;
   asIsCopperHoodAndCricket?: string;
   asIsHeight?: string;
+  relatedItems?: string[];
 }): React.ReactNode => {
   const params = useParams();
+
+  const router = useRouter();
 
   return (
     <div className="card text-primary-content bg-base-100 w-96 max-[420px]:w-72 max-[320px]:w-64  shadow-sm">
@@ -183,6 +189,22 @@ const DaisyItemCard = ({
           {asIsBitEnds && (
             <p className="mb-3">
               <strong>Bit ends:</strong> {asIsBitEnds}
+            </p>
+          )}
+
+          {relatedItems && (
+            <p className="mb-3">
+              <strong>Related Items:</strong>
+              <b></b>
+              {relatedItems.map((item, key) => {
+                return (
+                  <Link href={`/shop/${encodeURIComponent(item)}`} key={key}>
+                    <strong>
+                      <p className=" text-blue-500">{item}</p>
+                    </strong>
+                  </Link>
+                );
+              })}
             </p>
           )}
 

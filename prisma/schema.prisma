@@ -29,6 +29,7 @@ model items {
   asIsSize                     String?
   asIsColor                    String?
   asIsMaterial                 String?
+  relatedItems String[]
 }
 
 model inquiry {

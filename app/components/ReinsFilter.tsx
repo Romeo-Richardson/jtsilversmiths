@@ -28,6 +28,7 @@ const ReinsFilter = (): React.ReactNode => {
     "Tan",
     "Blue",
     "Red",
+    "Green",
   ];
 
   const styles: string[] = [

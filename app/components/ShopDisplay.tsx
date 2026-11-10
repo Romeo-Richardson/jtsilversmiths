@@ -192,6 +192,7 @@ const ShopDisplay = (): React.ReactNode => {
                         asIsMouthpieceStyle={item.asIsMouthpieceStyle!}
                         asIsSizeCheek={item.asIsSizeCheek!}
                         asIsTongueRelief={item.asIsTongueRelief!}
+                        relatedItems={item.relatedItems!}
                       ></DaisyItemCard>
                     )
                   );
@@ -219,6 +220,7 @@ const ShopDisplay = (): React.ReactNode => {
                     asIsMouthpieceStyle={item.asIsMouthpieceStyle!}
                     asIsSizeCheek={item.asIsSizeCheek!}
                     asIsTongueRelief={item.asIsTongueRelief!}
+                    relatedItems={item.relatedItems!}
                     title={item.name}
                   ></DaisyItemCard>
                 );
