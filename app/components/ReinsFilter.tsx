@@ -17,6 +17,7 @@ const ReinsFilter = (): React.ReactNode => {
     "Diameter 3/8",
     "Diameter 1/2",
     "Diameter 5/8",
+    "Diameter 5/16",
   ];
 
   const colors: string[] = [
@@ -29,6 +30,9 @@ const ReinsFilter = (): React.ReactNode => {
     "Blue",
     "Red",
     "Green",
+    "Yellow",
+    "Silver",
+    "Gold",
   ];
 
   const styles: string[] = [

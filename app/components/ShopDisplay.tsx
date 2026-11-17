@@ -22,6 +22,7 @@ import GDRFilter from "./GDRFilter";
 import BraceletsFilter from "./BraceletsFilter";
 import EarringFilter from "./EarringFilter";
 import ReinsFilter from "./ReinsFilter";
+import BuckleSetsHB122Filter from "./BuckleSetHB122Filter";
 
 const ShopDisplay = (): React.ReactNode => {
   const params = useParams();
@@ -149,6 +150,9 @@ const ShopDisplay = (): React.ReactNode => {
       {(currentlySelectedQuery === "Roping Reins" ||
         currentlySelectedQuery === "Split Reins") && (
         <ReinsFilter></ReinsFilter>
+      )}
+      {currentlySelectedQuery === "Style 122-15P (San Antonio)" && (
+        <BuckleSetsHB122Filter></BuckleSetsHB122Filter>
       )}
       <div className="min-[701px]:hidden bg-base-200 py-2 pl-4">
         <NavInput></NavInput>

@@ -63,6 +63,12 @@ type ReinFilter = {
   style: string;
 };
 
+type BuckleSetHB122Filter = {
+  diameter: string;
+  color: string;
+  style: string;
+};
+
 type MainStoreType = {
   searchQueryInput: FormDataEntryValue | null;
   setSearchQueryInput: (inputValue: FormDataEntryValue | null) => void;
@@ -114,6 +120,8 @@ type MainStoreType = {
   setEarringFilter: (filter: EarringFilter | null) => void;
   reinFilter: ReinFilter | null;
   setReinFilter: (filter: ReinFilter | null) => void;
+  buckleSetHB122Filter: BuckleSetHB122Filter | null;
+  setBuckSetHB122Filter: (filter: BuckleSetHB122Filter | null) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -172,6 +180,12 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
   setReinFilter: (filter) => {
     set({
       reinFilter: filter,
+    });
+  },
+  buckleSetHB122Filter: null,
+  setBuckSetHB122Filter: (filter) => {
+    set({
+      buckleSetHB122Filter: filter,
     });
   },
   secondaryQuery: null,
@@ -564,6 +578,37 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             return x;
           }
         });
+
+      get().setDisplayedItems(filterdItems);
+    }
+
+    if (get().buckleSetHB122Filter) {
+      const filterdItems = fallbackData
+        .map((item: items) => {
+          if (
+            item.categories.includes("Style 122-15P (San Antonio)") &&
+            item.categories.includes(get().currentlySelectedQuery)
+          ) {
+            if (
+              (item.categories.includes(get().buckleSetHB122Filter?.color!) ||
+                get().buckleSetHB122Filter?.color === "All") &&
+              (item.categories.includes(
+                get().buckleSetHB122Filter?.diameter!,
+              ) ||
+                get().buckleSetHB122Filter?.diameter === "All") &&
+              (item.categories.includes(get().buckleSetHB122Filter?.style!) ||
+                get().buckleSetHB122Filter?.style === "All")
+            ) {
+              return item;
+            }
+          }
+        })
+        .map((x: any) => {
+          if (x !== undefined) {
+            return x;
+          }
+        });
+
       get().setDisplayedItems(filterdItems);
     }
   },

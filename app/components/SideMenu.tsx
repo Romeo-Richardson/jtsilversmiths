@@ -800,15 +800,39 @@ const SideMenu = () => {
       ],
     },
     {
+      name: "Buckle Sets for Hat Bands",
+      link: "/",
+      items: [
+        {
+          name: "Style 166",
+          link: "/",
+          subItems: [
+            {
+              name: "JB (Bronze)",
+              link: "/",
+            },
+            {
+              name: ".925 Silver",
+              link: "/",
+            },
+          ],
+        },
+        {
+          name: "Style 122-15P (San Antonio)",
+          link: "/",
+        },
+      ],
+    },
+    {
       name: "Buckle Sets & Conchos",
       link: "/",
       items: [
         {
-          name: "2 Piece Buckle Sets OV",
+          name: "3 Piece Buckle Sets OV",
           link: "/",
         },
         {
-          name: "2 Piece Buckle Sets OV - Heart",
+          name: "3 Piece Buckle Sets OV - Heart",
           link: "/",
         },
         {

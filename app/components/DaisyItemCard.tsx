@@ -192,11 +192,11 @@ const DaisyItemCard = ({
             </p>
           )}
 
-          {relatedItems && (
+          {relatedItems && relatedItems!.length > 0 ? (
             <p className="mb-3">
               <strong>Related Items:</strong>
               <b></b>
-              {relatedItems.map((item, key) => {
+              {relatedItems!.map((item, key) => {
                 return (
                   <Link href={`/shop/${encodeURIComponent(item)}`} key={key}>
                     <strong>
@@ -206,6 +206,8 @@ const DaisyItemCard = ({
                 );
               })}
             </p>
+          ) : (
+            <></>
           )}
 
           {!title.includes("BR-") &&
