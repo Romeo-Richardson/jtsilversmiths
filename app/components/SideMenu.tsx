@@ -808,11 +808,11 @@ const SideMenu = () => {
           link: "/",
           subItems: [
             {
-              name: "JB (Bronze)",
+              name: "Jewelers Bronze",
               link: "/",
             },
             {
-              name: ".925 Silver",
+              name: "Silver",
               link: "/",
             },
           ],
@@ -820,6 +820,20 @@ const SideMenu = () => {
         {
           name: "Style 122-15P (San Antonio)",
           link: "/",
+          subItems: [
+            {
+              name: "Silver",
+              link: "/",
+            },
+            {
+              name: "Silver w/ Stone",
+              link: "/",
+            },
+            {
+              name: "Silver Plated",
+              link: "/",
+            },
+          ],
         },
       ],
     },

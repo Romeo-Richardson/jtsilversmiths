@@ -151,7 +151,7 @@ const ShopDisplay = (): React.ReactNode => {
         currentlySelectedQuery === "Split Reins") && (
         <ReinsFilter></ReinsFilter>
       )}
-      {currentlySelectedQuery === "Style 122-15P (San Antonio)" && (
+      {currentlySelectedQuery === "Silver w/ Stone" && (
         <BuckleSetsHB122Filter></BuckleSetsHB122Filter>
       )}
       <div className="min-[701px]:hidden bg-base-200 py-2 pl-4">

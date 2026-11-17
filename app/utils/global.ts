@@ -64,9 +64,7 @@ type ReinFilter = {
 };
 
 type BuckleSetHB122Filter = {
-  diameter: string;
   color: string;
-  style: string;
 };
 
 type MainStoreType = {
@@ -590,14 +588,8 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
             item.categories.includes(get().currentlySelectedQuery)
           ) {
             if (
-              (item.categories.includes(get().buckleSetHB122Filter?.color!) ||
-                get().buckleSetHB122Filter?.color === "All") &&
-              (item.categories.includes(
-                get().buckleSetHB122Filter?.diameter!,
-              ) ||
-                get().buckleSetHB122Filter?.diameter === "All") &&
-              (item.categories.includes(get().buckleSetHB122Filter?.style!) ||
-                get().buckleSetHB122Filter?.style === "All")
+              item.categories.includes(get().buckleSetHB122Filter?.color!) ||
+              get().buckleSetHB122Filter?.color === "All"
             ) {
               return item;
             }
