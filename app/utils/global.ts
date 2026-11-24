@@ -120,6 +120,8 @@ type MainStoreType = {
   setReinFilter: (filter: ReinFilter | null) => void;
   buckleSetHB122Filter: BuckleSetHB122Filter | null;
   setBuckSetHB122Filter: (filter: BuckleSetHB122Filter | null) => void;
+  secondaryCategory: null | string;
+  setSecondaryCategory: (category: string) => void;
 };
 
 export const useMainStore = create<MainStoreType>((set, get) => ({
@@ -189,6 +191,13 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
   secondaryQuery: null,
   setSecondaryQuery: (status) => {
     set({ secondaryQuery: status });
+  },
+  secondaryCategory: null,
+  setSecondaryCategory: (category) => {
+    console.log("Setting Secondary Category...");
+    set({
+      secondaryCategory: category,
+    });
   },
   rowelModifier: 2,
   setRowelModifier: (mod) => {
@@ -296,13 +305,22 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
 
     console.log(items);
 
+    const secondCategory = get().secondaryCategory?.split("");
+    if (secondCategory && secondCategory[secondCategory.length - 1] === "s") {
+      secondCategory?.pop();
+    }
+    console.log(get().secondaryCategory);
+    console.log(secondCategory?.join("")!);
+
     if (!get().searchQueryInput && get().mainCategory) {
       items = items
         .map((item) => {
           if (
             item !== undefined &&
             (item.categories?.includes(category?.join("")!) ||
-              item.categories?.includes(get().mainCategory!))
+              item.categories?.includes(get().mainCategory!)) &&
+            (item.categories?.includes(secondCategory?.join("")!) ||
+              item.categories?.includes(get().secondaryCategory!))
           ) {
             return item;
           }

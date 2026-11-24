@@ -1016,6 +1016,7 @@ const SideMenu = () => {
   const {
     setSearchQueryInput,
     setCurrentlySelectedQuery,
+    setSecondaryCategory,
     setupQuery,
     setMainCategory,
     secondaryQuery,
@@ -1075,21 +1076,30 @@ const SideMenu = () => {
               <ul>
                 {menuItem.items.map((subMenuItem, subMenuItemKey) =>
                   !subMenuItem.subItems ? (
+                    <ul key={subMenuItemKey}>
+                      <li
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSearchQueryInput(null);
+                          setCurrentlySelectedQuery(subMenuItem.name);
+                          console.log("About to set...");
+                          setSecondaryCategory(subMenuItem.name);
+                          setSecondaryQuery(subMenuItem.link);
+                          console.log(data.data);
+                          setupQuery(data.data);
+                        }}
+                      >
+                        <a href="">{subMenuItem.name}</a>
+                      </li>
+                    </ul>
+                  ) : (
                     <li
                       key={subMenuItemKey}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setSearchQueryInput(null);
-                        setCurrentlySelectedQuery(subMenuItem.name);
-                        setSecondaryQuery(subMenuItem.link);
-                        console.log(data.data);
-                        setupQuery(data.data);
+                      onClick={() => {
+                        console.log("Setting....");
+                        setSecondaryCategory(subMenuItem.name);
                       }}
                     >
-                      <a href="">{subMenuItem.name}</a>
-                    </li>
-                  ) : (
-                    <li key={subMenuItemKey}>
                       <details open={false}>
                         <summary>{subMenuItem.name}</summary>
                         {subMenuItem.subItems?.map((item, key) => (

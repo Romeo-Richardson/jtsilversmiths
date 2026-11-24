@@ -294,7 +294,6 @@ const page = () => {
     { name: "Buckle Sets & Conchos", status: false },
     { name: "Buckle Sets for Hat Bands", status: false },
     { name: "Style 166", status: false },
-    { name: "JB (Bronze)", status: false },
     { name: ".925 Silver", status: false },
     { name: "Style 122-15P (San Antonio)", status: false },
     { name: "Diameter 5/16", status: false },
