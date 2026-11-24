@@ -300,8 +300,9 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       items = items
         .map((item) => {
           if (
-            item !== undefined &&
-            item.categories?.includes(category?.join("")!)
+            (item !== undefined &&
+              item.categories?.includes(category?.join("")!)) ||
+            item.categories?.includes(get().mainCategory!)
           ) {
             return item;
           }

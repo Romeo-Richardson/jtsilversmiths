@@ -304,6 +304,7 @@ const page = () => {
     { name: "Silver w/ Stone", status: false },
     { name: "Silver Plated", status: false },
     { name: "Jewelers Bronze", status: false },
+    { name: "Arrowhead Concho", status: false },
   ]);
 
   const [inputOptions, setInputOptions] = useState<
