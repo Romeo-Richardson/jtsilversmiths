@@ -584,7 +584,7 @@ export const useMainStore = create<MainStoreType>((set, get) => ({
       const filterdItems = fallbackData
         .map((item: items) => {
           if (
-            item.categories.includes("Style 122-15P (San Antonio)") &&
+            item.categories.includes("Silver w/ Stone") &&
             item.categories.includes(get().currentlySelectedQuery)
           ) {
             if (
